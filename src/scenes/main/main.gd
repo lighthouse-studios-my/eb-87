@@ -49,3 +49,15 @@ func _on_upgrade_menu_upgrade_selected(upgrade):
 func _on_pause_screen_quit_pressed():
 	get_tree().change_scene_to_file("res://ui/main_menu/main_menu.tscn")
 	get_tree().paused = false
+
+
+func _on_player_dead():
+	var gameover: Control = load("res://ui/gameover/gameover.tscn").instantiate()
+	gameover.restart_pressed.connect(func ():
+		get_tree().change_scene_to_file("res://scenes/main/main.tscn")
+		get_tree().paused = false)
+	gameover.back_pressed.connect(func ():
+		get_tree().change_scene_to_file("res://ui/main_menu/main_menu.tscn")
+		get_tree().paused = false)
+	$CanvasLayer.add_child(gameover)
+	get_tree().paused = true

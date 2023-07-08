@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 
+signal dead
+
 @export var speed = 400  # speed in pixels/sec
 @export var dodge_speed = 1000
 @export var health := 3
@@ -70,6 +72,7 @@ func hurt(damage) -> void:
 
 
 func die() -> void:
+	emit_signal("dead")
 	queue_free()
 
 
