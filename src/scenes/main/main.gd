@@ -32,9 +32,9 @@ func level_up() -> void:
 	get_tree().paused = true
 
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if is_instance_valid(player) and not player.is_queued_for_deletion():
-		turret.aim_at(player.position)
+		turret.aim_at(player.position, delta)
 
 
 func _on_enemy_spawn_timer_timeout():
