@@ -2,7 +2,7 @@ class_name MultishotUpgrade
 extends Resource
 
 
-@export var icon := preload("res://icon.svg")
+@export var icon := preload("res://assets/ui/upgrade_ms.png")
 @export var description := "Shoot additional projectiles"
 
 
