@@ -7,6 +7,7 @@ const ProjectileScene := preload("res://entities/projectile/projectile.tscn")
 
 @export var max_spread_angle_degrees := 10.0
 @export var fire_rate := 1.0 : set = _set_fire_rate
+@export var rotate_speed_degrees := 180.0
 
 @export_group("Projectile")
 @export var projectile_count := 1
@@ -20,6 +21,7 @@ var _enabled := true
 @onready var _tip := $Pivot/Tip
 @onready var _cooldown := $CooldownTimer
 @onready var _max_spread_angle := deg_to_rad(max_spread_angle_degrees)
+@onready var _rotate_speed := deg_to_rad(rotate_speed_degrees)
 
 
 func enable() -> void:
@@ -44,8 +46,12 @@ func shoot() -> void:
 	_cooldown.start()
 
 
-func aim_at(pos: Vector2) -> void:
-	_pivot.rotation = lerp_angle(_pivot.rotation, get_angle_to(pos), 0.05)
+func aim_at(pos: Vector2, delta: float) -> void:
+	var pointing := Vector2.RIGHT.rotated(_pivot.rotation)
+	var to := position.direction_to(pos)
+	var side: int = sign(pointing.cross(to))
+	var speed: float = min(_rotate_speed * delta, abs(pointing.angle_to(to)))
+	_pivot.rotation += side * speed
 
 
 func _calculate_direction() -> Vector2:
