@@ -17,8 +17,7 @@ autostart = true
 
 [node name="Turret" parent="." instance=ExtResource("4_vglex")]
 position = Vector2(979, 523)
-projectile_speed = 600
-projectile_size_scale = 2
+projectile_speed = 1200.0
 
 [node name="Player" parent="." instance=ExtResource("1_an0ov")]
 position = Vector2(555, 502)

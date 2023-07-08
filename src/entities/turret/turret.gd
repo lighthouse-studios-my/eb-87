@@ -3,11 +3,12 @@ extends Node2D
 
 signal shot(projectile)
 
+const SPREAD_HARD_CAP := 45.0
 const ProjectileScene := preload("res://entities/projectile/projectile.tscn")
 
-@export var max_spread_angle_degrees := 10.0
+@export var max_spread_angle_degrees := 0.0 : set = _set_max_spread_angle_degrees
 @export var fire_rate := 1.0 : set = _set_fire_rate
-@export var rotate_speed_degrees := 180.0
+@export var rotate_speed_degrees := 90.0
 
 @export_group("Projectile")
 @export var projectile_count := 1
@@ -64,6 +65,11 @@ func _set_fire_rate(val: float) -> void:
 	if not _cooldown:
 		await ready
 	_cooldown.wait_time = 1 / fire_rate
+
+
+func _set_max_spread_angle_degrees(val: float) -> void:
+	max_spread_angle_degrees = min(val, SPREAD_HARD_CAP)
+	_max_spread_angle = deg_to_rad(max_spread_angle_degrees)
 
 
 func _on_cooldown_timer_timeout():
