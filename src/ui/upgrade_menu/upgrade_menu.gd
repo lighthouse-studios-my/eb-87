@@ -15,6 +15,7 @@ func _ready() -> void:
 
 
 func show_upgrades() -> void:
+	_clear_buttons()
 	var upgrades := _randomize_upgrades()
 	for upgrade in upgrades:
 		var button := _create_button(upgrade)

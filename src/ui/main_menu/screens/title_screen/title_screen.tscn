@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1f1f4a75hdro"]
+
+[ext_resource type="Script" path="res://ui/main_menu/screens/title_screen/title_screen.gd" id="1_iohad"]
+[ext_resource type="Script" path="res://ui/common/hover_button.gd" id="2_du5nx"]
+[ext_resource type="PackedScene" uid="uid://bosl3sol5un47" path="res://ui/main_menu/components/cursor/cursor.tscn" id="2_xg02s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_foknc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ula5c"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iohad")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.333
+anchor_right = 0.5
+anchor_bottom = 0.333
+offset_left = -20.5
+offset_top = -13.0
+offset_right = 20.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EB-87"
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.666
+anchor_right = 0.5
+anchor_bottom = 0.666
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_foknc")
+text = "START"
+flat = true
+script = ExtResource("2_du5nx")
+
+[node name="SettingsButton" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ula5c")
+text = "SETTINGS"
+flat = true
+script = ExtResource("2_du5nx")
+
+[node name="CreditsButton" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ula5c")
+text = "CREDITS"
+flat = true
+script = ExtResource("2_du5nx")
+
+[node name="QuitButton" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ula5c")
+text = "QUIT"
+flat = true
+script = ExtResource("2_du5nx")
+
+[node name="Cursor" parent="." instance=ExtResource("2_xg02s")]
+offset_left = 915.0
+offset_top = 655.0
+offset_right = 1003.0
+offset_bottom = 681.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="sort_children" from="Buttons" to="." method="_on_buttons_sort_children"]
+[connection signal="pressed" from="Buttons/StartButton" to="." method="_on_button_pressed" binds= ["start"]]
+[connection signal="pressed" from="Buttons/SettingsButton" to="." method="_on_button_pressed" binds= ["settings"]]
+[connection signal="pressed" from="Buttons/CreditsButton" to="." method="_on_button_pressed" binds= ["credits"]]
+[connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_button_pressed" binds= ["quit"]]
