@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var speed := 100.0
 @export var health := 1
 
+@onready var exp_orb = preload("res://entities/orb/orb.tscn")
+
 var target = null
 
 
@@ -29,6 +31,9 @@ func hurt(damage) -> void:
 
 
 func die() -> void:
+	var orb = exp_orb.instantiate()
+	orb.position = position
+	get_tree().root.get_node("Main").add_child(orb)
 	queue_free()
 
 
