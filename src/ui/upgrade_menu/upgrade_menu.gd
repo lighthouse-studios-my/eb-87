@@ -43,6 +43,7 @@ func _create_button(upgrade: Resource) -> Button:
 	button.flat = true
 	button.tooltip_text = upgrade.description
 	button.pressed.connect(_on_button_pressed.bind(upgrade))
+	button.focus_mode = Control.FOCUS_NONE
 	return button
 
 

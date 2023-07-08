@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://vihv5x3c6jq6"]
+
+[ext_resource type="Script" path="res://entities/laser/laser.gd" id="1_jx2hf"]
+
+[node name="Laser" type="RayCast2D"]
+collision_mask = 3
+script = ExtResource("1_jx2hf")
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(1, 0, 0, 0.470588)
