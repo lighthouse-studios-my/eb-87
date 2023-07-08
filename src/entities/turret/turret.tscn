@@ -9,7 +9,6 @@ radius = 66.0681
 script = ExtResource("1_78ulu")
 
 [node name="CooldownTimer" type="Timer" parent="."]
-wait_time = 0.051
 autostart = true
 
 [node name="Base" type="Polygon2D" parent="."]
