@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 @export var speed = 400  # speed in pixels/sec
-@export var dodge_speed = 600
+@export var dodge_speed = 1000
 
 @export var dodge_duration := 0.2
 @export var dodge_cooldown := 0.2

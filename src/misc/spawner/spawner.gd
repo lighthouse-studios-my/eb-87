@@ -32,7 +32,6 @@ func spawn_pack() -> void:
 func spawn(pos: Vector2) -> void:
 	var entity := spawn_entity.instantiate()
 	entity.global_position = pos
-	entity.target = get_tree().get_first_node_in_group("player")
 	context.add_child(entity)
 	emit_signal("spawned", entity)
 

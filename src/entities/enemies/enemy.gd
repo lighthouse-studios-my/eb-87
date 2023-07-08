@@ -1,9 +1,13 @@
 extends CharacterBody2D
 
 
-@export var speed := 300.0
+@export var speed := 200.0
 
 var target = null
+
+
+func _ready() -> void:
+	target = get_tree().get_first_node_in_group("player")
 
 
 func _physics_process(delta):
