@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxwb8qt466bui"]
+[gd_scene load_steps=4 format=3 uid="uid://bxwb8qt466bui"]
 
 [ext_resource type="Script" path="res://entities/turret/turret.gd" id="1_78ulu"]
+[ext_resource type="PackedScene" uid="uid://vihv5x3c6jq6" path="res://entities/laser/laser.tscn" id="2_087y1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jubhv"]
 radius = 66.0681
@@ -23,6 +24,10 @@ polygon = PackedVector2Array(-8, -8, 128, -8, 128, 8, -8, 8)
 
 [node name="Tip" type="Marker2D" parent="Pivot"]
 position = Vector2(128, 0)
+
+[node name="Laser" parent="Pivot" instance=ExtResource("2_087y1")]
+position = Vector2(128, 0)
+target_position = Vector2(2000, 0)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 8
