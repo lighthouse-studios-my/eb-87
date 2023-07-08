@@ -29,6 +29,7 @@ func level_up() -> void:
 	exp_points = 0
 	exp_required += exp_scale
 	upgrade_menu.show_upgrades()
+	get_tree().paused = true
 
 
 func _physics_process(delta):
@@ -42,6 +43,7 @@ func _on_enemy_spawn_timer_timeout():
 
 func _on_upgrade_menu_upgrade_selected(upgrade):
 	upgrade.apply(turret)
+	get_tree().paused = false
 
 
 func _on_pause_screen_quit_pressed():
