@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://dj8uf3b6gj6tb" path="res://misc/spawner/spawner.tscn" id="2_jthal"]
 [ext_resource type="PackedScene" uid="uid://bxwb8qt466bui" path="res://entities/turret/turret.tscn" id="4_vglex"]
 [ext_resource type="PackedScene" uid="uid://dtnh3g1dag1pb" path="res://ui/upgrade_menu/upgrade_menu.tscn" id="5_0hhqo"]
-[ext_resource type="Script" path="res://misc/music_player/music_player.gd" id="6_4bdbo"]
 [ext_resource type="PackedScene" uid="uid://dc0siwbmb2hux" path="res://ui/pause/pause.tscn" id="6_fn6hx"]
 [ext_resource type="Texture2D" uid="uid://bth3vyqpmdpn2" path="res://assets/art/bg.png" id="8_m4lqx"]
+[ext_resource type="AudioStream" uid="uid://bs7tu47vsqggr" path="res://assets/music/Fight_160_BPM_F_Min.mp3" id="8_wil0v"]
 
 [sub_resource type="Environment" id="Environment_gxgps"]
 background_mode = 3
@@ -70,12 +70,20 @@ visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
+stream = ExtResource("8_wil0v")
 volume_db = -24.0
+autoplay = true
 bus = &"Music"
-script = ExtResource("6_4bdbo")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gxgps")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-500, -434, -492, 1442, 2453, 1443, 2456, -418, -500, -438, 0, 1, 1921, 1, 1920, 1080, 4, 1078, 0, 2)
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="DifficultyTimer" to="." method="_on_difficulty_timer_timeout"]
