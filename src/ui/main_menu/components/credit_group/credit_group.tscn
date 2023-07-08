@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://g26blcd73i4d"]
+
+[ext_resource type="Script" path="res://ui/main_menu/components/credit_group/credit_group.gd" id="1_xdeoo"]
+
+[node name="CreditGroup" type="VBoxContainer"]
+offset_bottom = 30.0
+grow_horizontal = 2
+script = ExtResource("1_xdeoo")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Title"
+
+[node name="Names" type="VBoxContainer" parent="."]
+layout_mode = 2
