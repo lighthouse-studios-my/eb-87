@@ -1,15 +1,22 @@
 extends Node2D
 
 
+@export var enemy_spawn_cooldown := 5.0
+
 @onready var player := $Player
 @onready var spawner := $Spawner
 @onready var turret := $Turret
 @onready var upgrade_menu := $CanvasLayer/CenterContainer/UpgradeMenu
 @onready var exp_bar := $CanvasLayer/ProgressBar
+@onready var enemy_spawn_timer = $EnemySpawnTimer
 
 var exp_points = 0
 var exp_required = 5
 var exp_scale = 1
+
+
+func _ready():
+	enemy_spawn_timer.wait_time = enemy_spawn_cooldown
 
 
 func _on_orb_absorbed(exp) -> void:
@@ -39,6 +46,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_enemy_spawn_timer_timeout():
 	spawner.spawn_pack()
+	enemy_spawn_timer.wait_time = enemy_spawn_cooldown
 
 
 func _on_upgrade_menu_upgrade_selected(upgrade):
@@ -61,3 +69,9 @@ func _on_player_dead():
 		get_tree().paused = false)
 	$CanvasLayer.add_child(gameover)
 	get_tree().paused = true
+
+
+func _on_difficulty_timer_timeout():
+	enemy_spawn_cooldown -= 0.2
+	enemy_spawn_cooldown = max(enemy_spawn_cooldown, 0.2)
+	

@@ -22,7 +22,7 @@ func _ready() -> void:
 
 
 func spawn_pack() -> void:
-	var pack_size := _rng.randi_range(0, max_pack_size)
+	var pack_size = max_pack_size
 	_spawn_point.progress_ratio = _rng.randf()
 	
 	for _i in range(pack_size):
