@@ -15,10 +15,12 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	_follow_target(delta)
-
+	
 
 func _follow_target(delta) -> void:
 	if not target: return
+	
+	$AnimatedSprite2D.flip_h = position.x < target.position.x
 	
 	velocity = position.direction_to(target.position) * speed
 	move_and_collide(velocity * delta)

@@ -1,6 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://bc5351fqfgj0l"]
+[gd_scene load_steps=6 format=3 uid="uid://bc5351fqfgj0l"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_vkbwb"]
+[ext_resource type="Texture2D" uid="uid://bjddi2cjn7yg7" path="res://assets/art/mc_temp_350px.png" id="2_xiega"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p53bc"]
+atlas = ExtResource("2_xiega")
+region = Rect2(0, 0, 350, 350)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u7rnr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p53bc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_258kq"]
 radius = 20.0
@@ -10,6 +26,11 @@ height = 66.0
 collision_layer = 17
 collision_mask = 12
 script = ExtResource("1_vkbwb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(0.23625, 0.23625)
+sprite_frames = SubResource("SpriteFrames_u7rnr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_258kq")

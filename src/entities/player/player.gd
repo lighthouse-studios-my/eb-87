@@ -30,6 +30,9 @@ func _physics_process(delta):
 	if _is_dodging:
 		velocity = _dodge_direction * dodge_speed
 	
+	var input_axis = Input.get_axis("move_left", "move_right")
+	$AnimatedSprite2D.flip_h = input_axis <= 0
+	
 	move_and_slide()
 
 
