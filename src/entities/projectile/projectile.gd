@@ -19,6 +19,7 @@ func setup(
 	
 	$Hitbox.shape.radius = $Hitbox.shape.radius * size_scale
 	$Sprite.scale = $Sprite.scale * size_scale
+	print($Sprite.scale)
 
 
 func _physics_process(delta: float) -> void:
