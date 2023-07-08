@@ -65,4 +65,6 @@ script = ExtResource("6_4bdbo")
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="upgrade_selected" from="CanvasLayer/CenterContainer/UpgradeMenu" to="." method="_on_upgrade_menu_upgrade_selected"]
+[connection signal="paused" from="CanvasLayer/PauseScreen" to="." method="_on_pause_screen_paused"]
 [connection signal="quit_pressed" from="CanvasLayer/PauseScreen" to="." method="_on_pause_screen_quit_pressed"]
+[connection signal="unpaused" from="CanvasLayer/PauseScreen" to="." method="_on_pause_screen_unpaused"]

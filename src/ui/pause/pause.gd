@@ -1,6 +1,8 @@
 extends Control
 
 
+signal paused
+signal unpaused
 signal settings_pressed
 signal quit_pressed
 
@@ -21,7 +23,7 @@ func _input(event: InputEvent) -> void:
 			and event.keycode == Key.KEY_ESCAPE
 			and event.pressed
 	):
-		pause(!get_tree().paused)
+		pause(!visible)
 
 
 func refocus() -> void:
@@ -29,10 +31,12 @@ func refocus() -> void:
 
 
 func pause(paused: bool) -> void:
-	get_tree().paused = paused
 	visible = paused
 	if paused:
 		refocus()
+		emit_signal("paused")
+	else:
+		emit_signal("unpaused")
 
 
 func _on_button_pressed(button: String) -> void:
