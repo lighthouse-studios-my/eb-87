@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_dedo6"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -116, -139, 0, 0, 0, 0, -134, 1225, 0, 0, 0, 0, 2047, 1213, 0, 0, 0, 0, 2050, -136, 0, 0, 0, 0, -110, -139)
+"points": PackedVector2Array(0, 0, 0, 0, -113, -151, 0, 0, 0, 0, -134, 1225, 0, 0, 0, 0, 2047, 1213, 0, 0, 0, 0, 2050, -136, 0, 0, 0, 0, -110, -139)
 }
 point_count = 5
 
@@ -15,7 +15,7 @@ script = ExtResource("1_cwrei")
 spawn_entity = ExtResource("2_wxwtt")
 
 [node name="SpawnPoint" type="PathFollow2D" parent="."]
-position = Vector2(-116, -139)
-rotation = 1.58399
+position = Vector2(-113, -151)
+rotation = 1.58606
 
 [node name="IntervalTimer" type="Timer" parent="."]
