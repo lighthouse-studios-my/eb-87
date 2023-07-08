@@ -2,7 +2,7 @@ class_name Projectile
 extends Area2D
 
 
-@export var speed := 300
+@export var speed := 3000
 @export var damage := 1
 
 var direction := Vector2.RIGHT
@@ -44,4 +44,12 @@ func _on_area_entered(area: Area2D):
 		return
 	if area.has_method("hurt"):
 		area.hurt(damage)
+	despawn()
+
+
+func _on_body_entered(body):
+	if is_queued_for_deletion() or body.is_queued_for_deletion():
+		return
+	if body.has_method("hurt"):
+		body.hurt(damage)
 	despawn()

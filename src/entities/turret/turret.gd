@@ -10,8 +10,8 @@ const ProjectileScene := preload("res://entities/projectile/projectile.tscn")
 
 @export_group("Projectile")
 @export var projectile_count := 1
-@export var projectile_damage := 10.0
-@export var projectile_speed := 100.0
+@export var projectile_damage := 1.0
+@export var projectile_speed := 300.0
 @export var projectile_size_scale := 1.0
 
 var _enabled := true
@@ -45,7 +45,7 @@ func shoot() -> void:
 
 
 func aim_at(pos: Vector2) -> void:
-	_pivot.look_at(pos)
+	_pivot.rotation = lerp_angle(_pivot.rotation, get_angle_to(pos), 0.05)
 
 
 func _calculate_direction() -> Vector2:

@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxwb8qt466bui"]
+[gd_scene load_steps=3 format=3 uid="uid://bxwb8qt466bui"]
 
 [ext_resource type="Script" path="res://entities/turret/turret.gd" id="1_78ulu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jubhv"]
+radius = 66.0681
 
 [node name="Turret" type="Node2D"]
 script = ExtResource("1_78ulu")
@@ -20,5 +23,12 @@ polygon = PackedVector2Array(-8, -8, 128, -8, 128, 8, -8, 8)
 
 [node name="Tip" type="Marker2D" parent="Pivot"]
 position = Vector2(128, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_jubhv")
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
