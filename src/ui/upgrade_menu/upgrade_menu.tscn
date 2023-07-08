@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtnh3g1dag1pb"]
+
+[ext_resource type="Script" path="res://ui/upgrade_menu/upgrade_menu.gd" id="1_5y81g"]
+
+[node name="UpgradeMenu" type="HBoxContainer"]
+script = ExtResource("1_5y81g")

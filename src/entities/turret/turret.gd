@@ -6,12 +6,13 @@ signal shot(projectile)
 const ProjectileScene := preload("res://entities/projectile/projectile.tscn")
 
 @export var max_spread_angle_degrees := 10.0
+@export var fire_rate := 1.0 : set = _set_fire_rate
 
 @export_group("Projectile")
 @export var projectile_count := 1
-@export var projectile_damage := 1
-@export var projectile_speed := 300
-@export var projectile_size_scale := 1
+@export var projectile_damage := 1.0
+@export var projectile_speed := 300.0
+@export var projectile_size_scale := 1.0
 
 var _enabled := true
 
@@ -50,6 +51,13 @@ func aim_at(pos: Vector2) -> void:
 func _calculate_direction() -> Vector2:
 	var offset = randf_range(-_max_spread_angle, _max_spread_angle)
 	return Vector2.RIGHT.rotated(_pivot.global_rotation + offset)
+
+
+func _set_fire_rate(val: float) -> void:
+	fire_rate = val
+	if not _cooldown:
+		await ready
+	_cooldown.wait_time = 1 / fire_rate
 
 
 func _on_cooldown_timer_timeout():
