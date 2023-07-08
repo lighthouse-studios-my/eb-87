@@ -9,8 +9,8 @@ const ProjectileScene := preload("res://entities/projectile/projectile.tscn")
 
 @export_group("Projectile")
 @export var projectile_count := 1
-@export var projectile_damage := 10
-@export var projectile_speed := 100
+@export var projectile_damage := 1
+@export var projectile_speed := 300
 @export var projectile_size_scale := 1
 
 var _enabled := true

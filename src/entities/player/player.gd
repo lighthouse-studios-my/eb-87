@@ -52,10 +52,10 @@ func _dodge() -> void:
 	_dodge_duration_timer.start()
 
 
-func hurt() -> void:
-	health -= 1
+func hurt(damage) -> void:
+	health -= damage
 
-	if health == 0:
+	if health <= 0:
 		die()
 		return
 	

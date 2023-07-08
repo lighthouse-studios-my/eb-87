@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 @export var speed := 200.0
+@export var health := 1
 
 var target = null
 
@@ -21,6 +22,12 @@ func _follow_target(delta) -> void:
 	move_and_collide(velocity * delta)
 
 
+func hurt(damage) -> void:
+	health -= damage
+	if health <= 0:
+		die()
+
+
 func die() -> void:
 	queue_free()
 
@@ -28,4 +35,4 @@ func die() -> void:
 func _on_hurt_box_body_entered(body):
 	if body.is_in_group("player"):
 		if body.has_method("hurt"):
-			body.hurt()
+			body.hurt(1)
