@@ -7,9 +7,13 @@ extends Node2D
 
 
 func _ready():
-	spawner.spawn_pack()
-
+	pass
+	
 
 func _physics_process(delta):
 	if is_instance_valid(player) and not player.is_queued_for_deletion():
 		turret.aim_at(player.position)
+
+
+func _on_enemy_spawn_timer_timeout():
+	spawner.spawn_pack()

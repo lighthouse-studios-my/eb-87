@@ -20,6 +20,7 @@ one_shot = true
 one_shot = true
 
 [node name="InvulnerabilityCooldownTimer" type="Timer" parent="."]
+wait_time = 5.0
 one_shot = true
 
 [connection signal="timeout" from="DodgeDurationTimer" to="." method="_on_dodge_duration_timer_timeout"]

@@ -44,7 +44,7 @@ func shoot() -> void:
 
 
 func aim_at(pos: Vector2) -> void:
-	_pivot.rotation = lerp_angle(_pivot.rotation, get_angle_to(pos), 0.01)
+	_pivot.rotation = lerp_angle(_pivot.rotation, get_angle_to(pos), 0.05)
 
 
 func _calculate_direction() -> Vector2:

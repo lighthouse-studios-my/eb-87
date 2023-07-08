@@ -54,6 +54,8 @@ func _dodge() -> void:
 
 func hurt(damage) -> void:
 	health -= damage
+	
+	if get_collision_layer_value(1) == false: return
 
 	if health <= 0:
 		die()
