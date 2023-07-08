@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc5351fqfgj0l"]
+
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_vkbwb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sh15h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_17xpc"]
+radius = 62.2896
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_vkbwb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, -36)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_sh15h")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_17xpc")
