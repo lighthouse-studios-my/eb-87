@@ -5,7 +5,7 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_sh15h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17xpc"]
-radius = 62.2896
+radius = 38.1182
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_vkbwb")
@@ -18,3 +18,12 @@ autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_17xpc")
+
+[node name="DodgeDurationTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DodgeCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DodgeDurationTimer" to="." method="_on_dodge_duration_timer_timeout"]
+[connection signal="timeout" from="DodgeCooldownTimer" to="." method="_on_dodge_cooldown_timer_timeout"]
