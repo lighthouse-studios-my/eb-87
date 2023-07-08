@@ -48,7 +48,9 @@ layout_mode = 2
 [node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("6_fn6hx")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 volume_db = -24.0
+bus = &"Music"
 script = ExtResource("6_4bdbo")
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
