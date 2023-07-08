@@ -7,12 +7,8 @@ var direction = Vector2.ZERO
 var _target = null
 
 
-func _ready():
-	pass
-
-
 func _physics_process(delta):
-	if Input.is_action_just_pressed("dodge"):
+	if Input.is_action_just_pressed("dodge"): 
 		_target = get_tree().root.get_node("main").get_node("Player")
 	_follow_target(delta)
 
