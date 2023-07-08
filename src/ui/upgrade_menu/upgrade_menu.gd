@@ -1,13 +1,17 @@
 extends HBoxContainer
 
 
-signal selected(upgrade)
+signal upgrade_selected(upgrade)
 
 var all_upgrades := [
 	FireRateUpgrade.new(),
 	MultishotUpgrade.new(),
 	SizeUpgrade.new(),
 ]
+
+
+func _ready() -> void:
+	visible = false
 
 
 func show_upgrades() -> void:
@@ -18,6 +22,7 @@ func show_upgrades() -> void:
 		button.tooltip_text = upgrade.description
 		button.pressed.connect(_on_button_pressed.bind(upgrade))
 		add_child(button)
+	visible = true
 
 
 func _clear_buttons() -> void:
@@ -35,4 +40,5 @@ func _randomize_upgrades() -> Array:
 
 
 func _on_button_pressed(upgrade: Resource) -> void:
-	emit_signal("selected", upgrade)
+	emit_signal("upgrade_selected", upgrade)
+	visible = false
