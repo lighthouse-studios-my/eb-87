@@ -23,6 +23,7 @@ var _can_dodge := true
 func _ready() -> void:
 	_dodge_duration_timer.wait_time = dodge_duration
 	_dodge_cooldown_timer.wait_time = dodge_cooldown
+	invulnerability_duration_timer.wait_time = invulnerability_duration
 
 
 func _physics_process(delta):
