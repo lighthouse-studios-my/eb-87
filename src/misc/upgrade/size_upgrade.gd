@@ -7,4 +7,4 @@ extends Resource
 
 
 func apply(turret: Node2D) -> void:
-	turret.projectile_size += 0.1
+	turret.projectile_size_scale += 0.1
