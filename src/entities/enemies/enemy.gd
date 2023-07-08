@@ -33,7 +33,9 @@ func hurt(damage) -> void:
 func die() -> void:
 	var orb = exp_orb.instantiate()
 	orb.position = position
-	get_tree().root.get_node("Main").call_deferred("add_child", orb)
+	var main = get_tree().root.get_node("Main")
+	main.call_deferred("add_child", orb)
+	orb.absorbed.connect(Callable(main, "_on_orb_absorbed"))
 	queue_free()
 
 

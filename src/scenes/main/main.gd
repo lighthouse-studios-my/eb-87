@@ -6,9 +6,12 @@ extends Node2D
 @onready var turret := $Turret
 @onready var upgrade_menu := $CanvasLayer/CenterContainer/UpgradeMenu
 
+var exp_points = 0
 
-func _ready():
-	pass
+
+func _on_orb_absorbed(exp) -> void:
+	exp_points += exp
+	print(exp_points)
 
 
 func _physics_process(delta):

@@ -1,7 +1,8 @@
+class_name Orb
 extends Area2D
 
 
-signal abosrbed(exp_points)
+signal absorbed(exp_points)
 
 @export var exp_points := 1 
 @export var acceleration := 10
@@ -12,7 +13,7 @@ func attract() -> void:
 	var tween = create_tween().bind_node(self).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	tween.tween_property(self, "position", target_location, 1)
 	tween.tween_callback(self.queue_free)
-	emit_signal("abosrbed", exp_points)
+	emit_signal("absorbed", exp_points)
 
 
 func _on_body_entered(body):
