@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd6rgf15naw10"]
+
+[ext_resource type="PackedScene" uid="uid://g26blcd73i4d" path="res://ui/main_menu/components/credit_group/credit_group.tscn" id="1_0h8y3"]
+[ext_resource type="Script" path="res://ui/main_menu/screens/credits/credits.gd" id="1_s0r2v"]
+[ext_resource type="PackedScene" uid="uid://bosl3sol5un47" path="res://ui/main_menu/components/cursor/cursor.tscn" id="3_opuwe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dncbe"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s0r2v")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="CreditGroup" parent="VBoxContainer" instance=ExtResource("1_0h8y3")]
+layout_mode = 2
+title = "Artist"
+names = Array[String](["Jane Doe"])
+
+[node name="CreditGroup2" parent="VBoxContainer" instance=ExtResource("1_0h8y3")]
+layout_mode = 2
+title = "Programmer"
+names = Array[String](["John Doe"])
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.666
+anchor_right = 0.5
+anchor_bottom = 0.666
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dncbe")
+text = "BACK"
+flat = true
+
+[node name="Cursor" parent="." instance=ExtResource("3_opuwe")]
+offset_left = 925.0
+offset_top = 720.0
+offset_right = 997.0
+offset_bottom = 720.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
