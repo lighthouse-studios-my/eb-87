@@ -56,9 +56,9 @@ text = "BACK"
 flat = true
 
 [node name="Cursor" parent="." instance=ExtResource("3_opuwe")]
-offset_left = 925.0
+offset_left = 901.0
 offset_top = 720.0
-offset_right = 997.0
+offset_right = 1021.0
 offset_bottom = 720.0
 grow_horizontal = 1
 grow_vertical = 1

@@ -8,6 +8,7 @@ signal back_pressed
 
 
 func _ready() -> void:
+	_back_button.focus_entered.connect(_on_button_focus_entered.bind(_back_button))
 	refocus()
 
 
@@ -19,6 +20,10 @@ func show() -> void:
 
 func refocus() -> void:
 	_back_button.grab_focus()
+
+
+func _on_button_focus_entered(control: Control) -> void:
+	_cursor.point_at(control)
 
 
 func _on_back_button_pressed() -> void:
