@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0k8hlwpj26mq"
-path="res://.godot/imported/hpbar_base.png-de27f553abc31a60c34386372e3faaf3.ctex"
+uid="uid://t6yuuea3ft2r"
+path="res://.godot/imported/Time Spreadsheet.png-7026f2edabb237d9df18c9a5c54b0130.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/hpbar_base.png"
-dest_files=["res://.godot/imported/hpbar_base.png-de27f553abc31a60c34386372e3faaf3.ctex"]
+source_file="res://assets/ui/Timer/Time Spreadsheet.png"
+dest_files=["res://.godot/imported/Time Spreadsheet.png-7026f2edabb237d9df18c9a5c54b0130.ctex"]
 
 [params]
 

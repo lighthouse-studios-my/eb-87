@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0k8hlwpj26mq"
-path="res://.godot/imported/hpbar_base.png-de27f553abc31a60c34386372e3faaf3.ctex"
+uid="uid://bygm83olfybge"
+path="res://.godot/imported/4.png-56acb52a9c896b2146180f188d0ead2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/hpbar_base.png"
-dest_files=["res://.godot/imported/hpbar_base.png-de27f553abc31a60c34386372e3faaf3.ctex"]
+source_file="res://assets/ui/Timer/4.png"
+dest_files=["res://.godot/imported/4.png-56acb52a9c896b2146180f188d0ead2c.ctex"]
 
 [params]
 

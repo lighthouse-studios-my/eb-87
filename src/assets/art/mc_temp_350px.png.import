@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0k8hlwpj26mq"
-path="res://.godot/imported/hpbar_base.png-de27f553abc31a60c34386372e3faaf3.ctex"
+uid="uid://bjddi2cjn7yg7"
+path="res://.godot/imported/mc_temp_350px.png-85baaca4f3f6abe9c524eaf32b8868a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/hpbar_base.png"
-dest_files=["res://.godot/imported/hpbar_base.png-de27f553abc31a60c34386372e3faaf3.ctex"]
+source_file="res://assets/art/mc_temp_350px.png"
+dest_files=["res://.godot/imported/mc_temp_350px.png-85baaca4f3f6abe9c524eaf32b8868a9.ctex"]
 
 [params]
 

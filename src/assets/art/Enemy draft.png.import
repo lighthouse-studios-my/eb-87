@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0k8hlwpj26mq"
-path="res://.godot/imported/hpbar_base.png-de27f553abc31a60c34386372e3faaf3.ctex"
+uid="uid://buf7kxb260gje"
+path="res://.godot/imported/Enemy draft.png-b0f905d48dcf37063dbf9418638b5e58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/hpbar_base.png"
-dest_files=["res://.godot/imported/hpbar_base.png-de27f553abc31a60c34386372e3faaf3.ctex"]
+source_file="res://assets/art/Enemy draft.png"
+dest_files=["res://.godot/imported/Enemy draft.png-b0f905d48dcf37063dbf9418638b5e58.ctex"]
 
 [params]
 
