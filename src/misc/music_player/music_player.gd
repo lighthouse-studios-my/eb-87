@@ -19,7 +19,7 @@ func _unhandled_input(event):
 	elif event.keycode == KEY_3:
 		music = all_music[2]
 	else:
-		return
+		music = null
 	
 	stream = music
 	play()
