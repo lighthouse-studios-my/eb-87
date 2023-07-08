@@ -17,10 +17,7 @@ func _ready() -> void:
 func show_upgrades() -> void:
 	var upgrades := _randomize_upgrades()
 	for upgrade in upgrades:
-		var button := Button.new()
-		button.icon = upgrade.icon
-		button.tooltip_text = upgrade.description
-		button.pressed.connect(_on_button_pressed.bind(upgrade))
+		var button := _create_button(upgrade)
 		add_child(button)
 	visible = true
 
@@ -37,6 +34,15 @@ func _randomize_upgrades() -> Array:
 	upgrades.append(all.pop_back())
 	upgrades.append(all.pop_back())
 	return upgrades
+
+
+func _create_button(upgrade: Resource) -> Button:
+	var button := Button.new()
+	button.icon = upgrade.icon
+	button.flat = true
+	button.tooltip_text = upgrade.description
+	button.pressed.connect(_on_button_pressed.bind(upgrade))
+	return button
 
 
 func _on_button_pressed(upgrade: Resource) -> void:
