@@ -3,12 +3,15 @@ extends CharacterBody2D
 
 @export var speed = 400  # speed in pixels/sec
 @export var dodge_speed = 1000
+@export var health := 3
 
 @export var dodge_duration := 0.2
 @export var dodge_cooldown := 0.2
+@export var invulnerability_duration := 1.0
 
 @onready var _dodge_duration_timer := $DodgeDurationTimer
 @onready var _dodge_cooldown_timer := $DodgeCooldownTimer
+@onready var invulnerability_duration_timer := $InvulnerabilityCooldownTimer
 
 var _is_dodging := false
 var _dodge_direction := Vector2.ZERO
@@ -45,13 +48,42 @@ func _dodge() -> void:
 	
 	_is_dodging = true
 	_can_dodge = false
+	_disable_collisions()
 	_dodge_duration_timer.start()
+
+
+func hurt() -> void:
+	health -= 1
+
+	if health == 0:
+		die()
+		return
+	
+	invulnerability_duration_timer.start()
+	_disable_collisions()
+
+
+func die() -> void:
+	queue_free()
 
 
 func _on_dodge_duration_timer_timeout():
 	_is_dodging = false
+	_enable_collision()
 	_dodge_cooldown_timer.start()
 
 
 func _on_dodge_cooldown_timer_timeout():
 	_can_dodge = true
+
+
+func _disable_collisions() -> void:
+	set_collision_layer_value(1, 0)
+
+
+func _enable_collision() -> void:
+	set_collision_layer_value(1, 1)
+
+
+func _on_invulnerability_cooldown_timer_timeout():
+	_enable_collision()

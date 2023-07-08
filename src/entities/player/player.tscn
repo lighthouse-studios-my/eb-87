@@ -1,24 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc5351fqfgj0l"]
+[gd_scene load_steps=3 format=3 uid="uid://bc5351fqfgj0l"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_vkbwb"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_sh15h"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_17xpc"]
-radius = 38.1182
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_258kq"]
+radius = 20.0
+height = 66.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 0
 script = ExtResource("1_vkbwb")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(16, -36)
-scale = Vector2(0.4, 0.4)
-sprite_frames = SubResource("SpriteFrames_sh15h")
-autoplay = "default"
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_17xpc")
+shape = SubResource("CapsuleShape2D_258kq")
 
 [node name="DodgeDurationTimer" type="Timer" parent="."]
 one_shot = true
@@ -26,5 +19,9 @@ one_shot = true
 [node name="DodgeCooldownTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="InvulnerabilityCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="DodgeDurationTimer" to="." method="_on_dodge_duration_timer_timeout"]
 [connection signal="timeout" from="DodgeCooldownTimer" to="." method="_on_dodge_cooldown_timer_timeout"]
+[connection signal="timeout" from="InvulnerabilityCooldownTimer" to="." method="_on_invulnerability_cooldown_timer_timeout"]
