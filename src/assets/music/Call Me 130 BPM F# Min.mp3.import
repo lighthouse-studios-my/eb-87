@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ijc81asjxymy"
+path="res://.godot/imported/Call Me 130 BPM F# Min.mp3-1f8ad9d5e8a29b1e41e5a4a8a9295263.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Call Me 130 BPM F# Min.mp3"
+dest_files=["res://.godot/imported/Call Me 130 BPM F# Min.mp3-1f8ad9d5e8a29b1e41e5a4a8a9295263.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
