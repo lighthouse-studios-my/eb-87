@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxwb8qt466bui"]
+
+[ext_resource type="Script" path="res://entities/turret/turret.gd" id="1_78ulu"]
+
+[node name="Turret" type="Node2D"]
+script = ExtResource("1_78ulu")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Base" type="Polygon2D" parent="."]
+color = Color(0.152941, 0.152941, 0.152941, 1)
+polygon = PackedVector2Array(-32, -64, 32, -64, 64, -32, 64, 32, 32, 64, -32, 64, -64, 32, -64, -32)
+
+[node name="Pivot" type="Marker2D" parent="."]
+
+[node name="Barrel" type="Polygon2D" parent="Pivot"]
+color = Color(0.243137, 0.243137, 0.243137, 1)
+polygon = PackedVector2Array(-8, -8, 128, -8, 128, 8, -8, 8)
+
+[node name="Tip" type="Marker2D" parent="Pivot"]
+position = Vector2(128, 0)
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

@@ -7,8 +7,6 @@ extends Area2D
 
 var direction := Vector2.RIGHT
 
-@onready var context: Node = get_parent()
-
 
 func setup(
 		_damage: int, _direction: Vector2, _speed: int,
