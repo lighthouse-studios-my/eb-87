@@ -9,7 +9,7 @@ extends Node2D
 
 var exp_points = 0
 var exp_required = 5
-var exp_scale = 5
+var exp_scale = 1
 
 
 func _on_orb_absorbed(exp) -> void:

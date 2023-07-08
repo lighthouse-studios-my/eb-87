@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxwb8qt466bui"]
+[gd_scene load_steps=4 format=3 uid="uid://bxwb8qt466bui"]
 
 [ext_resource type="Script" path="res://entities/turret/turret.gd" id="1_78ulu"]
+[ext_resource type="Texture2D" uid="uid://dp2rf1qv6188o" path="res://assets/art/Turret draft_350px.png" id="2_vva2n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jubhv"]
 radius = 66.0681
@@ -11,18 +12,26 @@ script = ExtResource("1_78ulu")
 [node name="CooldownTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="Base" type="Polygon2D" parent="."]
-color = Color(0.152941, 0.152941, 0.152941, 1)
-polygon = PackedVector2Array(-32, -64, 32, -64, 64, -32, 64, 32, 32, 64, -32, 64, -64, 32, -64, -32)
+[node name="Base" type="Sprite2D" parent="."]
+position = Vector2(0, 4.76837e-07)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_vva2n")
+region_enabled = true
+region_rect = Rect2(157, 559, 1478, 841)
 
 [node name="Pivot" type="Marker2D" parent="."]
 
-[node name="Barrel" type="Polygon2D" parent="Pivot"]
-color = Color(0.243137, 0.243137, 0.243137, 1)
-polygon = PackedVector2Array(-8, -8, 128, -8, 128, 8, -8, 8)
+[node name="Barrel" type="Sprite2D" parent="Pivot"]
+position = Vector2(0.237925, 0.948726)
+rotation = 1.5708
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_vva2n")
+offset = Vector2(-7.62939e-06, -247.769)
+region_enabled = true
+region_rect = Rect2(1925, 188, 715, 1211)
 
 [node name="Tip" type="Marker2D" parent="Pivot"]
-position = Vector2(128, 0)
+position = Vector2(162, 0)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 8

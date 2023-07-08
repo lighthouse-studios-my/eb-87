@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://447ajmt7qbhi"]
+[gd_scene load_steps=9 format=3 uid="uid://447ajmt7qbhi"]
 
 [ext_resource type="PackedScene" uid="uid://bc5351fqfgj0l" path="res://entities/player/player.tscn" id="1_an0ov"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_mgw4m"]
@@ -7,12 +7,21 @@
 [ext_resource type="PackedScene" uid="uid://dtnh3g1dag1pb" path="res://ui/upgrade_menu/upgrade_menu.tscn" id="5_0hhqo"]
 [ext_resource type="Script" path="res://misc/music_player/music_player.gd" id="6_4bdbo"]
 [ext_resource type="PackedScene" uid="uid://dc0siwbmb2hux" path="res://ui/pause/pause.tscn" id="6_fn6hx"]
+[ext_resource type="Texture2D" uid="uid://bth3vyqpmdpn2" path="res://assets/art/bg.png" id="8_m4lqx"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_mgw4m")
 
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_m4lqx")
+
 [node name="EnemySpawnTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 2.0
 autostart = true
 
 [node name="Turret" parent="." instance=ExtResource("4_vglex")]

@@ -19,8 +19,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_258kq"]
-radius = 20.0
-height = 66.0
+radius = 22.0
+height = 126.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 17
@@ -29,7 +29,7 @@ script = ExtResource("1_vkbwb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 0)
-scale = Vector2(0.23625, 0.23625)
+scale = Vector2(0.394286, 0.394286)
 sprite_frames = SubResource("SpriteFrames_u7rnr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

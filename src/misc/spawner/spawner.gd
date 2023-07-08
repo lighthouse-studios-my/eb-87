@@ -6,7 +6,7 @@ signal spawned(entity)
 @export var spawn_entity : PackedScene 
 
 @export var spawn_interval = 1.0 : set = set_spawn_interval, get = get_spawn_interval
-@export var max_pack_size = 3 : set = set_max_pack_size
+@export var max_pack_size = 1 : set = set_max_pack_size
 @export var max_offset_distance := 200
 
 @onready var context: Node = get_parent()
@@ -22,7 +22,7 @@ func _ready() -> void:
 
 
 func spawn_pack() -> void:
-	var pack_size := _rng.randi_range(max_pack_size - 1, max_pack_size)
+	var pack_size := _rng.randi_range(0, max_pack_size)
 	_spawn_point.progress_ratio = _rng.randf()
 	
 	for _i in range(pack_size):
