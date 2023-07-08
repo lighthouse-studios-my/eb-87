@@ -23,7 +23,7 @@ func _show_screen(id: Screen) -> void:
 
 
 func _on_title_screen_start_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
 
 
 func _on_title_screen_settings_pressed() -> void:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvjhx20877da2"]
+[gd_scene load_steps=9 format=3 uid="uid://dvjhx20877da2"]
 
 [ext_resource type="Script" path="res://ui/splash_screen/splash_screen.gd" id="1_iwv3s"]
+[ext_resource type="PackedScene" uid="uid://rv25bmxi8hqe" path="res://ui/main_menu/main_menu.tscn" id="2_4l7b6"]
 [ext_resource type="Texture2D" uid="uid://mjyfic7v4evg" path="res://ui/splash_screen/assets/lighthouse.png" id="2_frotg"]
 [ext_resource type="FontFile" uid="uid://cyw40mhyh7oan" path="res://ui/splash_screen/assets/yoster.ttf" id="3_b0plh"]
 [ext_resource type="AudioStream" uid="uid://bu8bl5vmy3wkj" path="res://ui/splash_screen/assets/foghorn.wav" id="4_pryem"]
@@ -74,6 +75,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iwv3s")
+next_scene = ExtResource("2_4l7b6")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 modulate = Color(0, 0, 0, 1)
