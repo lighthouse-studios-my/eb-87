@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_wbjc5"]
 [ext_resource type="Texture2D" uid="uid://7gpau7mh12vb" path="res://assets/ui/vlcsnap-2023-07-09-19h30m34s240.png" id="2_qa7kv"]
 [ext_resource type="PackedScene" uid="uid://b1f1f4a75hdro" path="res://ui/main_menu/screens/title_screen/title_screen.tscn" id="2_v6v35"]
-[ext_resource type="PackedScene" uid="uid://cd6rgf15naw10" path="res://ui/main_menu/screens/credits/credits.tscn" id="3_dkuqe"]
+[ext_resource type="PackedScene" uid="uid://cd6rgf15naw10" path="res://ui/main_menu/screens/settings/settings.tscn" id="3_dkuqe"]
 [ext_resource type="AudioStream" uid="uid://bi67ira0j5vhk" path="res://assets/sfx/Main_menu_ambiance.mp3" id="4_frcrf"]
 
 [node name="MainMenu" type="Control"]

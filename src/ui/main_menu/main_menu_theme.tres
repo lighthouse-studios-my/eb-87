@@ -1,4 +1,7 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://d2yi301715xba"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://d2yi301715xba"]
+
+[ext_resource type="Texture2D" uid="uid://kopw30mq6i6c" path="res://assets/ui/slider_handle.png" id="1_c8nqk"]
+[ext_resource type="Texture2D" uid="uid://clrm5pf5t8xs7" path="res://assets/ui/tick.png" id="2_jsfwd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ore16"]
 bg_color = Color(1, 1, 1, 1)
@@ -19,6 +22,20 @@ border_color = Color(0.15625, 0.183594, 0.648438, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vskgg"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r47wh"]
+bg_color = Color(0.25, 0.242188, 0.339844, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cstp"]
+bg_color = Color(0.25, 0.242188, 0.339844, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73a27"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.910156, 0.863281, 0.898438, 1)
+
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)
@@ -28,4 +45,10 @@ Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/styles/focus = SubResource("StyleBoxFlat_ore16")
 Button/styles/hover = SubResource("StyleBoxFlat_apri6")
 Button/styles/normal = SubResource("StyleBoxFlat_vskgg")
+HSlider/icons/grabber = ExtResource("1_c8nqk")
+HSlider/icons/grabber_highlight = ExtResource("1_c8nqk")
+HSlider/icons/tick = ExtResource("2_jsfwd")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_r47wh")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_2cstp")
+HSlider/styles/slider = SubResource("StyleBoxFlat_73a27")
 Label/colors/font_color = Color(0, 0, 0, 1)
