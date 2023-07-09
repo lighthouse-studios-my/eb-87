@@ -57,8 +57,6 @@ func _scale_music() -> void:
 	elif spawner.spawn_types == 2:
 		MusicPlayer.loop = "game_2"
 	elif spawner.spawn_types == 3:
-		MusicPlayer.loop = "game_3"
-	elif spawner.spawn_types == 4:
 		MusicPlayer.loop = "game_4"
 
 
