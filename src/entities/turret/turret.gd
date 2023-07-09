@@ -45,7 +45,6 @@ func shoot() -> void:
 				projectile_size_scale,
 				projectile_bounce)
 		emit_signal("shot", projectile)
-		get_parent().add_child(projectile)
 	_cooldown.start()
 
 

@@ -10,7 +10,7 @@ var strength := 0.0
 func _process(delta: float) -> void:
 	var shake_dir := _shake_screen(strength)
 	var screen_offset = _offset_screen()
-	offset = screen_offset + shake_dir
+	offset = lerp(offset, screen_offset, 0.1) + shake_dir
 	
 	strength = lerp(strength, 0.0, decay_weight)
 

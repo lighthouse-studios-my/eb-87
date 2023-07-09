@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 
+signal dead
+
 @export var speed := 100.0
 @export var health := 1
 
@@ -38,6 +40,7 @@ func die() -> void:
 	var main = get_tree().root.get_node("Main")
 	main.call_deferred("add_child", orb)
 	orb.absorbed.connect(Callable(main, "_on_orb_absorbed"))
+	emit_signal("dead")
 	queue_free()
 
 

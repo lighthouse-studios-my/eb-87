@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 signal dead
+signal damaged
 
 @export var speed = 400  # speed in pixels/sec
 @export var dodge_speed = 1000
@@ -67,6 +68,8 @@ func hurt(damage) -> void:
 	if health <= 0:
 		die()
 		return
+	else:
+		emit_signal("damaged")
 	
 	invulnerability_duration_timer.start()
 	_disable_collisions()
