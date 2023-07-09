@@ -1,7 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://b36i8krjdqqnb"]
 
 [ext_resource type="Script" path="res://ui/health_bar/health_bar.gd" id="1_auurc"]
-[ext_resource type="Texture2D" uid="uid://0k8hlwpj26mq" path="res://assets/ui/hpbar_base.png" id="1_qp4pa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubb0e"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.828125, 0.273438, 0.832031, 1)
+shadow_color = Color(0, 0, 0, 0.392157)
+shadow_size = 5
 
 [node name="HealthBar" type="MarginContainer"]
 texture_filter = 1
@@ -9,13 +18,9 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_auurc")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-texture = ExtResource("1_qp4pa")
-patch_margin_left = 14
-patch_margin_top = 14
-patch_margin_right = 14
-patch_margin_bottom = 14
+theme_override_styles/panel = SubResource("StyleBoxFlat_ubb0e")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
