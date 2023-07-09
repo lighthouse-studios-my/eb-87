@@ -11,12 +11,14 @@ var direction := Vector2.RIGHT
 
 func setup(
 		_damage: int, _direction: Vector2, _speed: int,
-		_position: Vector2, size_scale: float
+		_position: Vector2, size_scale: float,
+		_bounce: int
 ) -> void:
 	damage = _damage
 	speed = _speed
 	direction = _direction
 	position = _position
+	bounce = _bounce
 	
 	$Hitbox.shape.radius = $Hitbox.shape.radius * size_scale
 	$Sprite.scale = $Sprite.scale * size_scale

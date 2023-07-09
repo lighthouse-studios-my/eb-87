@@ -15,6 +15,7 @@ const ProjectileScene := preload("res://entities/projectile/projectile.tscn")
 @export var projectile_damage := 1.0
 @export var projectile_speed := 300.0
 @export var projectile_size_scale := 1.0
+@export var projectile_bounce := 0.0
 
 var _enabled := true
 
@@ -41,7 +42,8 @@ func shoot() -> void:
 				_calculate_direction(),
 				projectile_speed,
 				_tip.global_position,
-				projectile_size_scale)
+				projectile_size_scale,
+				projectile_bounce)
 		emit_signal("shot", projectile)
 		get_parent().add_child(projectile)
 	_cooldown.start()
