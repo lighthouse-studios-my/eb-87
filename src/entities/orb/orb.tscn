@@ -14,10 +14,6 @@ script = ExtResource("1_1jyo6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ft0le")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0.337255, 0.905882, 0.956863, 1)
-polygon = PackedVector2Array(0, -10, -5, -9, -9, -5, -10, 0, -9, 5, -5, 9, 0, 10, 5, 9, 9, 5, 10, 0, 9, -5, 5, -9)
-
 [node name="PickAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_l01cx")
 

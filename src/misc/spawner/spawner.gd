@@ -39,7 +39,6 @@ func spawn(pos: Vector2) -> void:
 	var id = randi_range(0, spawn_types - 1)
 	var entity = spawn_entities[id].instantiate()
 	entity.global_position = pos
-	context.add_child(entity)
 	emit_signal("spawned", entity)
 
 
