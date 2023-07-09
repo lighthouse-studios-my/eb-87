@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cki2xiknghwt5"
-path="res://.godot/imported/upgrade_rof.png-f1b06592ae29dd5997f84f025eae9d17.ctex"
+uid="uid://dgvgkpfxufukr"
+path="res://.godot/imported/rofsprite.png-133e646d3167e20f73da5187b9cd0377.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/upgrade_rof.png"
-dest_files=["res://.godot/imported/upgrade_rof.png-f1b06592ae29dd5997f84f025eae9d17.ctex"]
+source_file="res://assets/ui/upgrades/rofsprite.png"
+dest_files=["res://.godot/imported/rofsprite.png-133e646d3167e20f73da5187b9cd0377.ctex"]
 
 [params]
 

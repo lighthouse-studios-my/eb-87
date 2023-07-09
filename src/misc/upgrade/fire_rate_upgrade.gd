@@ -2,7 +2,7 @@ class_name FireRateUpgrade
 extends Resource
 
 
-@export var icon := preload("res://assets/ui/upgrade_rof.png")
+@export var icon := preload("res://assets/ui/upgrades/rofsprite.png")
 @export var description := "Increase fire rate"
 
 
