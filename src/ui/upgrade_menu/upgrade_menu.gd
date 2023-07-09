@@ -56,3 +56,12 @@ func _on_button_pressed(upgrade: Resource) -> void:
 	emit_signal("upgrade_selected", upgrade)
 	UiSfx.play_upgrade_press()
 	visible = false
+
+
+func _unhandled_input(event):
+	if event.is_action_pressed("move_left"):
+		_buttons.get_child(0).select()
+		_buttons.get_child(1).deselect()
+	if event.is_action_pressed("move_right"):
+		_buttons.get_child(1).select()
+		_buttons.get_child(0).deselect()
