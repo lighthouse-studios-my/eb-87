@@ -18,6 +18,7 @@ var exp_scale := 0
 
 var _pause_stack := 0
 
+
 func _ready():
 	enemy_spawn_timer.wait_time = enemy_spawn_cooldown
 
@@ -41,12 +42,24 @@ func level_up() -> void:
 	upgrade_menu.show_upgrades()
 	level += 1
 	_scale_difficulty()
+	_scale_music()
 	player.heal()
 	_pause()
 
 
 func _scale_difficulty() -> void:
 	spawner.spawn_types = min(ceil(level/2.0), 3)
+
+
+func _scale_music() -> void:
+	if spawner.spawn_types == 1:
+		MusicPlayer.loop = "game_1"
+	elif spawner.spawn_types == 2:
+		MusicPlayer.loop = "game_2"
+	elif spawner.spawn_types == 3:
+		MusicPlayer.loop = "game_3"
+	elif spawner.spawn_types == 4:
+		MusicPlayer.loop = "game_4"
 
 
 func _physics_process(delta: float) -> void:
