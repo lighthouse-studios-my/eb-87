@@ -3,7 +3,11 @@ extends Path2D
 
 signal spawned(entity)
 
-@export var spawn_entity : PackedScene 
+@export var spawn_entities := [
+	preload("res://entities/enemies/enemy.tscn"),
+	preload("res://entities/enemies/variations/speedy.tscn"),
+	preload("res://entities/enemies/variations/tanky.tscn"),
+]
 
 @export var spawn_interval = 1.0 : set = set_spawn_interval, get = get_spawn_interval
 @export var max_pack_size = 1 : set = set_max_pack_size
@@ -14,6 +18,8 @@ signal spawned(entity)
 @onready var _rng := RandomNumberGenerator.new()
 @onready var _spawn_point := $SpawnPoint
 @onready var _timer := $IntervalTimer
+
+var spawn_types := 1
 
 
 func _ready() -> void:
@@ -30,7 +36,8 @@ func spawn_pack() -> void:
 
 
 func spawn(pos: Vector2) -> void:
-	var entity := spawn_entity.instantiate()
+	var id = randi_range(0, spawn_types - 1)
+	var entity = spawn_entities[id].instantiate()
 	entity.global_position = pos
 	context.add_child(entity)
 	emit_signal("spawned", entity)

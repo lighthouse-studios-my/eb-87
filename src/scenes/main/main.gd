@@ -10,9 +10,10 @@ extends Node2D
 @onready var exp_bar := $CanvasLayer/ProgressBar
 @onready var enemy_spawn_timer = $EnemySpawnTimer
 
-var exp_points = 0
-var exp_required = 5
-var exp_scale = 5
+var level := 1
+var exp_points := 0
+var exp_required := 5
+var exp_scale := 5
 
 var _pause_stack := 0
 
@@ -37,7 +38,13 @@ func level_up() -> void:
 	exp_points = 0
 	exp_required += exp_scale
 	upgrade_menu.show_upgrades()
+	level += 1
+	_scale_difficulty()
 	_pause()
+
+
+func _scale_difficulty() -> void:
+	spawner.spawn_types = min(ceil(level/2.0), 3)
 
 
 func _physics_process(delta: float) -> void:

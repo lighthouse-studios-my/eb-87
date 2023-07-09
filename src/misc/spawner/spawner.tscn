@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dj8uf3b6gj6tb"]
+[gd_scene load_steps=3 format=3 uid="uid://dj8uf3b6gj6tb"]
 
 [ext_resource type="Script" path="res://misc/spawner/spawner.gd" id="1_cwrei"]
-[ext_resource type="PackedScene" uid="uid://dxuqlkww3rxwv" path="res://entities/enemies/enemy.tscn" id="2_wxwtt"]
 
 [sub_resource type="Curve2D" id="Curve2D_dedo6"]
 _data = {
@@ -12,7 +11,6 @@ point_count = 5
 [node name="Spawner" type="Path2D"]
 curve = SubResource("Curve2D_dedo6")
 script = ExtResource("1_cwrei")
-spawn_entity = ExtResource("2_wxwtt")
 
 [node name="SpawnPoint" type="PathFollow2D" parent="."]
 position = Vector2(-113, -151)

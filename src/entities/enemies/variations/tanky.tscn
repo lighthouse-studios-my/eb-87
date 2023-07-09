@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgffsbgw25o2j"]
+
+[ext_resource type="PackedScene" uid="uid://dxuqlkww3rxwv" path="res://entities/enemies/enemy.tscn" id="1_lqbvg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhkms"]
+size = Vector2(134, 164)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2tdl"]
+size = Vector2(144.876, 110.323)
+
+[node name="Enemy" instance=ExtResource("1_lqbvg")]
+speed = 50.0
+health = 5
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.211429, 0.211429)
+animation = &"tanky"
+autoplay = "tanky"
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_dhkms")
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_i2tdl")
