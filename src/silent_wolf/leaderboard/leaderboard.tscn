@@ -24,9 +24,9 @@ script = ExtResource("2_dkh76")
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 25.0
-offset_top = 571.0
+offset_top = 415.0
 offset_right = 414.0
-offset_bottom = 841.0
+offset_bottom = 685.0
 script = ExtResource("1_364uh")
 leaderboard_manager_path = NodePath("../LeaderboardManager")
 
@@ -48,9 +48,9 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 21.0
-offset_top = 331.0
+offset_top = 175.0
 offset_right = 417.0
-offset_bottom = 462.0
+offset_bottom = 306.0
 script = ExtResource("5_c328f")
 
 [node name="Label" type="Label" parent="SubmitBox"]
