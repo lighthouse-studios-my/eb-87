@@ -60,6 +60,12 @@ func level_up() -> void:
 	_scale_music()
 	player.heal()
 	health_bar.health = player.health
+	
+	var tween := create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(MusicPlayer, "volume_db", -32, 1.0)
+	
 	_pause()
 
 
@@ -100,6 +106,12 @@ func _on_enemy_spawn_timer_timeout():
 func _on_upgrade_menu_upgrade_selected(upgrade):
 	upgrade.apply(turret)
 	stats["upgrades"] += 1
+	
+	var tween := create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(MusicPlayer, "volume_db", -24, 1.0)
+	
 	_unpause()
 
 
