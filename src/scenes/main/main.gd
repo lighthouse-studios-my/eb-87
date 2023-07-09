@@ -23,6 +23,14 @@ var exp_scale := 2
 
 var _pause_stack := 0
 
+var stats = {
+	"kills" = 0,
+	"upgrades" = 0,
+	"damage" = 0,
+	"shots" = 0,
+	"time" = 0,
+}
+
 
 func _ready():
 	enemy_spawn_timer.wait_time = enemy_spawn_cooldown
@@ -91,6 +99,7 @@ func _on_enemy_spawn_timer_timeout():
 
 func _on_upgrade_menu_upgrade_selected(upgrade):
 	upgrade.apply(turret)
+	stats["upgrades"] += 1
 	_unpause()
 
 
@@ -112,6 +121,8 @@ func _on_player_dead():
 	camera.shake(50.0)
 	health_bar.health = player.health
 	gameover.leaderboard.player_score = game_timer._time_elapsed
+	stats["time"] = game_timer._time_elapsed
+	gameover.show_stats(stats)
 	get_tree().paused = true
 
 
@@ -133,11 +144,13 @@ func _on_turret_shot(projectile):
 	var trail := TrailScene.instantiate()
 	trail.setup(projectile, projectile.size, projectile.size * 0.1, Color.WHITE)
 	add_child(trail)
+	stats["shots"] += 1
 
 
 func _on_player_damaged():
 	camera.shake(20.0)
 	health_bar.health = player.health
+	stats["damage"] += 1
 
 
 func _on_enemy_dead(enemy: Node2D):
@@ -151,6 +164,8 @@ func _on_enemy_dead(enemy: Node2D):
 	var trail := TrailScene.instantiate()
 	trail.setup(orb, 20, 1, Color("d346d4"))
 	add_child(trail)
+	stats["kills"] += 1
+
 
 func _on_spawner_spawned(entity):
 	add_child(entity)

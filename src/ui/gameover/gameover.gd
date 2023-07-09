@@ -8,6 +8,8 @@ signal back_pressed
 @onready var _cursor := $Cursor
 @onready var _first_button := _buttons[0]
 @onready var leaderboard := %Leaderboard
+@onready var stats_list := $Stats/StatsList
+
 
 func _ready() -> void:
 	for button in _buttons:
@@ -31,3 +33,24 @@ func _on_button_focus_entered(control: Control) -> void:
 
 func _on_buttons_sort_children():
 	_cursor.place_at(_first_button)
+
+var stats = {
+	"kills" = 0,
+	"upgrades" = 0,
+	"damage" = 0,
+	"shots" = 0,
+	"time" = 0,
+}
+
+func show_stats(stats) -> void:
+	add_stat("Enemies Killed", stats["kills"])
+	add_stat("Upgrades Taken", stats["upgrades"])
+	add_stat("Damage Taken", stats["damage"])
+	add_stat("Bullets Shot", stats["shots"])
+	add_stat("Run Time", stats["time"])
+
+
+func add_stat(text: String, value: int) -> void:
+	var label = Label.new()
+	label.text = text + " : " + str(value)
+	stats_list.add_child(label)

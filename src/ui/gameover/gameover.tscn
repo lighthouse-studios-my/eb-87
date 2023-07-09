@@ -79,6 +79,21 @@ anchor_left = 1.0
 offset_left = -595.0
 grow_horizontal = 0
 
+[node name="Stats" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 693.0
+grow_vertical = 2
+
+[node name="StatsList" type="VBoxContainer" parent="Stats"]
+layout_mode = 2
+
+[node name="StatsTitle" type="Label" parent="Stats/StatsList"]
+layout_mode = 2
+text = "Stats"
+horizontal_alignment = 1
+
 [connection signal="sort_children" from="CenterContainer/VBoxContainer/Buttons" to="." method="_on_buttons_sort_children"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/RestartButton" to="." method="_on_button_pressed" binds= ["restart"]]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/BackButton" to="." method="_on_button_pressed" binds= ["back"]]
