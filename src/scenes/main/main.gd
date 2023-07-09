@@ -41,6 +41,7 @@ func level_up() -> void:
 	upgrade_menu.show_upgrades()
 	level += 1
 	_scale_difficulty()
+	player.heal()
 	_pause()
 
 

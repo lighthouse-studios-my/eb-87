@@ -16,6 +16,8 @@ signal damaged
 @onready var _dodge_cooldown_timer := $DodgeCooldownTimer
 @onready var invulnerability_duration_timer := $InvulnerabilityCooldownTimer
 
+@onready var _original_health := health
+
 var _is_dodging := false
 var _dodge_direction := Vector2.ZERO
 var _can_dodge := true
@@ -78,6 +80,10 @@ func hurt(damage) -> void:
 func die() -> void:
 	emit_signal("dead")
 	queue_free()
+
+
+func heal() -> void:
+	health = _original_health
 
 
 func _on_dodge_duration_timer_timeout():
