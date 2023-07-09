@@ -12,6 +12,7 @@ signal damaged
 @export var dodge_invul_duration := 0.1
 @export var dodge_cooldown := 0.2
 @export var invulnerability_duration := 1.0
+@export var death_audio: Resource
 
 @onready var _dodge_duration_timer := $DodgeDurationTimer
 @onready var _dodge_cooldown_timer := $DodgeCooldownTimer
@@ -27,6 +28,8 @@ signal damaged
 var _is_dodging := false
 var _dodge_direction := Vector2.ZERO
 var _can_dodge := true
+
+var is_dead = false
 
 
 func _ready() -> void:
@@ -89,10 +92,21 @@ func hurt(damage) -> void:
 
 
 func die() -> void:
+	if is_dead: return
+	is_dead = true
 	emit_signal("dead")
-	visible = false
+	queue_free()
 	_death_audio.play()
-	set_process(false)
+
+
+func play_death_sound() -> void:
+	var death_audio_player = AudioStreamPlayer2D.new()
+	death_audio_player.stream = death_audio
+	death_audio_player.volume_db = -5
+	get_tree().root.add_child.call_deferred(death_audio_player)
+	death_audio_player.finished.connect(death_audio_player.queue_free)
+	await death_audio_player.ready
+	death_audio_player.play()
 
 
 func heal() -> void:

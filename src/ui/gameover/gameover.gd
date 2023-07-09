@@ -34,13 +34,6 @@ func _on_button_focus_entered(control: Control) -> void:
 func _on_buttons_sort_children():
 	_cursor.place_at(_first_button)
 
-var stats = {
-	"kills" = 0,
-	"upgrades" = 0,
-	"damage" = 0,
-	"shots" = 0,
-	"time" = 0,
-}
 
 func show_stats(stats) -> void:
 	add_stat("Enemies Killed", stats["kills"])
