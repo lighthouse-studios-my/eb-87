@@ -23,10 +23,10 @@ script = ExtResource("2_dkh76")
 [node name="ScoreList" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 1353.0
-offset_top = 575.0
-offset_right = 1742.0
-offset_bottom = 845.0
+offset_left = 25.0
+offset_top = 571.0
+offset_right = 414.0
+offset_bottom = 841.0
 script = ExtResource("1_364uh")
 leaderboard_manager_path = NodePath("../LeaderboardManager")
 
@@ -47,10 +47,10 @@ layout_mode = 2
 [node name="SubmitBox" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 1349.0
-offset_top = 335.0
-offset_right = 1745.0
-offset_bottom = 466.0
+offset_left = 21.0
+offset_top = 331.0
+offset_right = 417.0
+offset_bottom = 462.0
 script = ExtResource("5_c328f")
 
 [node name="Label" type="Label" parent="SubmitBox"]
@@ -82,4 +82,5 @@ name_text_edit_path = NodePath("../HBoxContainer/NameTextEdit")
 leaderboard_manager_path = NodePath("../../LeaderboardManager")
 
 [connection signal="text_changed" from="SubmitBox/HBoxContainer/NameTextEdit" to="SubmitBox/HBoxContainer/NameTextEdit" method="_on_text_changed"]
+[connection signal="pressed" from="SubmitBox/SubmitButton" to="SubmitBox/HBoxContainer/NameTextEdit" method="_on_submit_button_pressed"]
 [connection signal="pressed" from="SubmitBox/SubmitButton" to="SubmitBox/SubmitButton" method="_on_pressed"]

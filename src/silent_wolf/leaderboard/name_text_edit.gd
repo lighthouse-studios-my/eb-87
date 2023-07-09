@@ -13,3 +13,7 @@ func _on_text_changed():
 		text = text.substr(0, max_char_length)
 	
 	set_caret_column(caret)
+
+
+func _on_submit_button_pressed():
+	editable = false
