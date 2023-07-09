@@ -18,6 +18,7 @@ func _ready():
 	volume_db = -24
 	play()
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	bus = "Music"
 
 
 func _process(delta):
