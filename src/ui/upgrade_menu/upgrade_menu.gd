@@ -32,6 +32,7 @@ func show_upgrades() -> void:
 
 func _clear_buttons() -> void:
 	for child in _buttons.get_children():
+		child.hide() # Hide so they don't show while getting queue_free'd
 		child.queue_free()
 
 
