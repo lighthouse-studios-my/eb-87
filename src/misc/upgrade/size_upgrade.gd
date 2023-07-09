@@ -2,7 +2,7 @@ class_name SizeUpgrade
 extends Resource
 
 
-@export var icon := preload("res://assets/ui/upgrade_bs.png")
+@export var icon := preload("res://assets/ui/upgrades/bssprite.png")
 @export var description := "Increase projectile size"
 
 
