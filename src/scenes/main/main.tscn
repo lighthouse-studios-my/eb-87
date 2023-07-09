@@ -71,7 +71,7 @@ region_rect = Rect2(0, 0, 2176, 2176)
 script = ExtResource("3_jswhy")
 
 [node name="Move" type="Node2D" parent="Tutorial"]
-position = Vector2(144, 24)
+position = Vector2(-64, 96)
 
 [node name="Sprite2D" type="Sprite2D" parent="Tutorial/Move"]
 position = Vector2(512, 696)
@@ -98,7 +98,7 @@ offset_bottom = 799.0
 text = "TO MOVE"
 
 [node name="Dodge" type="Node2D" parent="Tutorial"]
-position = Vector2(144, 24)
+position = Vector2(448, -112)
 
 [node name="Dodge" type="Sprite2D" parent="Tutorial/Dodge"]
 position = Vector2(664, 928)
@@ -113,7 +113,7 @@ offset_bottom = 1007.0
 text = "TO DODGE"
 
 [node name="Pause" type="Node2D" parent="Tutorial"]
-position = Vector2(144, 24)
+position = Vector2(384, 8)
 
 [node name="Sprite2D4" type="Sprite2D" parent="Tutorial/Pause"]
 position = Vector2(1056, 806.5)
@@ -126,6 +126,13 @@ offset_top = 846.5
 offset_right = 1148.0
 offset_bottom = 885.5
 text = "TO PAUSE"
+
+[node name="Label4" type="Label" parent="Tutorial"]
+offset_left = 728.0
+offset_top = 984.0
+offset_right = 1195.0
+offset_bottom = 1023.0
+text = "AVOID THE TURRET AND ENEMIES"
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
