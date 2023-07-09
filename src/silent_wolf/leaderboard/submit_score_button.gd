@@ -17,6 +17,9 @@ func _on_pressed() -> void:
 	
 	if message.length() == 0:
 		leaderboard_manager.submit_score(player_name, player_score)
+	
+	disabled = true
+	text = "Submitted"
 
 
 func validate_player_name(player_name) -> String:
