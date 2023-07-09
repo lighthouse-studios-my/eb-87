@@ -9,8 +9,7 @@ signal quit_pressed
 
 var _last_focused: Control
 
-@onready var _buttons := $Buttons.get_children()
-@onready var _cursor := $Cursor
+@onready var _buttons := %Buttons.get_children()
 
 
 func _ready() -> void:
@@ -31,7 +30,6 @@ func refocus() -> void:
 
 
 func _on_button_focus_entered(control: Control) -> void:
-	_cursor.point_at(control)
 	_last_focused = control
 	UiSfx.play_ui_select()
 
@@ -39,7 +37,3 @@ func _on_button_focus_entered(control: Control) -> void:
 func _on_button_pressed(button: String) -> void:
 	emit_signal("%s_pressed" % button)
 	UiSfx.play_ui_press()
-
-
-func _on_buttons_sort_children():
-	_cursor.place_at(_last_focused)
