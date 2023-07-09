@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://447ajmt7qbhi"]
+[gd_scene load_steps=12 format=3 uid="uid://447ajmt7qbhi"]
 
 [ext_resource type="PackedScene" uid="uid://bc5351fqfgj0l" path="res://entities/player/player.tscn" id="1_an0ov"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_mgw4m"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dtnh3g1dag1pb" path="res://ui/upgrade_menu/upgrade_menu.tscn" id="5_0hhqo"]
 [ext_resource type="PackedScene" uid="uid://dc0siwbmb2hux" path="res://ui/pause/pause.tscn" id="6_fn6hx"]
 [ext_resource type="Texture2D" uid="uid://bth3vyqpmdpn2" path="res://assets/art/bg.png" id="8_m4lqx"]
+[ext_resource type="Script" path="res://misc/camera/camera.gd" id="8_v1jqe"]
 
 [sub_resource type="Environment" id="Environment_gxgps"]
 background_mode = 3
@@ -44,6 +45,9 @@ autostart = true
 position = Vector2(979, 523)
 projectile_speed = 500.0
 projectile_size_scale = 2.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Turret"]
+remote_path = NodePath("../../Camera2D")
 
 [node name="Player" parent="." instance=ExtResource("1_an0ov")]
 position = Vector2(555, 502)
@@ -96,6 +100,11 @@ shape = SubResource("RectangleShape2D_s27qs")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-64, 540)
 shape = SubResource("RectangleShape2D_s27qs")
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("secondary_target")]
+position = Vector2(979, 523)
+script = ExtResource("8_v1jqe")
+secondary_target = NodePath("../Player")
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="DifficultyTimer" to="." method="_on_difficulty_timer_timeout"]
