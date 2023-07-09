@@ -15,6 +15,10 @@ run/main_scene="res://ui/splash_screen/splash_screen.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MusicPlayer="*res://misc/music_player/music_player.gd"
+
 [display]
 
 window/size/viewport_width=1920
