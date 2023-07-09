@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://447ajmt7qbhi"]
+[gd_scene load_steps=16 format=3 uid="uid://447ajmt7qbhi"]
 
 [ext_resource type="PackedScene" uid="uid://bc5351fqfgj0l" path="res://entities/player/player.tscn" id="1_an0ov"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_mgw4m"]
@@ -10,6 +10,19 @@
 [ext_resource type="PackedScene" uid="uid://b36i8krjdqqnb" path="res://ui/health_bar/health_bar.tscn" id="6_oh4in"]
 [ext_resource type="PackedScene" uid="uid://cqalm5s346ssj" path="res://ui/timer/timer.tscn" id="7_0pd65"]
 [ext_resource type="Script" path="res://misc/camera/camera.gd" id="8_v1jqe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la225"]
+bg_color = Color(0.643137, 0.772549, 0.929412, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.827451, 0.27451, 0.831373, 1)
+shadow_color = Color(0, 0, 0, 0.392157)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8c1t"]
+bg_color = Color(0.828125, 0.273438, 0.832031, 1)
 
 [sub_resource type="Environment" id="Environment_gxgps"]
 background_mode = 3
@@ -74,9 +87,13 @@ theme_override_constants/separation = 16
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_la225")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q8c1t")
+show_percentage = false
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2

@@ -1,7 +1,7 @@
 extends Control
 
 
-@onready var time_label = $TimeLabel
+@onready var time_label = $PanelContainer/MarginContainer/TimeLabel
 
 var _time_elapsed := 0.0
 

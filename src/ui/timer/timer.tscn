@@ -1,12 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqalm5s346ssj"]
+[gd_scene load_steps=3 format=3 uid="uid://cqalm5s346ssj"]
 
 [ext_resource type="Script" path="res://ui/timer/timer.gd" id="1_l70k0"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4ny1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.827451, 0.27451, 0.831373, 1)
+shadow_color = Color(0, 0, 0, 0.392157)
+shadow_size = 5
+
 [node name="Timer" type="MarginContainer"]
+custom_minimum_size = Vector2(192, 0)
 script = ExtResource("1_l70k0")
 
-[node name="TimeLabel" type="Label" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4ny1")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="TimeLabel" type="Label" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 42
 text = "00:00"
+horizontal_alignment = 1
