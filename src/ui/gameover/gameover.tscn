@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3cb74tbqksst"]
+[gd_scene load_steps=7 format=3 uid="uid://c3cb74tbqksst"]
 
 [ext_resource type="Script" path="res://ui/gameover/gameover.gd" id="1_bt6aj"]
 [ext_resource type="Script" path="res://ui/common/hover_button.gd" id="1_lgch2"]
 [ext_resource type="PackedScene" uid="uid://bosl3sol5un47" path="res://ui/main_menu/components/cursor/cursor.tscn" id="1_mwnp4"]
+[ext_resource type="PackedScene" uid="uid://c0y8auhbdkbi2" path="res://silent_wolf/leaderboard/leaderboard.tscn" id="4_b545m"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f2pju"]
 
@@ -69,6 +70,10 @@ offset_right = 960.0
 offset_bottom = 536.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="Leaderboard" parent="." instance=ExtResource("4_b545m")]
+unique_name_in_owner = true
+layout_mode = 1
 
 [connection signal="sort_children" from="CenterContainer/VBoxContainer/Buttons" to="." method="_on_buttons_sort_children"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/RestartButton" to="." method="_on_button_pressed" binds= ["restart"]]

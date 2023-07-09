@@ -7,7 +7,7 @@ signal back_pressed
 @onready var _buttons := $CenterContainer/VBoxContainer/Buttons.get_children()
 @onready var _cursor := $Cursor
 @onready var _first_button := _buttons[0]
-
+@onready var leaderboard := %Leaderboard
 
 func _ready() -> void:
 	for button in _buttons:

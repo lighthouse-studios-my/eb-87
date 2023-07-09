@@ -11,6 +11,7 @@ extends Node2D
 @onready var enemy_spawn_timer = $EnemySpawnTimer
 @onready var camera := $Camera2D
 @onready var health_bar := %HealthBar
+@onready var game_timer = %Timer
 
 var level := 1
 var exp_points := 0
@@ -106,6 +107,7 @@ func _on_player_dead():
 	$CanvasLayer/PauseScreen.queue_free()
 	camera.shake(50.0)
 	health_bar.health = player.health
+	gameover.leaderboard.player_score = game_timer._time_elapsed
 	get_tree().paused = true
 
 
