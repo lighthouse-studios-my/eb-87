@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://447ajmt7qbhi"]
+[gd_scene load_steps=14 format=3 uid="uid://447ajmt7qbhi"]
 
 [ext_resource type="PackedScene" uid="uid://bc5351fqfgj0l" path="res://entities/player/player.tscn" id="1_an0ov"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_mgw4m"]
+[ext_resource type="Texture2D" uid="uid://cwdy2a6ptudmq" path="res://assets/art/bg_tile.png" id="2_0eov5"]
 [ext_resource type="PackedScene" uid="uid://dj8uf3b6gj6tb" path="res://misc/spawner/spawner.tscn" id="2_jthal"]
 [ext_resource type="PackedScene" uid="uid://bxwb8qt466bui" path="res://entities/turret/turret.tscn" id="4_vglex"]
 [ext_resource type="PackedScene" uid="uid://dtnh3g1dag1pb" path="res://ui/upgrade_menu/upgrade_menu.tscn" id="5_0hhqo"]
 [ext_resource type="PackedScene" uid="uid://dc0siwbmb2hux" path="res://ui/pause/pause.tscn" id="6_fn6hx"]
-[ext_resource type="Texture2D" uid="uid://bth3vyqpmdpn2" path="res://assets/art/bg.png" id="8_m4lqx"]
+[ext_resource type="PackedScene" uid="uid://b36i8krjdqqnb" path="res://ui/health_bar/health_bar.tscn" id="6_oh4in"]
+[ext_resource type="PackedScene" uid="uid://cqalm5s346ssj" path="res://ui/timer/timer.tscn" id="7_0pd65"]
 [ext_resource type="Script" path="res://misc/camera/camera.gd" id="8_v1jqe"]
 
 [sub_resource type="Environment" id="Environment_gxgps"]
@@ -17,20 +19,21 @@ glow_intensity = 1.0
 glow_strength = 2.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4n5o"]
-size = Vector2(2176, 128)
+size = Vector2(1920, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s27qs"]
-size = Vector2(128, 1080)
+size = Vector2(128, 1672)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_mgw4m")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BG" type="Sprite2D" parent="."]
+texture_filter = 1
 texture_repeat = 2
-position = Vector2(968, 544)
-texture = ExtResource("8_m4lqx")
+position = Vector2(960, 540)
+texture = ExtResource("2_0eov5")
 region_enabled = true
-region_rect = Rect2(0, 0, 3000, 2000)
+region_rect = Rect2(0, 0, 2176, 2176)
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -41,7 +44,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="Turret" parent="." instance=ExtResource("4_vglex")]
-position = Vector2(979, 523)
+position = Vector2(960, 540)
 projectile_speed = 500.0
 projectile_size_scale = 2.0
 
@@ -55,13 +58,37 @@ position = Vector2(555, 502)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 27.0
+offset_bottom = 40.0
 grow_horizontal = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HealthBar" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer" instance=ExtResource("6_oh4in")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Timer" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer" instance=ExtResource("7_0pd65")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 
 [node name="UpgradeMenu" parent="CanvasLayer" instance=ExtResource("5_0hhqo")]
 process_mode = 2
@@ -84,28 +111,35 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(960, -64)
+position = Vector2(960, -352)
 shape = SubResource("RectangleShape2D_x4n5o")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(960, 1144)
+position = Vector2(960, 1432)
 shape = SubResource("RectangleShape2D_x4n5o")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1984, 540)
+position = Vector2(1856, 536)
 shape = SubResource("RectangleShape2D_s27qs")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-64, 540)
+position = Vector2(64, 536)
 shape = SubResource("RectangleShape2D_s27qs")
 
 [node name="Line2D" type="Line2D" parent="StaticBody2D"]
-points = PackedVector2Array(0, 1080, 0, 0, 1920, 0, 1920, 1080, 0, 1080)
+points = PackedVector2Array(128, 1368, 128, -288, 1792, -288, 1792, 1368, 128, 1368, 128, 1240)
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("secondary_target")]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target", "secondary_target")]
 process_mode = 3
-position = Vector2(979, 523)
+position = Vector2(960, 540)
+limit_left = -64
+limit_top = -480
+limit_right = 1984
+limit_bottom = 1568
+position_smoothing_enabled = true
+editor_draw_limits = true
 script = ExtResource("8_v1jqe")
+target = NodePath("../Turret")
 secondary_target = NodePath("../Player")
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

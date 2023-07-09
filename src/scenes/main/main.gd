@@ -7,9 +7,10 @@ extends Node2D
 @onready var spawner := $Spawner
 @onready var turret := $Turret
 @onready var upgrade_menu := $CanvasLayer/UpgradeMenu
-@onready var exp_bar := $CanvasLayer/ProgressBar
+@onready var exp_bar := %ProgressBar
 @onready var enemy_spawn_timer = $EnemySpawnTimer
 @onready var camera := $Camera2D
+@onready var health_bar := %HealthBar
 
 var level := 1
 var exp_points := 0
@@ -45,6 +46,7 @@ func level_up() -> void:
 	_scale_difficulty()
 	_scale_music()
 	player.heal()
+	health_bar.health = player.health
 	_pause()
 
 
@@ -124,9 +126,10 @@ func _on_turret_shot(projectile):
 
 
 func _on_player_damaged():
-	camera.shake(10.0)
+	camera.shake(20.0)
+	health_bar.health = player.health
 
 
 func _on_spawner_spawned(entity):
 	entity.dead.connect(func():
-		camera.shake(5.0))
+		camera.shake(10.0))
