@@ -18,11 +18,7 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if (
-			event is InputEventKey
-			and event.keycode == Key.KEY_ESCAPE
-			and event.pressed
-	):
+	if event.is_action_pressed("pause"):
 		pause(!visible)
 
 
