@@ -4,23 +4,25 @@ extends CharacterBody2D
 signal dead
 signal damaged
 
-@export var speed = 400  # speed in pixels/sec
+@export var speed = 400
 @export var dodge_speed = 1000
 @export var health := 3
 
 @export var dodge_duration := 0.2
+@export var dodge_invul_duration := 0.1
 @export var dodge_cooldown := 0.2
 @export var invulnerability_duration := 1.0
 
 @onready var _dodge_duration_timer := $DodgeDurationTimer
 @onready var _dodge_cooldown_timer := $DodgeCooldownTimer
 @onready var invulnerability_duration_timer := $InvulnerabilityCooldownTimer
+@onready var _dodge_invul_duration_timer := $DodgeInvulDurationTimer
+@onready var _animated_sprite := $AnimatedSprite2D
 
 @onready var _original_health := health
 @onready var _dash_audio := $DashAudio
 @onready var _hurt_audio := $HurtAudio
 @onready var _death_audio := $DeathAudio
-
 
 var _is_dodging := false
 var _dodge_direction := Vector2.ZERO
@@ -31,6 +33,7 @@ func _ready() -> void:
 	_dodge_duration_timer.wait_time = dodge_duration
 	_dodge_cooldown_timer.wait_time = dodge_cooldown
 	invulnerability_duration_timer.wait_time = invulnerability_duration
+	_dodge_invul_duration_timer.wait_time = dodge_invul_duration
 
 
 func _physics_process(delta):
@@ -65,6 +68,8 @@ func _dodge() -> void:
 	_disable_collisions()
 	_dodge_duration_timer.start()
 	_dash_audio.play()
+	_animated_sprite.play("glitch")
+	print("glitch")
 
 
 func hurt(damage) -> void:
@@ -81,6 +86,7 @@ func hurt(damage) -> void:
 	invulnerability_duration_timer.start()
 	_disable_collisions()
 	_hurt_audio.play()
+	_animated_sprite.play("hurt")
 
 
 func die() -> void:
@@ -96,7 +102,7 @@ func heal() -> void:
 
 func _on_dodge_duration_timer_timeout():
 	_is_dodging = false
-	_enable_collision()
+	_dodge_invul_duration_timer.start()
 	_dodge_cooldown_timer.start()
 
 
@@ -110,7 +116,12 @@ func _disable_collisions() -> void:
 
 func _enable_collision() -> void:
 	set_collision_layer_value(1, 1)
+	_animated_sprite.play("idle")
 
 
 func _on_invulnerability_cooldown_timer_timeout():
+	_enable_collision()
+
+
+func _on_dodge_invul_duration_timer_timeout():
 	_enable_collision()
