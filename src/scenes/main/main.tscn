@@ -63,16 +63,15 @@ grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="UpgradeMenu" parent="CanvasLayer/CenterContainer" instance=ExtResource("5_0hhqo")]
+[node name="UpgradeMenu" parent="CanvasLayer" instance=ExtResource("5_0hhqo")]
 process_mode = 2
-layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 960.0
+offset_top = 540.0
+offset_right = 960.0
+offset_bottom = 540.0
 
 [node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("6_fn6hx")]
 visible = false
@@ -115,7 +114,7 @@ secondary_target = NodePath("../Player")
 [connection signal="damaged" from="Player" to="." method="_on_player_damaged"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="spawned" from="Spawner" to="." method="_on_spawner_spawned"]
-[connection signal="upgrade_selected" from="CanvasLayer/CenterContainer/UpgradeMenu" to="." method="_on_upgrade_menu_upgrade_selected"]
+[connection signal="upgrade_selected" from="CanvasLayer/UpgradeMenu" to="." method="_on_upgrade_menu_upgrade_selected"]
 [connection signal="paused" from="CanvasLayer/PauseScreen" to="." method="_on_pause_screen_paused"]
 [connection signal="quit_pressed" from="CanvasLayer/PauseScreen" to="." method="_on_pause_screen_quit_pressed"]
 [connection signal="unpaused" from="CanvasLayer/PauseScreen" to="." method="_on_pause_screen_unpaused"]

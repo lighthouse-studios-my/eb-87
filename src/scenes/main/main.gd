@@ -6,15 +6,15 @@ extends Node2D
 @onready var player := $Player
 @onready var spawner := $Spawner
 @onready var turret := $Turret
-@onready var upgrade_menu := $CanvasLayer/CenterContainer/UpgradeMenu
+@onready var upgrade_menu := $CanvasLayer/UpgradeMenu
 @onready var exp_bar := $CanvasLayer/ProgressBar
 @onready var enemy_spawn_timer = $EnemySpawnTimer
 @onready var camera := $Camera2D
 
 var level := 1
 var exp_points := 0
-var exp_required := 3
-var exp_scale := 2
+var exp_required := 1
+var exp_scale := 0
 
 var _pause_stack := 0
 

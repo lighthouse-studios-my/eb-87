@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends CenterContainer
 
 
 signal upgrade_selected(upgrade)
@@ -10,6 +10,7 @@ var all_upgrades := [
 	RicochetUpgrade.new(),
 ]
 
+@onready var _buttons := $Buttons
 @onready var _show_audio := $ShowAudio
 
 
@@ -22,13 +23,13 @@ func show_upgrades() -> void:
 	var upgrades := _randomize_upgrades()
 	for upgrade in upgrades:
 		var button := _create_button(upgrade)
-		add_child(button)
+		_buttons.add_child(button)
 	visible = true
-	_show_audio.play()
+	_show_audio.play() 
 
 
 func _clear_buttons() -> void:
-	for child in get_children():
+	for child in _buttons.get_children():
 		child.queue_free()
 
 
