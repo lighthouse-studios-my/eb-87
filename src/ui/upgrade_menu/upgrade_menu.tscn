@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://ui/upgrade_menu/upgrade_menu.gd" id="1_5y81g"]
 [ext_resource type="AudioStream" uid="uid://wtvmdpubr2ku" path="res://assets/sfx/Upgrade_pop_up_-_Part_1.wav" id="2_se2fp"]
 
-[node name="UpgradeMenu" type="CenterContainer"]
+[node name="UpgradeMenu" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,7 +12,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5y81g")
 
-[node name="Buttons" type="HBoxContainer" parent="."]
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="HBoxContainer" parent="CenterContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="ShowAudio" type="AudioStreamPlayer" parent="."]
