@@ -1,6 +1,7 @@
 extends Node2D
 
 
+const OrbScene = preload("res://entities/orb/orb.tscn")
 const TrailScene := preload("res://misc/trail/trail.tscn")
 
 @export var enemy_spawn_cooldown := 5.0
@@ -129,7 +130,7 @@ func _on_difficulty_timer_timeout():
 func _on_turret_shot(projectile):
 	add_child(projectile)
 	var trail := TrailScene.instantiate()
-	trail.setup(projectile, projectile.size, projectile.size * 0.1)
+	trail.setup(projectile, projectile.size, projectile.size * 0.1, Color.WHITE)
 	add_child(trail)
 
 
@@ -138,6 +139,18 @@ func _on_player_damaged():
 	health_bar.health = player.health
 
 
+func _on_enemy_dead(enemy: Node2D):
+	camera.shake(10.0)
+	
+	var orb = OrbScene.instantiate()
+	orb.position = enemy.position
+	orb.absorbed.connect(_on_orb_absorbed)
+	add_child(orb)
+	
+	var trail := TrailScene.instantiate()
+	trail.setup(orb, 20, 1, Color("d346d4"))
+	add_child(trail)
+
 func _on_spawner_spawned(entity):
-	entity.dead.connect(func():
-		camera.shake(10.0))
+	add_child(entity)
+	entity.dead.connect(_on_enemy_dead.bind(entity))

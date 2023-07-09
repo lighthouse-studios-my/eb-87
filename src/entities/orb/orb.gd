@@ -15,6 +15,10 @@ func _ready() -> void:
 	attract()
 
 
+func _draw():
+	draw_circle(Vector2.ZERO, 8.0, Color("d346d4"))
+
+
 func attract() -> void:
 	var tween = create_tween().bind_node(self).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	tween.tween_property(self, "position", target_location, 1)

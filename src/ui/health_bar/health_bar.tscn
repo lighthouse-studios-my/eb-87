@@ -8,7 +8,7 @@ border_width_left = 8
 border_width_top = 8
 border_width_right = 8
 border_width_bottom = 8
-border_color = Color(0.828125, 0.273438, 0.832031, 1)
+border_color = Color(0.827451, 0.27451, 0.831373, 1)
 shadow_color = Color(0, 0, 0, 0.392157)
 shadow_size = 5
 
