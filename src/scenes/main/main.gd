@@ -21,6 +21,7 @@ var _pause_stack := 0
 
 func _ready():
 	enemy_spawn_timer.wait_time = enemy_spawn_cooldown
+	MusicPlayer.loop = "game_1"
 
 
 func _on_orb_absorbed(exp) -> void:

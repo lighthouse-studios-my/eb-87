@@ -26,6 +26,7 @@ var _enabled := true
 @onready var _rotate_speed := deg_to_rad(rotate_speed_degrees)
 @onready var _shoot_audio := $ShootAudio
 
+
 func enable() -> void:
 	_cooldown.start()
 

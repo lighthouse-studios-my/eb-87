@@ -16,3 +16,4 @@ layout_mode = 2
 
 [node name="ShowAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_se2fp")
+volume_db = -5.0
