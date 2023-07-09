@@ -3,6 +3,8 @@ extends CenterContainer
 
 signal upgrade_selected(upgrade)
 
+const UpgradeCardScene := preload("res://ui/upgrade_card/upgrade_card.tscn")
+
 var all_upgrades := [
 	FireRateUpgrade.new(),
 	MultishotUpgrade.new(),
@@ -43,12 +45,9 @@ func _randomize_upgrades() -> Array:
 
 
 func _create_button(upgrade: Resource) -> Button:
-	var button := Button.new()
-	button.icon = upgrade.icon
-	button.flat = true
-	button.tooltip_text = upgrade.description
-	button.pressed.connect(_on_button_pressed.bind(upgrade))
-	button.focus_mode = Control.FOCUS_NONE
+	var button := UpgradeCardScene.instantiate()
+	button.upgrade = upgrade
+	button.selected.connect(_on_button_pressed.bind(upgrade))
 	return button
 
 
