@@ -5,8 +5,13 @@ class_name Projectile
 @export var speed := 3000
 @export var damage := 1
 @export var bounce := 0
+@export var size := 8
 
 var direction := Vector2.RIGHT
+
+
+func _draw():
+	draw_circle(Vector2.ZERO, size, Color.WHITE)
 
 
 func setup(
@@ -20,8 +25,8 @@ func setup(
 	position = _position
 	bounce = _bounce
 	
-	$Hitbox.shape.radius = $Hitbox.shape.radius * size_scale
-	$Sprite.scale = $Sprite.scale * size_scale
+	size *= size_scale
+	$Hitbox.shape.radius = size
 
 
 func _physics_process(delta: float) -> void:

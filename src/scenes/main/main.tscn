@@ -41,6 +41,7 @@ size = Vector2(128, 1672)
 script = ExtResource("1_mgw4m")
 
 [node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0.301961, 0.301961, 0.301961, 1)
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(960, 540)

@@ -1,6 +1,8 @@
 extends Node2D
 
 
+const TrailScene := preload("res://misc/trail/trail.tscn")
+
 @export var enemy_spawn_cooldown := 5.0
 
 @onready var player := $Player
@@ -126,6 +128,9 @@ func _on_difficulty_timer_timeout():
 
 func _on_turret_shot(projectile):
 	add_child(projectile)
+	var trail := TrailScene.instantiate()
+	trail.setup(projectile, projectile.size, projectile.size * 0.1)
+	add_child(trail)
 
 
 func _on_player_damaged():
