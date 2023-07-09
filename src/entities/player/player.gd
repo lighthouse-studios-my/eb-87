@@ -102,12 +102,12 @@ func play_death_sound() -> void:
 	var death_audio_player = AudioStreamPlayer2D.new()
 	death_audio_player.stream = death_audio
 	death_audio_player.volume_db = -5
+	death_audio_player.bus = "SFX"
 	death_audio_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().root.add_child.call_deferred(death_audio_player)
 	death_audio_player.finished.connect(death_audio_player.queue_free)
 	await death_audio_player.ready
 	death_audio_player.play()
-	print(death_audio)
 
 
 func heal() -> void:
