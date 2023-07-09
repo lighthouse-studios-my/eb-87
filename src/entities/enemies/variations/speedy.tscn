@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0b7yq6mq3265"]
+[gd_scene load_steps=5 format=3 uid="uid://d0b7yq6mq3265"]
 
 [ext_resource type="PackedScene" uid="uid://dxuqlkww3rxwv" path="res://entities/enemies/enemy.tscn" id="1_bms05"]
+[ext_resource type="AudioStream" uid="uid://ddat3vy2hijj3" path="res://assets/sfx/yellow_missle_calling_card.mp3" id="2_447df"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqjhp"]
 radius = 19.0
@@ -23,3 +24,6 @@ shape = SubResource("CapsuleShape2D_gqjhp")
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ol2rv")
+
+[node name="SpawnAudio" parent="." index="3"]
+stream = ExtResource("2_447df")

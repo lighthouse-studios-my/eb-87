@@ -6,8 +6,7 @@ signal dead
 @export var speed := 100.0
 @export var health := 1
 
-@onready var exp_orb = preload("res://entities/orb/orb.tscn")
-
+var exp_orb = preload("res://entities/orb/orb.tscn")
 var target = null
 
 
