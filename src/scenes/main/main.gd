@@ -13,8 +13,8 @@ extends Node2D
 
 var level := 1
 var exp_points := 0
-var exp_required := 1
-var exp_scale := 0
+var exp_required := 3
+var exp_scale := 2
 
 var _pause_stack := 0
 
