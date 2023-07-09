@@ -125,10 +125,10 @@ func _on_turret_shot(projectile):
 
 
 func _on_player_damaged():
-	camera.shake(10.0)
+	camera.shake(20.0)
 	health_bar.health = player.health
 
 
 func _on_spawner_spawned(entity):
 	entity.dead.connect(func():
-		camera.shake(5.0))
+		camera.shake(10.0))

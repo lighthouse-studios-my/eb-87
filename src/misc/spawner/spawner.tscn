@@ -4,16 +4,17 @@
 
 [sub_resource type="Curve2D" id="Curve2D_dedo6"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -113, -151, 0, 0, 0, 0, -134, 1225, 0, 0, 0, 0, 2047, 1213, 0, 0, 0, 0, 2050, -136, 0, 0, 0, 0, -110, -139)
+"points": PackedVector2Array(0, 0, 0, 0, -256, -640, 0, 0, 0, 0, -256, 1728, 0, 0, 0, 0, 2176, 1728, 0, 0, 0, 0, 2176, -640, 0, 0, 0, 0, -256, -640)
 }
 point_count = 5
 
 [node name="Spawner" type="Path2D"]
 curve = SubResource("Curve2D_dedo6")
 script = ExtResource("1_cwrei")
+max_offset_distance = 0
 
 [node name="SpawnPoint" type="PathFollow2D" parent="."]
-position = Vector2(-113, -151)
-rotation = 1.58606
+position = Vector2(-256, -640)
+rotation = 1.5708
 
 [node name="IntervalTimer" type="Timer" parent="."]
