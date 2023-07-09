@@ -9,6 +9,7 @@ extends Node2D
 @onready var upgrade_menu := $CanvasLayer/CenterContainer/UpgradeMenu
 @onready var exp_bar := $CanvasLayer/ProgressBar
 @onready var enemy_spawn_timer = $EnemySpawnTimer
+@onready var camera := $Camera2D
 
 var level := 1
 var exp_points := 0
@@ -40,6 +41,7 @@ func level_up() -> void:
 	upgrade_menu.show_upgrades()
 	level += 1
 	_scale_difficulty()
+	player.heal()
 	_pause()
 
 
@@ -88,6 +90,7 @@ func _on_player_dead():
 		get_tree().paused = false)
 	$CanvasLayer.add_child(gameover)
 	$CanvasLayer/PauseScreen.queue_free()
+	camera.shake(50.0)
 	get_tree().paused = true
 
 
@@ -102,3 +105,16 @@ func _on_pause_screen_paused():
 func _on_difficulty_timer_timeout():
 	enemy_spawn_cooldown -= 0.15
 	enemy_spawn_cooldown = max(enemy_spawn_cooldown, 0.5)
+
+
+func _on_turret_shot(projectile):
+	add_child(projectile)
+
+
+func _on_player_damaged():
+	camera.shake(10.0)
+
+
+func _on_spawner_spawned(entity):
+	entity.dead.connect(func():
+		camera.shake(5.0))

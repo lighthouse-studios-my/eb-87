@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 signal dead
+signal damaged
 
 @export var speed = 400  # speed in pixels/sec
 @export var dodge_speed = 1000
@@ -15,6 +16,7 @@ signal dead
 @onready var _dodge_cooldown_timer := $DodgeCooldownTimer
 @onready var invulnerability_duration_timer := $InvulnerabilityCooldownTimer
 
+@onready var _original_health := health
 @onready var _dash_audio := $DashAudio
 @onready var _hurt_audio := $HurtAudio
 
@@ -72,6 +74,8 @@ func hurt(damage) -> void:
 	if health <= 0:
 		die()
 		return
+	else:
+		emit_signal("damaged")
 	
 	invulnerability_duration_timer.start()
 	_disable_collisions()
@@ -81,6 +85,10 @@ func hurt(damage) -> void:
 func die() -> void:
 	emit_signal("dead")
 	queue_free()
+
+
+func heal() -> void:
+	health = _original_health
 
 
 func _on_dodge_duration_timer_timeout():
