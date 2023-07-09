@@ -13,12 +13,6 @@ var upgrade : set = _set_upgrade
 var is_selected := false
 
 
-func _unhandled_input(event):
-	if is_selected:
-		if event.is_action_pressed("ui_accept") or event.is_action_pressed("dodge"):
-			select_upgrade()
-
-
 func _set_upgrade(upg) -> void:
 	upgrade = upg
 	if not _button:
