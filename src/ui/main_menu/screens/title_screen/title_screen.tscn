@@ -1,20 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1f1f4a75hdro"]
+[gd_scene load_steps=6 format=3 uid="uid://b1f1f4a75hdro"]
 
+[ext_resource type="Theme" uid="uid://d2yi301715xba" path="res://ui/main_menu/main_menu_theme.tres" id="1_evvqy"]
 [ext_resource type="Script" path="res://ui/main_menu/screens/title_screen/title_screen.gd" id="1_iohad"]
 [ext_resource type="Script" path="res://ui/common/hover_button.gd" id="2_du5nx"]
 [ext_resource type="Texture2D" uid="uid://d2wjfbuqg1wyw" path="res://assets/ui/mainmenutext.png" id="2_ukmuf"]
 [ext_resource type="Texture2D" uid="uid://dcps3v5iwu4jg" path="res://assets/ui/buttbase.png" id="3_8penl"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73pc7"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rk12a"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.15625, 0.183594, 0.648438, 1)
 
 [node name="TitleScreen" type="Control"]
 texture_filter = 1
@@ -24,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_evvqy")
 script = ExtResource("1_iohad")
 
 [node name="Title" type="TextureRect" parent="."]
@@ -65,48 +56,24 @@ theme_override_constants/separation = 27
 [node name="StartButton" type="Button" parent="MarginContainer/MarginContainer/Buttons"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_73pc7")
-theme_override_styles/focus = SubResource("StyleBoxFlat_rk12a")
 text = "START"
 script = ExtResource("2_du5nx")
 
 [node name="SettingsButton" type="Button" parent="MarginContainer/MarginContainer/Buttons"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_73pc7")
-theme_override_styles/focus = SubResource("StyleBoxFlat_rk12a")
 text = "SETTINGS"
 script = ExtResource("2_du5nx")
 
 [node name="CreditsButton" type="Button" parent="MarginContainer/MarginContainer/Buttons"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_73pc7")
-theme_override_styles/focus = SubResource("StyleBoxFlat_rk12a")
 text = "CREDITS"
 script = ExtResource("2_du5nx")
 
 [node name="QuitButton" type="Button" parent="MarginContainer/MarginContainer/Buttons"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_73pc7")
-theme_override_styles/focus = SubResource("StyleBoxFlat_rk12a")
 text = "QUIT"
 script = ExtResource("2_du5nx")
 

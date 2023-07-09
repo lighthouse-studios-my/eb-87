@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd6rgf15naw10"]
+[gd_scene load_steps=8 format=3 uid="uid://cd6rgf15naw10"]
 
 [ext_resource type="PackedScene" uid="uid://g26blcd73i4d" path="res://ui/main_menu/components/credit_group/credit_group.tscn" id="1_0h8y3"]
+[ext_resource type="Theme" uid="uid://d2yi301715xba" path="res://ui/main_menu/main_menu_theme.tres" id="1_kfxg2"]
 [ext_resource type="Script" path="res://ui/main_menu/screens/credits/credits.gd" id="1_s0r2v"]
-[ext_resource type="PackedScene" uid="uid://bosl3sol5un47" path="res://ui/main_menu/components/cursor/cursor.tscn" id="3_opuwe"]
+[ext_resource type="Texture2D" uid="uid://dcps3v5iwu4jg" path="res://assets/ui/buttbase.png" id="3_qqau6"]
+[ext_resource type="Script" path="res://ui/common/hover_button.gd" id="5_0tqrp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6epar"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dncbe"]
 
@@ -13,54 +18,100 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_kfxg2")
 script = ExtResource("1_s0r2v")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_right = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 32
+theme_override_constants/margin_left = 180
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 180
+theme_override_constants/margin_bottom = 180
 
-[node name="CreditGroup" parent="VBoxContainer" instance=ExtResource("1_0h8y3")]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
 layout_mode = 2
-title = "Artist"
-names = Array[String](["Jane Doe"])
+texture = ExtResource("3_qqau6")
+patch_margin_left = 134
+patch_margin_top = 53
+patch_margin_right = 53
 
-[node name="CreditGroup2" parent="VBoxContainer" instance=ExtResource("1_0h8y3")]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-title = "Programmer"
-names = Array[String](["John Doe"])
 
-[node name="BackButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.666
-anchor_right = 0.5
-anchor_bottom = 0.666
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6epar")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 64
+
+[node name="CreditGroup" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_0h8y3")]
+layout_mode = 2
+title = "Art & Design"
+names = Array[String](["raccudon", "Zimizeh"])
+
+[node name="CreditGroup2" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_0h8y3")]
+layout_mode = 2
+title = "Music & SFX"
+names = Array[String](["heyimalfi"])
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 64
+
+[node name="CreditGroup3" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_0h8y3")]
+layout_mode = 2
+title = "Programming"
+names = Array[String](["Zircon332", "ZeeHatcher"])
+
+[node name="CreditGroup4" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_0h8y3")]
+layout_mode = 2
+title = "Everything Else"
+names = Array[String](["DamyK"])
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(620, 60)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dncbe")
 text = "BACK"
-flat = true
+script = ExtResource("5_0tqrp")
 
-[node name="Cursor" parent="." instance=ExtResource("3_opuwe")]
-offset_left = 901.0
-offset_top = 720.0
-offset_right = 1021.0
-offset_bottom = 720.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="focus_entered" from="MarginContainer/VBoxContainer/MarginContainer2/BackButton" to="." method="_on_back_button_focus_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer2/BackButton" to="." method="_on_back_button_pressed"]

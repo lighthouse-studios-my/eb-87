@@ -1,13 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://g26blcd73i4d"]
+[gd_scene load_steps=3 format=3 uid="uid://g26blcd73i4d"]
 
 [ext_resource type="Script" path="res://ui/main_menu/components/credit_group/credit_group.gd" id="1_xdeoo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2nqis"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
 
 [node name="CreditGroup" type="VBoxContainer"]
 offset_bottom = 30.0
 grow_horizontal = 2
 script = ExtResource("1_xdeoo")
 
-[node name="Title" type="Label" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_2nqis")
+
+[node name="Title" type="Label" parent="PanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Title"

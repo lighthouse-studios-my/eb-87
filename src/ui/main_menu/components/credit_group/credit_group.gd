@@ -5,7 +5,7 @@ extends VBoxContainer
 @export var title := "Title" : set = _set_title
 @export var names: Array[String] = [] : set = _set_names
 
-@onready var _title := $Title
+@onready var _title := %Title
 @onready var _names_container := $Names
 
 
