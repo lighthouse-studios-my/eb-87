@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgffsbgw25o2j"]
+[gd_scene load_steps=5 format=3 uid="uid://bgffsbgw25o2j"]
 
 [ext_resource type="PackedScene" uid="uid://dxuqlkww3rxwv" path="res://entities/enemies/enemy.tscn" id="1_lqbvg"]
+[ext_resource type="AudioStream" uid="uid://bwvqsqajyvxnx" path="res://assets/sfx/Black_safe_calling_card.mp3" id="2_rd2v8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhkms"]
 size = Vector2(134, 164)
@@ -22,3 +23,6 @@ shape = SubResource("RectangleShape2D_dhkms")
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource("RectangleShape2D_i2tdl")
+
+[node name="SpawnAudio" parent="." index="3"]
+stream = ExtResource("2_rd2v8")
