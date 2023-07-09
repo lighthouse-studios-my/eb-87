@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bto6yyknxo80j"]
+
+[ext_resource type="Texture2D" uid="uid://dwjtsrfp8ykf8" path="res://assets/art/enemydyingfx.png" id="1_3xgjw"]
+[ext_resource type="Script" path="res://entities/enemies/death_effect.gd" id="2_u5rfq"]
+
+[node name="DeathEffect" type="Sprite2D"]
+scale = Vector2(0.309623, 0.309623)
+texture = ExtResource("1_3xgjw")
+script = ExtResource("2_u5rfq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

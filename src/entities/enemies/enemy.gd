@@ -7,6 +7,7 @@ signal dead
 @export var health := 1
 @export var death_audio: Resource
 
+var death_vfx = preload("res://entities/enemies/death_effect.tscn") 
 var exp_orb = preload("res://entities/orb/orb.tscn")
 var target = null
 
@@ -17,7 +18,7 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	_follow_target(delta)
-	
+
 
 func _follow_target(delta) -> void:
 	if not target: return
@@ -37,6 +38,11 @@ func hurt(damage) -> void:
 func die() -> void:
 	play_death_sound()
 	emit_signal("dead")
+	
+	var death_error = death_vfx.instantiate()
+	death_error.position = global_position
+	get_tree().root.add_child(death_error)
+	
 	queue_free()
 
 

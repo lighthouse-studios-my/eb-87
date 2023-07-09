@@ -151,11 +151,6 @@ stream = ExtResource("4_1vwgn")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="DeathAudio" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
-stream = ExtResource("5_ke3um")
-volume_db = -10.0
-
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
 

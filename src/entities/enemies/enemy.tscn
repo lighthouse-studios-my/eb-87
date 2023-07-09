@@ -124,6 +124,7 @@ death_audio = ExtResource("5_seutf")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.151429, 0.151429)
 sprite_frames = SubResource("SpriteFrames_kx1rq")
+animation = &"speedy"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

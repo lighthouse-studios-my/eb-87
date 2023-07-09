@@ -23,7 +23,6 @@ signal damaged
 @onready var _original_health := health
 @onready var _dash_audio := $DashAudio
 @onready var _hurt_audio := $HurtAudio
-@onready var _death_audio := $DeathAudio
 
 var _is_dodging := false
 var _dodge_direction := Vector2.ZERO
@@ -95,18 +94,20 @@ func die() -> void:
 	if is_dead: return
 	is_dead = true
 	emit_signal("dead")
+	play_death_sound()
 	queue_free()
-	_death_audio.play()
 
 
 func play_death_sound() -> void:
 	var death_audio_player = AudioStreamPlayer2D.new()
 	death_audio_player.stream = death_audio
 	death_audio_player.volume_db = -5
+	death_audio_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().root.add_child.call_deferred(death_audio_player)
 	death_audio_player.finished.connect(death_audio_player.queue_free)
 	await death_audio_player.ready
 	death_audio_player.play()
+	print(death_audio)
 
 
 func heal() -> void:
