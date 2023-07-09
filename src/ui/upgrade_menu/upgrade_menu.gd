@@ -7,6 +7,7 @@ var all_upgrades := [
 	FireRateUpgrade.new(),
 	MultishotUpgrade.new(),
 	SizeUpgrade.new(),
+	RicochetUpgrade.new(),
 ]
 
 

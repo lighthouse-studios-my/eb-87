@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://447ajmt7qbhi"]
+[gd_scene load_steps=11 format=3 uid="uid://447ajmt7qbhi"]
 
 [ext_resource type="PackedScene" uid="uid://bc5351fqfgj0l" path="res://entities/player/player.tscn" id="1_an0ov"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_mgw4m"]
@@ -14,6 +14,12 @@ tonemap_mode = 2
 glow_enabled = true
 glow_intensity = 1.0
 glow_strength = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4n5o"]
+size = Vector2(2176, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s27qs"]
+size = Vector2(128, 1080)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_mgw4m")
@@ -75,8 +81,21 @@ environment = SubResource("Environment_gxgps")
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-500, -434, -492, 1442, 2453, 1443, 2456, -418, -500, -438, 0, 1, 1921, 1, 1920, 1080, 4, 1078, 0, 2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(960, -64)
+shape = SubResource("RectangleShape2D_x4n5o")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(960, 1144)
+shape = SubResource("RectangleShape2D_x4n5o")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1984, 540)
+shape = SubResource("RectangleShape2D_s27qs")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-64, 540)
+shape = SubResource("RectangleShape2D_s27qs")
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="DifficultyTimer" to="." method="_on_difficulty_timer_timeout"]
