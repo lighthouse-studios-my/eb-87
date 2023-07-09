@@ -1,4 +1,4 @@
-extends CenterContainer
+extends Control
 
 
 signal upgrade_selected(upgrade)
@@ -12,7 +12,7 @@ var all_upgrades := [
 	RicochetUpgrade.new(),
 ]
 
-@onready var _buttons := $Buttons
+@onready var _buttons := %Buttons
 @onready var _show_audio := $ShowAudio
 
 

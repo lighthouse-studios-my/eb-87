@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc0siwbmb2hux"]
+[gd_scene load_steps=6 format=3 uid="uid://dc0siwbmb2hux"]
 
 [ext_resource type="Script" path="res://ui/pause/pause.gd" id="1_aw4gv"]
+[ext_resource type="Script" path="res://ui/common/volume_slider/volume_slider.gd" id="2_4cwfn"]
 [ext_resource type="Script" path="res://ui/common/hover_button.gd" id="2_4vkrr"]
 [ext_resource type="PackedScene" uid="uid://bosl3sol5un47" path="res://ui/main_menu/components/cursor/cursor.tscn" id="3_fgwgr"]
 
@@ -33,10 +34,63 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Buttons" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Sliders" type="VBoxContainer" parent="CenterContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="ResumeButton" type="Button" parent="CenterContainer/Buttons"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer2/Sliders"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer2/Sliders/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer2/Sliders/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+tick_count = 3
+ticks_on_borders = true
+script = ExtResource("2_4cwfn")
+bus_name = "Music"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer2/Sliders"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer2/Sliders/HBoxContainer2"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "Sound Effects"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer2/Sliders/HBoxContainer2"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+tick_count = 3
+ticks_on_borders = true
+script = ExtResource("2_4cwfn")
+bus_name = "SFX"
+
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer2/Buttons"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n1cpq")
@@ -44,15 +98,7 @@ text = "RESUME"
 flat = true
 script = ExtResource("2_4vkrr")
 
-[node name="SettingsButton" type="Button" parent="CenterContainer/Buttons"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_styles/focus = SubResource("StyleBoxEmpty_n1cpq")
-text = "SETTINGS"
-flat = true
-script = ExtResource("2_4vkrr")
-
-[node name="QuitButton" type="Button" parent="CenterContainer/Buttons"]
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer2/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n1cpq")
@@ -61,14 +107,13 @@ flat = true
 script = ExtResource("2_4vkrr")
 
 [node name="Cursor" parent="." instance=ExtResource("3_fgwgr")]
-offset_left = 911.0
-offset_top = 505.0
-offset_right = 1007.0
-offset_bottom = 505.0
+offset_left = 912.0
+offset_top = 584.0
+offset_right = 1008.0
+offset_bottom = 584.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[connection signal="sort_children" from="CenterContainer/Buttons" to="." method="_on_buttons_sort_children"]
-[connection signal="pressed" from="CenterContainer/Buttons/ResumeButton" to="." method="pause" binds= [false]]
-[connection signal="pressed" from="CenterContainer/Buttons/SettingsButton" to="." method="_on_button_pressed" binds= ["settings"]]
-[connection signal="pressed" from="CenterContainer/Buttons/QuitButton" to="." method="_on_button_pressed" binds= ["quit"]]
+[connection signal="sort_children" from="CenterContainer/VBoxContainer2/Buttons" to="." method="_on_buttons_sort_children"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer2/Buttons/ResumeButton" to="." method="pause" binds= [false]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer2/Buttons/QuitButton" to="." method="_on_button_pressed" binds= ["quit"]]

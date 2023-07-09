@@ -3,11 +3,10 @@ extends Control
 
 signal paused
 signal unpaused
-signal settings_pressed
 signal quit_pressed
 
-@onready var _buttons := $CenterContainer/Buttons.get_children()
-@onready var _resume_button := $CenterContainer/Buttons/ResumeButton
+@onready var _buttons := %Buttons.get_children()
+@onready var _resume_button := %ResumeButton
 @onready var _cursor := $Cursor
 
 
