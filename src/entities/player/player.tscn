@@ -121,9 +121,9 @@ script = ExtResource("1_vkbwb")
 position = Vector2(6, -28)
 scale = Vector2(0.394286, 0.394286)
 sprite_frames = SubResource("SpriteFrames_u7rnr")
-animation = &"glitch"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.762485
+frame_progress = 0.673281
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_258kq")

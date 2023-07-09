@@ -69,7 +69,6 @@ func _dodge() -> void:
 	_dodge_duration_timer.start()
 	_dash_audio.play()
 	_animated_sprite.play("glitch")
-	print("glitch")
 
 
 func hurt(damage) -> void:
