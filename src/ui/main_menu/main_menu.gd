@@ -4,11 +4,13 @@ extends Control
 enum Screen {
 	TITLE_SCREEN,
 	CREDITS,
+	SETTINGS,
 }
 
 @onready var _screens := {
 	Screen.TITLE_SCREEN: $TitleScreen,
 	Screen.CREDITS: $Credits,
+	Screen.SETTINGS: $Settings,
 }
 
 
@@ -27,7 +29,7 @@ func _on_title_screen_start_pressed() -> void:
 
 
 func _on_title_screen_settings_pressed() -> void:
-	pass # Replace with function body.
+	_show_screen(Screen.SETTINGS)
 
 
 func _on_title_screen_credits_pressed() -> void:
@@ -39,4 +41,8 @@ func _on_title_screen_quit_pressed() -> void:
 
 
 func _on_credits_back_pressed() -> void:
+	_show_screen(Screen.TITLE_SCREEN)
+
+
+func _on_settings_back_pressed():
 	_show_screen(Screen.TITLE_SCREEN)

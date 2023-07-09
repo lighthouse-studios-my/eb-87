@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://rv25bmxi8hqe"]
+[gd_scene load_steps=7 format=3 uid="uid://rv25bmxi8hqe"]
 
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_wbjc5"]
 [ext_resource type="Texture2D" uid="uid://7gpau7mh12vb" path="res://assets/ui/vlcsnap-2023-07-09-19h30m34s240.png" id="2_qa7kv"]
 [ext_resource type="PackedScene" uid="uid://b1f1f4a75hdro" path="res://ui/main_menu/screens/title_screen/title_screen.tscn" id="2_v6v35"]
 [ext_resource type="PackedScene" uid="uid://cd6rgf15naw10" path="res://ui/main_menu/screens/settings/settings.tscn" id="3_dkuqe"]
 [ext_resource type="AudioStream" uid="uid://bi67ira0j5vhk" path="res://assets/sfx/Main_menu_ambiance.mp3" id="4_frcrf"]
+[ext_resource type="PackedScene" uid="uid://2ceoht7wc3q1" path="res://ui/main_menu/screens/credits/credits.tscn" id="5_q443r"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -27,7 +28,11 @@ texture = ExtResource("2_qa7kv")
 [node name="TitleScreen" parent="." instance=ExtResource("2_v6v35")]
 layout_mode = 1
 
-[node name="Credits" parent="." instance=ExtResource("3_dkuqe")]
+[node name="Settings" parent="." instance=ExtResource("3_dkuqe")]
+visible = false
+layout_mode = 1
+
+[node name="Credits" parent="." instance=ExtResource("5_q443r")]
 visible = false
 layout_mode = 1
 
@@ -40,4 +45,5 @@ autoplay = true
 [connection signal="quit_pressed" from="TitleScreen" to="." method="_on_title_screen_quit_pressed"]
 [connection signal="settings_pressed" from="TitleScreen" to="." method="_on_title_screen_settings_pressed"]
 [connection signal="start_pressed" from="TitleScreen" to="." method="_on_title_screen_start_pressed"]
+[connection signal="back_pressed" from="Settings" to="." method="_on_settings_back_pressed"]
 [connection signal="back_pressed" from="Credits" to="." method="_on_credits_back_pressed"]

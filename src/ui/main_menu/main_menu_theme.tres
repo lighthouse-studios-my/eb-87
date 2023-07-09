@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://d2yi301715xba"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://d2yi301715xba"]
 
 [ext_resource type="Texture2D" uid="uid://kopw30mq6i6c" path="res://assets/ui/slider_handle.png" id="1_c8nqk"]
 [ext_resource type="Texture2D" uid="uid://clrm5pf5t8xs7" path="res://assets/ui/tick.png" id="2_jsfwd"]
+[ext_resource type="Texture2D" uid="uid://c4xk3w6j3kkfg" path="res://assets/ui/slider_handle_pressed.png" id="2_uj2lv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ore16"]
 bg_color = Color(1, 1, 1, 1)
@@ -46,7 +47,7 @@ Button/styles/focus = SubResource("StyleBoxFlat_ore16")
 Button/styles/hover = SubResource("StyleBoxFlat_apri6")
 Button/styles/normal = SubResource("StyleBoxFlat_vskgg")
 HSlider/icons/grabber = ExtResource("1_c8nqk")
-HSlider/icons/grabber_highlight = ExtResource("1_c8nqk")
+HSlider/icons/grabber_highlight = ExtResource("2_uj2lv")
 HSlider/icons/tick = ExtResource("2_jsfwd")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_r47wh")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_2cstp")
