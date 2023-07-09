@@ -31,7 +31,7 @@ region_enabled = true
 region_rect = Rect2(1925, 188, 715, 1211)
 
 [node name="Tip" type="Marker2D" parent="Pivot"]
-position = Vector2(74, 0)
+position = Vector2(88, 0)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 8

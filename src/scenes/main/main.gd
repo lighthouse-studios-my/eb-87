@@ -95,4 +95,3 @@ func _on_pause_screen_paused():
 func _on_difficulty_timer_timeout():
 	enemy_spawn_cooldown -= 0.15
 	enemy_spawn_cooldown = max(enemy_spawn_cooldown, 0.2)
-	
