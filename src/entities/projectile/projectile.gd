@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name Projectile
 
 
+signal collided(pos)
+
 @export var speed := 3000
 @export var damage := 1
 @export var bounce := 0
@@ -52,12 +54,15 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _collide(body: Node2D, normal: Vector2):
 	if is_queued_for_deletion() or body.is_queued_for_deletion():
 		return
+	
 	if body.has_method("hurt"):
 		body.hurt(damage)
+		emit_signal("collided", position)
 		despawn()
 		return
 	
 	if bounce == 0:
+		emit_signal("collided", position)
 		despawn()
 	else:
 		bounce -= 1

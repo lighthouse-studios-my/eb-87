@@ -3,6 +3,7 @@ extends Node2D
 
 const OrbScene = preload("res://entities/orb/orb.tscn")
 const TrailScene := preload("res://misc/trail/trail.tscn")
+const ProjectileParticleScene := preload("res://misc/projectile_particle/projectile_particle.tscn")
 
 @export var enemy_spawn_cooldown := 5.0
 
@@ -156,6 +157,12 @@ func _on_turret_shot(projectile):
 	var trail := TrailScene.instantiate()
 	trail.setup(projectile, projectile.size, projectile.size * 0.1, Color.WHITE)
 	add_child(trail)
+	
+	projectile.collided.connect(func(pos: Vector2):
+		var particle := ProjectileParticleScene.instantiate()
+		particle.position = pos
+		add_child(particle))
+	
 	stats["shots"] += 1
 
 
