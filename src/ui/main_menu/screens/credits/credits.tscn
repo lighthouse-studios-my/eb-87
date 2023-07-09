@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://2ceoht7wc3q1"]
+[gd_scene load_steps=7 format=3 uid="uid://cd6rgf15naw10"]
 
 [ext_resource type="PackedScene" uid="uid://g26blcd73i4d" path="res://ui/main_menu/components/credit_group/credit_group.tscn" id="1_0h8y3"]
 [ext_resource type="Theme" uid="uid://d2yi301715xba" path="res://ui/main_menu/main_menu_theme.tres" id="1_kfxg2"]
