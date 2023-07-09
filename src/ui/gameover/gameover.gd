@@ -47,7 +47,7 @@ func show_stats(stats) -> void:
 	add_stat("Upgrades Taken", stats["upgrades"])
 	add_stat("Damage Taken", stats["damage"])
 	add_stat("Bullets Shot", stats["shots"])
-	add_stat("Run Time", stats["time"])
+	add_stat("Time Survived", stats["time"])
 
 
 func add_stat(text: String, value: int) -> void:
