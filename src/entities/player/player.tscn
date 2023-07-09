@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc5351fqfgj0l"]
+[gd_scene load_steps=10 format=3 uid="uid://bc5351fqfgj0l"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_vkbwb"]
 [ext_resource type="Texture2D" uid="uid://dmckryicn7a8t" path="res://assets/art/mc_350px.png" id="2_idqe5"]
+[ext_resource type="AudioStream" uid="uid://cydwqwf2mp7tu" path="res://assets/sfx/dash.wav" id="3_2yyid"]
+[ext_resource type="AudioStream" uid="uid://dssm2lhs5x7rq" path="res://assets/sfx/damage_sounds_-_Part_1.wav" id="4_1vwgn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_phgef"]
 atlas = ExtResource("2_idqe5")
@@ -59,6 +61,14 @@ one_shot = true
 [node name="InvulnerabilityCooldownTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="DashAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_2yyid")
+bus = &"SFX"
+
+[node name="HurtAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1vwgn")
+bus = &"SFX"
 
 [connection signal="timeout" from="DodgeDurationTimer" to="." method="_on_dodge_duration_timer_timeout"]
 [connection signal="timeout" from="DodgeCooldownTimer" to="." method="_on_dodge_cooldown_timer_timeout"]

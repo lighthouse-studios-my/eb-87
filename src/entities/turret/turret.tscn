@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxwb8qt466bui"]
+[gd_scene load_steps=5 format=3 uid="uid://bxwb8qt466bui"]
 
 [ext_resource type="Script" path="res://entities/turret/turret.gd" id="1_78ulu"]
 [ext_resource type="Texture2D" uid="uid://dp2rf1qv6188o" path="res://assets/art/Turret draft_350px.png" id="2_vva2n"]
+[ext_resource type="AudioStream" uid="uid://mdv4jg7frwmy" path="res://assets/sfx/gun_sounds.mp3" id="3_v2pmh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jubhv"]
 radius = 66.0681
@@ -39,5 +40,10 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CircleShape2D_jubhv")
+
+[node name="ShootAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_v2pmh")
+volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

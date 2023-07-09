@@ -15,6 +15,10 @@ signal dead
 @onready var _dodge_cooldown_timer := $DodgeCooldownTimer
 @onready var invulnerability_duration_timer := $InvulnerabilityCooldownTimer
 
+@onready var _dash_audio := $DashAudio
+@onready var _hurt_audio := $HurtAudio
+
+
 var _is_dodging := false
 var _dodge_direction := Vector2.ZERO
 var _can_dodge := true
@@ -57,6 +61,7 @@ func _dodge() -> void:
 	_can_dodge = false
 	_disable_collisions()
 	_dodge_duration_timer.start()
+	_dash_audio.play()
 
 
 func hurt(damage) -> void:
@@ -70,6 +75,7 @@ func hurt(damage) -> void:
 	
 	invulnerability_duration_timer.start()
 	_disable_collisions()
+	_hurt_audio.play()
 
 
 func die() -> void:

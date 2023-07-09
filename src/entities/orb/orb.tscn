@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4ir1ytg1iovt"]
+[gd_scene load_steps=4 format=3 uid="uid://b4ir1ytg1iovt"]
 
 [ext_resource type="Script" path="res://entities/orb/orb.gd" id="1_1jyo6"]
+[ext_resource type="AudioStream" uid="uid://csbj3y6btfp2x" path="res://assets/sfx/Pick_up_2_variations_-_Part_1.wav" id="2_l01cx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ft0le"]
 radius = 89.2749
@@ -16,5 +17,8 @@ shape = SubResource("CircleShape2D_ft0le")
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.337255, 0.905882, 0.956863, 1)
 polygon = PackedVector2Array(0, -10, -5, -9, -9, -5, -10, 0, -9, 5, -5, 9, 0, 10, 5, 9, 9, 5, 10, 0, 9, -5, 5, -9)
+
+[node name="PickAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_l01cx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

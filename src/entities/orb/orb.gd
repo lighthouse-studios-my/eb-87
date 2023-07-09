@@ -8,6 +8,8 @@ signal absorbed(exp_points)
 @export var acceleration := 10
 @export var target_location := Vector2(1920/2, 1080/2)
 
+@onready var _pick_audio := $PickAudio
+
 
 func _ready() -> void:
 	attract()
@@ -20,5 +22,7 @@ func attract() -> void:
 
 
 func absorb() -> void:
+	visible = false
 	emit_signal("absorbed", exp_points)
-	queue_free()
+	_pick_audio.play()
+	_pick_audio.finished.connect(self.queue_free)

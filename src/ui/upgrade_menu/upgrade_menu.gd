@@ -10,6 +10,8 @@ var all_upgrades := [
 	RicochetUpgrade.new(),
 ]
 
+@onready var _show_audio := $ShowAudio
+
 
 func _ready() -> void:
 	visible = false
@@ -22,6 +24,7 @@ func show_upgrades() -> void:
 		var button := _create_button(upgrade)
 		add_child(button)
 	visible = true
+	_show_audio.play()
 
 
 func _clear_buttons() -> void:
@@ -50,4 +53,5 @@ func _create_button(upgrade: Resource) -> Button:
 
 func _on_button_pressed(upgrade: Resource) -> void:
 	emit_signal("upgrade_selected", upgrade)
+	UiSfx.play_upgrade_press()
 	visible = false

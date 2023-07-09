@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://rv25bmxi8hqe"]
+[gd_scene load_steps=5 format=3 uid="uid://rv25bmxi8hqe"]
 
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_wbjc5"]
 [ext_resource type="PackedScene" uid="uid://b1f1f4a75hdro" path="res://ui/main_menu/screens/title_screen/title_screen.tscn" id="2_v6v35"]
 [ext_resource type="PackedScene" uid="uid://cd6rgf15naw10" path="res://ui/main_menu/screens/credits/credits.tscn" id="3_dkuqe"]
+[ext_resource type="AudioStream" uid="uid://bi67ira0j5vhk" path="res://assets/sfx/Main_menu_ambiance.mp3" id="4_frcrf"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -19,6 +20,11 @@ layout_mode = 1
 [node name="Credits" parent="." instance=ExtResource("3_dkuqe")]
 visible = false
 layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_frcrf")
+volume_db = -30.0
+autoplay = true
 
 [connection signal="credits_pressed" from="TitleScreen" to="." method="_on_title_screen_credits_pressed"]
 [connection signal="quit_pressed" from="TitleScreen" to="." method="_on_title_screen_quit_pressed"]

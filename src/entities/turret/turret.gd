@@ -24,7 +24,7 @@ var _enabled := true
 @onready var _cooldown := $CooldownTimer
 @onready var _max_spread_angle := deg_to_rad(max_spread_angle_degrees)
 @onready var _rotate_speed := deg_to_rad(rotate_speed_degrees)
-
+@onready var _shoot_audio := $ShootAudio
 
 func enable() -> void:
 	_cooldown.start()
@@ -47,6 +47,7 @@ func shoot() -> void:
 		emit_signal("shot", projectile)
 		get_parent().add_child(projectile)
 	_cooldown.start()
+	_shoot_audio.play()
 
 
 func aim_at(pos: Vector2, delta: float) -> void:

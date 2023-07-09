@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtnh3g1dag1pb"]
+[gd_scene load_steps=3 format=3 uid="uid://dtnh3g1dag1pb"]
 
 [ext_resource type="Script" path="res://ui/upgrade_menu/upgrade_menu.gd" id="1_5y81g"]
+[ext_resource type="AudioStream" uid="uid://wtvmdpubr2ku" path="res://assets/sfx/Upgrade_pop_up_-_Part_1.wav" id="2_se2fp"]
 
 [node name="UpgradeMenu" type="HBoxContainer"]
 script = ExtResource("1_5y81g")
+
+[node name="ShowAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_se2fp")
