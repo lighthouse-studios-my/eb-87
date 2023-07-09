@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0y8auhbdkbi2"]
+
+[ext_resource type="Script" path="res://silent_wolf/leaderboard/leaderboard.gd" id="1_3p0sl"]
+[ext_resource type="Script" path="res://silent_wolf/leaderboard/score_list.gd" id="1_364uh"]
+[ext_resource type="Script" path="res://silent_wolf/leaderboard/leaderboard_manager.gd" id="2_dkh76"]
+[ext_resource type="PackedScene" uid="uid://xc0kxvlh4c7s" path="res://silent_wolf/leaderboard/score_row/score_row.tscn" id="3_6h41o"]
+[ext_resource type="Script" path="res://silent_wolf/leaderboard/submit_score_button.gd" id="3_ov2i4"]
+[ext_resource type="Script" path="res://silent_wolf/leaderboard/submit_box.gd" id="5_c328f"]
+[ext_resource type="Script" path="res://silent_wolf/leaderboard/name_text_edit.gd" id="6_m5niv"]
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3p0sl")
+
+[node name="LeaderboardManager" type="Node" parent="."]
+script = ExtResource("2_dkh76")
+
+[node name="ScoreList" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 1353.0
+offset_top = 575.0
+offset_right = 1742.0
+offset_bottom = 845.0
+script = ExtResource("1_364uh")
+leaderboard_manager_path = NodePath("../LeaderboardManager")
+
+[node name="Label" type="Label" parent="ScoreList"]
+layout_mode = 2
+text = "Leaderboard"
+
+[node name="Scores" type="VBoxContainer" parent="ScoreList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScoreList/Scores"]
+layout_mode = 2
+text = "Loading..."
+
+[node name="ScoreRow" parent="ScoreList/Scores" instance=ExtResource("3_6h41o")]
+layout_mode = 2
+
+[node name="SubmitBox" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 1349.0
+offset_top = 335.0
+offset_right = 1745.0
+offset_bottom = 466.0
+script = ExtResource("5_c328f")
+
+[node name="Label" type="Label" parent="SubmitBox"]
+layout_mode = 2
+text = "Your Score Is:
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubmitBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubmitBox/HBoxContainer"]
+layout_mode = 2
+text = "Name:"
+
+[node name="NameTextEdit" type="TextEdit" parent="SubmitBox/HBoxContainer"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+placeholder_text = "Enter Your Name"
+context_menu_enabled = false
+shortcut_keys_enabled = false
+script = ExtResource("6_m5niv")
+
+[node name="SubmitButton" type="Button" parent="SubmitBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Submit"
+script = ExtResource("3_ov2i4")
+name_text_edit_path = NodePath("../HBoxContainer/NameTextEdit")
+leaderboard_manager_path = NodePath("../../LeaderboardManager")
+
+[connection signal="text_changed" from="SubmitBox/HBoxContainer/NameTextEdit" to="SubmitBox/HBoxContainer/NameTextEdit" method="_on_text_changed"]
+[connection signal="pressed" from="SubmitBox/SubmitButton" to="SubmitBox/SubmitButton" method="_on_pressed"]

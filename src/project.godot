@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 MusicPlayer="*res://misc/music_player/music_player.gd"
 UiSfx="*res://misc/ui_sfx/ui_sfx.gd"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+SilentWolfSetup="*res://silent_wolf/SilentWolfSetup.gd"
 
 [display]
 
