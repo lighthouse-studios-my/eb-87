@@ -1,11 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://rv25bmxi8hqe"]
+[gd_scene load_steps=14 format=3 uid="uid://rv25bmxi8hqe"]
 
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_wbjc5"]
 [ext_resource type="Texture2D" uid="uid://7gpau7mh12vb" path="res://assets/ui/vlcsnap-2023-07-09-19h30m34s240.png" id="2_qa7kv"]
 [ext_resource type="PackedScene" uid="uid://b1f1f4a75hdro" path="res://ui/main_menu/screens/title_screen/title_screen.tscn" id="2_v6v35"]
+[ext_resource type="Theme" uid="uid://d2yi301715xba" path="res://ui/main_menu/main_menu_theme.tres" id="4_dofgf"]
 [ext_resource type="AudioStream" uid="uid://bi67ira0j5vhk" path="res://assets/sfx/Main_menu_ambiance.mp3" id="4_frcrf"]
-[ext_resource type="PackedScene" uid="uid://2ceoht7wc3q1" path="res://ui/main_menu/screens/credits/credits.tscn" id="5_jepee"]
-[ext_resource type="PackedScene" uid="uid://cd6rgf15naw10" path="res://ui/main_menu/screens/settings/settings.tscn" id="5_q443r"]
+[ext_resource type="Script" path="res://ui/main_menu/screens/settings/settings.gd" id="5_con1d"]
+[ext_resource type="Texture2D" uid="uid://dcps3v5iwu4jg" path="res://assets/ui/buttbase.png" id="6_hqpwd"]
+[ext_resource type="Script" path="res://ui/common/volume_slider/volume_slider.gd" id="7_8nk20"]
+[ext_resource type="Script" path="res://ui/common/hover_button.gd" id="8_46osx"]
+[ext_resource type="Script" path="res://ui/main_menu/screens/credits/credits.gd" id="9_xqk48"]
+[ext_resource type="PackedScene" uid="uid://g26blcd73i4d" path="res://ui/main_menu/components/credit_group/credit_group.tscn" id="10_e03di"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6epar"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygm3p"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -28,11 +39,219 @@ texture = ExtResource("2_qa7kv")
 [node name="TitleScreen" parent="." instance=ExtResource("2_v6v35")]
 layout_mode = 1
 
-[node name="Settings" parent="." instance=ExtResource("5_q443r")]
+[node name="Settings" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_dofgf")
+script = ExtResource("5_con1d")
 
-[node name="Credits" parent="." instance=ExtResource("5_jepee")]
+[node name="MarginContainer" type="MarginContainer" parent="Settings"]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 180
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 180
+theme_override_constants/margin_bottom = 180
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Settings/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("6_hqpwd")
+patch_margin_left = 134
+patch_margin_top = 53
+patch_margin_right = 53
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="Settings/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6epar")
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings/MarginContainer/VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Settings/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Settings/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+tick_count = 6
+ticks_on_borders = true
+script = ExtResource("7_8nk20")
+bus_name = "Music"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Settings/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Settings/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "Sound Effects"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Settings/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+tick_count = 6
+ticks_on_borders = true
+script = ExtResource("7_8nk20")
+bus_name = "SFX"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="BackButton" type="Button" parent="Settings/MarginContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(620, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BACK"
+script = ExtResource("8_46osx")
+
+[node name="Credits" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_dofgf")
+script = ExtResource("9_xqk48")
+
+[node name="MarginContainer" type="MarginContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 180
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 180
+theme_override_constants/margin_bottom = 180
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Credits/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("6_hqpwd")
+patch_margin_left = 134
+patch_margin_top = 53
+patch_margin_right = 53
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Credits/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="Credits/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ygm3p")
+
+[node name="MarginContainer" type="MarginContainer" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 64
+
+[node name="CreditGroup" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("10_e03di")]
+layout_mode = 2
+title = "Art & Design"
+names = Array[String](["raccudon", "Zimizeh"])
+
+[node name="CreditGroup2" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("10_e03di")]
+layout_mode = 2
+title = "Music & SFX"
+names = Array[String](["heyimalfi"])
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 64
+
+[node name="CreditGroup3" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("10_e03di")]
+layout_mode = 2
+title = "Programming"
+names = Array[String](["Zircon332", "ZeeHatcher"])
+
+[node name="CreditGroup4" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("10_e03di")]
+layout_mode = 2
+title = "Everything Else"
+names = Array[String](["DamyK"])
+
+[node name="MarginContainer2" type="MarginContainer" parent="Credits/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="BackButton" type="Button" parent="Credits/MarginContainer/VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(620, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BACK"
+script = ExtResource("8_46osx")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_frcrf")
@@ -45,4 +264,8 @@ bus = &"Music"
 [connection signal="settings_pressed" from="TitleScreen" to="." method="_on_title_screen_settings_pressed"]
 [connection signal="start_pressed" from="TitleScreen" to="." method="_on_title_screen_start_pressed"]
 [connection signal="back_pressed" from="Settings" to="." method="_on_settings_back_pressed"]
+[connection signal="focus_entered" from="Settings/MarginContainer/VBoxContainer/MarginContainer2/BackButton" to="Settings" method="_on_back_button_focus_entered" flags=18]
+[connection signal="pressed" from="Settings/MarginContainer/VBoxContainer/MarginContainer2/BackButton" to="Settings" method="_on_back_button_pressed" flags=18]
 [connection signal="back_pressed" from="Credits" to="." method="_on_credits_back_pressed"]
+[connection signal="focus_entered" from="Credits/MarginContainer/VBoxContainer/MarginContainer2/BackButton" to="Credits" method="_on_back_button_focus_entered" flags=18]
+[connection signal="pressed" from="Credits/MarginContainer/VBoxContainer/MarginContainer2/BackButton" to="Credits" method="_on_back_button_pressed" flags=18]
