@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://6ep0okxu5gu7"]
+
+[ext_resource type="Texture2D" uid="uid://dcwhtvvluy0dy" path="res://assets/art/filled_circle_small.png" id="1_6jfw8"]
+[ext_resource type="Script" path="res://misc/projectile_particle/projectile_particle.gd" id="1_uuqof"]
+
+[sub_resource type="Gradient" id="Gradient_km3hb"]
+offsets = PackedFloat32Array(0.780328, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="ProjectileParticle" type="CPUParticles2D"]
+emitting = false
+amount = 10
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_6jfw8")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 1000.0
+scale_amount_min = 0.2
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_km3hb")
+script = ExtResource("1_uuqof")
