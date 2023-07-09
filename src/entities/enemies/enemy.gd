@@ -5,6 +5,7 @@ signal dead
 
 @export var speed := 100.0
 @export var health := 1
+@export var death_audio: Resource
 
 var exp_orb = preload("res://entities/orb/orb.tscn")
 var target = null
@@ -39,8 +40,19 @@ func die() -> void:
 	var main = get_tree().root.get_node("Main")
 	main.call_deferred("add_child", orb)
 	orb.absorbed.connect(Callable(main, "_on_orb_absorbed"))
+	play_death_sound()
 	emit_signal("dead")
 	queue_free()
+
+
+func play_death_sound() -> void:
+	var death_audio_player = AudioStreamPlayer2D.new()
+	death_audio_player.stream = death_audio
+	death_audio_player.volume_db = -5
+	get_tree().root.add_child.call_deferred(death_audio_player)
+	death_audio_player.finished.connect(death_audio_player.queue_free)
+	await death_audio_player.ready
+	death_audio_player.play()
 
 
 func _on_hurt_box_body_entered(body):

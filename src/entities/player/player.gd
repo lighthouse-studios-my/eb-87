@@ -19,6 +19,7 @@ signal damaged
 @onready var _original_health := health
 @onready var _dash_audio := $DashAudio
 @onready var _hurt_audio := $HurtAudio
+@onready var _death_audio := $DeathAudio
 
 
 var _is_dodging := false
@@ -84,7 +85,9 @@ func hurt(damage) -> void:
 
 func die() -> void:
 	emit_signal("dead")
-	queue_free()
+	visible = false
+	_death_audio.play()
+	set_process(false)
 
 
 func heal() -> void:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://dxuqlkww3rxwv"]
+[gd_scene load_steps=21 format=3 uid="uid://dxuqlkww3rxwv"]
 
 [ext_resource type="Script" path="res://entities/enemies/enemy.gd" id="1_it6d5"]
 [ext_resource type="Texture2D" uid="uid://bwu738w1tdml2" path="res://assets/art/enemy.png" id="2_bxp8p"]
 [ext_resource type="Texture2D" uid="uid://dsvniv5iirn3i" path="res://assets/art/Speedboi.png" id="3_46qhi"]
 [ext_resource type="Texture2D" uid="uid://ciicgsinkv88l" path="res://assets/art/Tankyboi.png" id="4_g22ff"]
+[ext_resource type="AudioStream" uid="uid://b2i1ajnt4kskp" path="res://assets/sfx/Death_sounds_-_Part_2.wav" id="5_seutf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p8qk6"]
 atlas = ExtResource("2_bxp8p")
@@ -118,6 +119,7 @@ radius = 22.0227
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_it6d5")
+death_audio = ExtResource("5_seutf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.151429, 0.151429)
@@ -136,7 +138,6 @@ rotation = 0.0256364
 shape = SubResource("CircleShape2D_q6kug")
 
 [node name="SpawnAudio" type="AudioStreamPlayer2D" parent="."]
-volume_db = -20.238
 autoplay = true
 bus = &"SFX"
 

@@ -21,10 +21,12 @@ func refocus() -> void:
 
 func _on_button_pressed(button: String) -> void:
 	emit_signal("%s_pressed" % button)
+	UiSfx.play_ui_press()
 
 
 func _on_button_focus_entered(control: Control) -> void:
 	_cursor.point_at(control)
+	UiSfx.play_ui_select()
 
 
 func _on_buttons_sort_children():
