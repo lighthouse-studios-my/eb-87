@@ -7,5 +7,5 @@ extends Resource
 
 
 func apply(turret: Node2D) -> void:
-	turret.max_spread_angle_degrees += 2
+	turret.max_spread_angle_degrees += 10
 	turret.projectile_count += 1

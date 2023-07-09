@@ -10,7 +10,7 @@ size = Vector2(144.876, 110.323)
 
 [node name="Enemy" instance=ExtResource("1_lqbvg")]
 speed = 50.0
-health = 5
+health = 3
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 scale = Vector2(0.211429, 0.211429)

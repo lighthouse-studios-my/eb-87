@@ -12,8 +12,8 @@ extends Node2D
 
 var level := 1
 var exp_points := 0
-var exp_required := 5
-var exp_scale := 5
+var exp_required := 3
+var exp_scale := 2
 
 var _pause_stack := 0
 
@@ -101,4 +101,4 @@ func _on_pause_screen_paused():
 
 func _on_difficulty_timer_timeout():
 	enemy_spawn_cooldown -= 0.15
-	enemy_spawn_cooldown = max(enemy_spawn_cooldown, 0.2)
+	enemy_spawn_cooldown = max(enemy_spawn_cooldown, 0.5)
