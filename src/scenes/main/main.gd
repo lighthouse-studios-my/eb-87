@@ -27,6 +27,7 @@ var _pause_stack := 0
 func _ready():
 	enemy_spawn_timer.wait_time = enemy_spawn_cooldown
 	MusicPlayer.loop = "game_1"
+	turret.disable()
 
 
 func _on_orb_absorbed(exp) -> void:
@@ -154,3 +155,7 @@ func _on_enemy_dead(enemy: Node2D):
 func _on_spawner_spawned(entity):
 	add_child(entity)
 	entity.dead.connect(_on_enemy_dead.bind(entity))
+
+
+func _on_start_timer_timeout():
+	turret.enable()
