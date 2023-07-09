@@ -1,15 +1,33 @@
-[gd_scene load_steps=16 format=3 uid="uid://447ajmt7qbhi"]
+[gd_scene load_steps=22 format=3 uid="uid://447ajmt7qbhi"]
 
 [ext_resource type="PackedScene" uid="uid://bc5351fqfgj0l" path="res://entities/player/player.tscn" id="1_an0ov"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_mgw4m"]
 [ext_resource type="Texture2D" uid="uid://cwdy2a6ptudmq" path="res://assets/art/bg_tile.png" id="2_0eov5"]
 [ext_resource type="PackedScene" uid="uid://dj8uf3b6gj6tb" path="res://misc/spawner/spawner.tscn" id="2_jthal"]
+[ext_resource type="Texture2D" uid="uid://doaw7egkswn1g" path="res://assets/ui/Tutorial.png" id="3_0e8h0"]
+[ext_resource type="Script" path="res://scenes/main/tutorial.gd" id="3_jswhy"]
 [ext_resource type="PackedScene" uid="uid://bxwb8qt466bui" path="res://entities/turret/turret.tscn" id="4_vglex"]
 [ext_resource type="PackedScene" uid="uid://dtnh3g1dag1pb" path="res://ui/upgrade_menu/upgrade_menu.tscn" id="5_0hhqo"]
 [ext_resource type="PackedScene" uid="uid://dc0siwbmb2hux" path="res://ui/pause/pause.tscn" id="6_fn6hx"]
 [ext_resource type="PackedScene" uid="uid://b36i8krjdqqnb" path="res://ui/health_bar/health_bar.tscn" id="6_oh4in"]
 [ext_resource type="PackedScene" uid="uid://cqalm5s346ssj" path="res://ui/timer/timer.tscn" id="7_0pd65"]
 [ext_resource type="Script" path="res://misc/camera/camera.gd" id="8_v1jqe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar6d0"]
+atlas = ExtResource("3_0e8h0")
+region = Rect2(271, 411, 776, 424)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqp85"]
+atlas = ExtResource("3_0e8h0")
+region = Rect2(1585, 411, 776, 424)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x4nm"]
+atlas = ExtResource("3_0e8h0")
+region = Rect2(177, 1043, 1447, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxlkj"]
+atlas = ExtResource("3_0e8h0")
+region = Rect2(1912, 1044, 414, 244)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la225"]
 bg_color = Color(0.643137, 0.772549, 0.929412, 0)
@@ -49,6 +67,66 @@ texture = ExtResource("2_0eov5")
 region_enabled = true
 region_rect = Rect2(0, 0, 2176, 2176)
 
+[node name="Tutorial" type="Node2D" parent="."]
+script = ExtResource("3_jswhy")
+
+[node name="Move" type="Node2D" parent="Tutorial"]
+position = Vector2(144, 24)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial/Move"]
+position = Vector2(512, 696)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_ar6d0")
+
+[node name="Label" type="Label" parent="Tutorial/Move"]
+offset_left = 640.0
+offset_top = 688.0
+offset_right = 682.0
+offset_bottom = 727.0
+text = "OR"
+
+[node name="Sprite2D2" type="Sprite2D" parent="Tutorial/Move"]
+position = Vector2(816, 696)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_eqp85")
+
+[node name="Label2" type="Label" parent="Tutorial/Move"]
+offset_left = 592.0
+offset_top = 760.0
+offset_right = 727.0
+offset_bottom = 799.0
+text = "TO MOVE"
+
+[node name="Dodge" type="Node2D" parent="Tutorial"]
+position = Vector2(144, 24)
+
+[node name="Dodge" type="Sprite2D" parent="Tutorial/Dodge"]
+position = Vector2(664, 928)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_6x4nm")
+
+[node name="Label3" type="Label" parent="Tutorial/Dodge"]
+offset_left = 584.0
+offset_top = 968.0
+offset_right = 737.0
+offset_bottom = 1007.0
+text = "TO DODGE"
+
+[node name="Pause" type="Node2D" parent="Tutorial"]
+position = Vector2(144, 24)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Tutorial/Pause"]
+position = Vector2(1056, 806.5)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_vxlkj")
+
+[node name="Label3" type="Label" parent="Tutorial/Pause"]
+offset_left = 984.0
+offset_top = 846.5
+offset_right = 1148.0
+offset_bottom = 885.5
+text = "TO PAUSE"
+
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
@@ -66,7 +144,7 @@ projectile_size_scale = 2.0
 remote_path = NodePath("../../Camera2D")
 
 [node name="Player" parent="." instance=ExtResource("1_an0ov")]
-position = Vector2(962, 1005)
+position = Vector2(960, 1152)
 
 [node name="Spawner" parent="." instance=ExtResource("2_jthal")]
 
