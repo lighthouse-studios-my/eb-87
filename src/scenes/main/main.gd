@@ -105,6 +105,7 @@ func _on_player_dead():
 	$CanvasLayer.add_child(gameover)
 	$CanvasLayer/PauseScreen.queue_free()
 	camera.shake(50.0)
+	health_bar.health = player.health
 	get_tree().paused = true
 
 
