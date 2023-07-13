@@ -4,35 +4,27 @@ extends Control
 signal restart_pressed
 signal back_pressed
 
-@onready var _buttons := $CenterContainer/VBoxContainer/Buttons.get_children()
-@onready var _cursor := $Cursor
-@onready var _first_button := _buttons[0]
 @onready var leaderboard := %Leaderboard
 @onready var stats_list := $Stats/StatsList
 
-
-func _ready() -> void:
-	for button in _buttons:
-		button.focus_entered.connect(_on_button_focus_entered.bind(button))
-	refocus()
+var allow_input = false
 
 
-func refocus() -> void:
-	_first_button.grab_focus()
+func _unhandled_input(event):
+	if not allow_input: return
+	
+	if event.is_action_pressed("restart"):
+		emit_signal("restart_pressed")
+		UiSfx.play_ui_press()
+	if event.is_action_pressed("pause"):
+		emit_signal("back_pressed")
+		UiSfx.play_ui_press()
+
 
 
 func _on_button_pressed(button: String) -> void:
 	emit_signal("%s_pressed" % button)
 	UiSfx.play_ui_press()
-
-
-func _on_button_focus_entered(control: Control) -> void:
-	_cursor.point_at(control)
-	UiSfx.play_ui_select()
-
-
-func _on_buttons_sort_children():
-	_cursor.place_at(_first_button)
 
 
 func show_stats(stats) -> void:
@@ -47,3 +39,7 @@ func add_stat(text: String, value: int) -> void:
 	var label = Label.new()
 	label.text = text + " : " + str(value)
 	stats_list.add_child(label)
+
+
+func _on_animation_player_animation_finished(anim_name):
+	allow_input = true

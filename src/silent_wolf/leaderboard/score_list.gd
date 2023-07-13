@@ -9,6 +9,7 @@ extends VBoxContainer
 
 
 func _ready():
+	custom_minimum_size = size
 	leaderboard_manager.score_submitted.connect(render)
 	render()
 

@@ -1,12 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0y8auhbdkbi2"]
+[gd_scene load_steps=11 format=3 uid="uid://c0y8auhbdkbi2"]
 
 [ext_resource type="Script" path="res://silent_wolf/leaderboard/leaderboard.gd" id="1_3p0sl"]
 [ext_resource type="Script" path="res://silent_wolf/leaderboard/score_list.gd" id="1_364uh"]
+[ext_resource type="Theme" uid="uid://3aoqd16s7q7" path="res://silent_wolf/leaderboard/leaderboard.tres" id="1_iugsc"]
 [ext_resource type="Script" path="res://silent_wolf/leaderboard/leaderboard_manager.gd" id="2_dkh76"]
 [ext_resource type="PackedScene" uid="uid://xc0kxvlh4c7s" path="res://silent_wolf/leaderboard/score_row/score_row.tscn" id="3_6h41o"]
 [ext_resource type="Script" path="res://silent_wolf/leaderboard/submit_score_button.gd" id="3_ov2i4"]
 [ext_resource type="Script" path="res://silent_wolf/leaderboard/submit_box.gd" id="5_c328f"]
 [ext_resource type="Script" path="res://silent_wolf/leaderboard/name_text_edit.gd" id="6_m5niv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_336mr"]
+font_size = 52
+
+[sub_resource type="LabelSettings" id="LabelSettings_nimmh"]
+font_size = 50
 
 [node name="Leaderboard" type="Control"]
 layout_mode = 3
@@ -15,72 +22,129 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_iugsc")
 script = ExtResource("1_3p0sl")
 
 [node name="LeaderboardManager" type="Node" parent="."]
 script = ExtResource("2_dkh76")
 
-[node name="ScoreList" type="VBoxContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.0
+offset_bottom = -178.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="ScoreList" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 25.0
-offset_top = 415.0
-offset_right = 414.0
-offset_bottom = 685.0
 script = ExtResource("1_364uh")
-leaderboard_manager_path = NodePath("../LeaderboardManager")
+leaderboard_manager_path = NodePath("../../../LeaderboardManager")
 
-[node name="Label" type="Label" parent="ScoreList"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/ScoreList"]
 layout_mode = 2
-text = "Leaderboard"
+text = "    Leaderboard    "
+label_settings = SubResource("LabelSettings_336mr")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Scores" type="VBoxContainer" parent="ScoreList"]
+[node name="Scores" type="VBoxContainer" parent="CenterContainer/VBoxContainer/ScoreList"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ScoreList/Scores"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/ScoreList/Scores"]
 layout_mode = 2
 text = "Loading..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ScoreRow" parent="ScoreList/Scores" instance=ExtResource("3_6h41o")]
+[node name="ScoreRow" parent="CenterContainer/VBoxContainer/ScoreList/Scores" instance=ExtResource("3_6h41o")]
 layout_mode = 2
 
-[node name="SubmitBox" type="VBoxContainer" parent="."]
+[node name="ScoreRow2" parent="CenterContainer/VBoxContainer/ScoreList/Scores" instance=ExtResource("3_6h41o")]
+layout_mode = 2
+
+[node name="ScoreRow3" parent="CenterContainer/VBoxContainer/ScoreList/Scores" instance=ExtResource("3_6h41o")]
+layout_mode = 2
+
+[node name="ScoreRow4" parent="CenterContainer/VBoxContainer/ScoreList/Scores" instance=ExtResource("3_6h41o")]
+layout_mode = 2
+
+[node name="ScoreRow5" parent="CenterContainer/VBoxContainer/ScoreList/Scores" instance=ExtResource("3_6h41o")]
+layout_mode = 2
+
+[node name="ScoreRow6" parent="CenterContainer/VBoxContainer/ScoreList/Scores" instance=ExtResource("3_6h41o")]
+layout_mode = 2
+
+[node name="ScoreRow7" parent="CenterContainer/VBoxContainer/ScoreList/Scores" instance=ExtResource("3_6h41o")]
+layout_mode = 2
+
+[node name="ScoreRow8" parent="CenterContainer/VBoxContainer/ScoreList/Scores" instance=ExtResource("3_6h41o")]
+layout_mode = 2
+
+[node name="ScoreRow9" parent="CenterContainer/VBoxContainer/ScoreList/Scores" instance=ExtResource("3_6h41o")]
+layout_mode = 2
+
+[node name="ScoreRow10" parent="CenterContainer/VBoxContainer/ScoreList/Scores" instance=ExtResource("3_6h41o")]
+layout_mode = 2
+
+[node name="SubmitBox" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 21.0
-offset_top = 175.0
-offset_right = 417.0
-offset_bottom = 306.0
 script = ExtResource("5_c328f")
 
-[node name="Label" type="Label" parent="SubmitBox"]
-layout_mode = 2
-text = "Your Score Is:
-"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SubmitBox"]
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer/SubmitBox"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SubmitBox/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/SubmitBox/CenterContainer2"]
 layout_mode = 2
-text = "Name:"
 
-[node name="NameTextEdit" type="TextEdit" parent="SubmitBox/HBoxContainer"]
-custom_minimum_size = Vector2(300, 40)
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/SubmitBox/CenterContainer2/HBoxContainer"]
 layout_mode = 2
+text = "Your Score Is:  "
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ScoreLabel" type="Label" parent="CenterContainer/VBoxContainer/SubmitBox/CenterContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "100"
+label_settings = SubResource("LabelSettings_nimmh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/SubmitBox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="NameTextEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/SubmitBox/CenterContainer"]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+theme = ExtResource("1_iugsc")
 placeholder_text = "Enter Your Name"
+alignment = 1
+max_length = 10
+expand_to_text_length = true
 context_menu_enabled = false
 shortcut_keys_enabled = false
 script = ExtResource("6_m5niv")
 
-[node name="SubmitButton" type="Button" parent="SubmitBox"]
+[node name="SubmitButton" type="Button" parent="CenterContainer/VBoxContainer/SubmitBox"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Submit"
+text = "Press Enter to Submit"
 script = ExtResource("3_ov2i4")
-name_text_edit_path = NodePath("../HBoxContainer/NameTextEdit")
-leaderboard_manager_path = NodePath("../../LeaderboardManager")
+name_text_edit_path = NodePath("../CenterContainer/NameTextEdit")
+leaderboard_manager_path = NodePath("../../../../LeaderboardManager")
 
-[connection signal="text_changed" from="SubmitBox/HBoxContainer/NameTextEdit" to="SubmitBox/HBoxContainer/NameTextEdit" method="_on_text_changed"]
-[connection signal="pressed" from="SubmitBox/SubmitButton" to="SubmitBox/HBoxContainer/NameTextEdit" method="_on_submit_button_pressed"]
-[connection signal="pressed" from="SubmitBox/SubmitButton" to="SubmitBox/SubmitButton" method="_on_pressed"]
+[connection signal="text_submitted" from="CenterContainer/VBoxContainer/SubmitBox/CenterContainer/NameTextEdit" to="CenterContainer/VBoxContainer/SubmitBox/SubmitButton" method="_on_name_text_edit_text_submitted"]
+[connection signal="visibility_changed" from="CenterContainer/VBoxContainer/SubmitBox/CenterContainer/NameTextEdit" to="CenterContainer/VBoxContainer/SubmitBox/CenterContainer/NameTextEdit" method="_on_visibility_changed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/SubmitBox/SubmitButton" to="CenterContainer/VBoxContainer/SubmitBox/SubmitButton" method="_on_pressed"]
+[connection signal="score_submitting" from="CenterContainer/VBoxContainer/SubmitBox/SubmitButton" to="CenterContainer/VBoxContainer/SubmitBox/CenterContainer/NameTextEdit" method="_on_submit_button_score_submitting"]

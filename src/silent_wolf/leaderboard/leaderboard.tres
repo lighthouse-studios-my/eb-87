@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://3aoqd16s7q7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pi27x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4lcku"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m7ewq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0xrcq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fffa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glw4o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8fbqr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5l7rr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oar2m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q1mrn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t18nt"]
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxEmpty_pi27x")
+Button/styles/focus = SubResource("StyleBoxEmpty_4lcku")
+Button/styles/hover = SubResource("StyleBoxEmpty_m7ewq")
+Button/styles/normal = SubResource("StyleBoxEmpty_0xrcq")
+Button/styles/pressed = SubResource("StyleBoxEmpty_0fffa")
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_glw4o")
+LineEdit/styles/normal = SubResource("StyleBoxEmpty_8fbqr")
+LineEdit/styles/read_only = SubResource("StyleBoxEmpty_5l7rr")
+TextEdit/styles/focus = SubResource("StyleBoxEmpty_oar2m")
+TextEdit/styles/normal = SubResource("StyleBoxEmpty_q1mrn")
+TextEdit/styles/read_only = SubResource("StyleBoxEmpty_t18nt")
