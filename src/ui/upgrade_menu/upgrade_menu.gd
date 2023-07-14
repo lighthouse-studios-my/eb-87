@@ -14,6 +14,7 @@ var all_upgrades := [
 
 @onready var _buttons := %Buttons
 @onready var _show_audio := $ShowAudio
+@onready var _debounce := $DebounceTimer
 
 var _last_selected: Control
 
@@ -28,6 +29,7 @@ func show_upgrades() -> void:
 	var first: Control
 	for upgrade in upgrades:
 		var button := _create_button(upgrade)
+		button.can_select = false
 		button.focus_entered.connect(_on_button_focus_entered.bind(button))
 		_buttons.add_child(button)
 		if not first:
@@ -35,7 +37,8 @@ func show_upgrades() -> void:
 	first.grab_focus()
 		
 	visible = true
-	_show_audio.play() 
+	_show_audio.play()
+	_debounce.start()
 
 
 func refocus() -> void:
@@ -80,3 +83,8 @@ func _on_button_pressed(upgrade: Resource) -> void:
 
 func _on_button_focus_entered(button: Control) -> void:
 	_last_selected = button
+
+
+func _on_debounce_timer_timeout():
+	for button in _buttons.get_children():
+		button.can_select = true

@@ -10,11 +10,13 @@ var upgrade : set = _set_upgrade
 @onready var _description := $Description
 @onready var _animation := $AnimationPlayer
 
+var can_select := true
+
 var is_selected := false
 
 
 func _gui_input(event):
-	if event.is_action_pressed("ui_accept") and has_focus():
+	if can_select and event.is_action_pressed("ui_accept") and has_focus():
 		select_upgrade()
 
 
