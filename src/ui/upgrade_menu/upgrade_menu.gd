@@ -15,10 +15,11 @@ var all_upgrades := [
 @onready var _buttons := %Buttons
 @onready var _show_audio := $ShowAudio
 
+var _last_selected: Control
+
 
 func _ready() -> void:
 	visible = false
-#	show_upgrades()
 
 
 func show_upgrades() -> void:
@@ -27,6 +28,7 @@ func show_upgrades() -> void:
 	var first: Control
 	for upgrade in upgrades:
 		var button := _create_button(upgrade)
+		button.focus_entered.connect(_on_button_focus_entered.bind(button))
 		_buttons.add_child(button)
 		if not first:
 			first = button
@@ -34,6 +36,18 @@ func show_upgrades() -> void:
 		
 	visible = true
 	_show_audio.play() 
+
+
+func refocus() -> void:
+	var ui: Control
+	
+	if _last_selected:
+		ui = _last_selected
+	elif _buttons.get_child_count() > 0:
+		ui = _buttons.get_child(0)
+	
+	if ui:
+		ui.grab_focus()
 
 
 func _clear_buttons() -> void:
@@ -62,3 +76,7 @@ func _on_button_pressed(upgrade: Resource) -> void:
 	emit_signal("upgrade_selected", upgrade)
 	UiSfx.play_upgrade_press()
 	visible = false
+
+
+func _on_button_focus_entered(button: Control) -> void:
+	_last_selected = button

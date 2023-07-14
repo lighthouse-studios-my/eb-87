@@ -97,6 +97,9 @@ func _unpause():
 	_pause_stack -= 1
 	if _pause_stack <= 0:
 		get_tree().paused = false
+	
+	if upgrade_menu.visible:
+		upgrade_menu.refocus()
 
 
 func _on_enemy_spawn_timer_timeout():
