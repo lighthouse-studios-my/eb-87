@@ -18,14 +18,20 @@ var all_upgrades := [
 
 func _ready() -> void:
 	visible = false
+#	show_upgrades()
 
 
 func show_upgrades() -> void:
 	_clear_buttons()
 	var upgrades := _randomize_upgrades()
+	var first: Control
 	for upgrade in upgrades:
 		var button := _create_button(upgrade)
 		_buttons.add_child(button)
+		if not first:
+			first = button
+	first.grab_focus()
+		
 	visible = true
 	_show_audio.play() 
 

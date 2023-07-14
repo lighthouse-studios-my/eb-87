@@ -13,6 +13,11 @@ var upgrade : set = _set_upgrade
 var is_selected := false
 
 
+func _gui_input(event):
+	if event.is_action_pressed("ui_accept") and has_focus():
+		select_upgrade()
+
+
 func _set_upgrade(upg) -> void:
 	upgrade = upg
 	if not _button:
@@ -38,12 +43,16 @@ func select_upgrade():
 
 
 func _on_texture_button_mouse_entered():
-	select()
-
-
-func _on_texture_button_mouse_exited():
-	deselect()
+	grab_focus()
 
 
 func _on_texture_button_pressed():
 	select_upgrade()
+
+
+func _on_focus_entered():
+	select()
+
+
+func _on_focus_exited():
+	deselect()
