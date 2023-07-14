@@ -42,7 +42,6 @@ func _ready():
 	turret.disable()
 	enemy_spawn_timer.stop()
 	game_timer.stop()
-	set_physics_process(false) # Stop turret aim before game start
 
 
 func _unhandled_input(event):
@@ -210,5 +209,5 @@ func _on_started() -> void:
 	turret.enable()
 	enemy_spawn_timer.start()
 	game_timer.start()
-	set_physics_process(true)
 	disconnect("started", _on_started)
+	$Tutorial.erase()
