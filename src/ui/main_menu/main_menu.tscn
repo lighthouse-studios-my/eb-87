@@ -207,37 +207,37 @@ theme_override_constants/margin_bottom = 20
 [node name="HBoxContainer" type="HBoxContainer" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme_override_constants/separation = 64
-
-[node name="CreditGroup" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("10_e03di")]
-layout_mode = 2
-title = "Art & Design"
-names = Array[String](["raccudon", "Zimizeh"])
-
-[node name="CreditGroup2" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("10_e03di")]
-layout_mode = 2
-title = "Music & SFX"
-names = Array[String](["heyimalfi"])
-
 [node name="VBoxContainer2" type="VBoxContainer" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_constants/separation = 64
 
+[node name="CreditGroup4" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("10_e03di")]
+layout_mode = 2
+title = "Game Director"
+names = Array[String](["DamyK"])
+
 [node name="CreditGroup3" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("10_e03di")]
 layout_mode = 2
 title = "Programming"
 names = Array[String](["Zircon332", "ZeeHatcher"])
 
-[node name="CreditGroup4" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("10_e03di")]
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-title = "Everything Else"
-names = Array[String](["DamyK"])
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 64
+
+[node name="CreditGroup2" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("10_e03di")]
+layout_mode = 2
+title = "Music & SFX"
+names = Array[String](["heyimalfi"])
+
+[node name="CreditGroup" parent="Credits/MarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("10_e03di")]
+layout_mode = 2
+title = "Art & Design"
+names = Array[String](["raccudon", "Zimizeh"])
 
 [node name="MarginContainer2" type="MarginContainer" parent="Credits/MarginContainer/VBoxContainer"]
 layout_mode = 2
