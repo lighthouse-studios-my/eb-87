@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bc5351fqfgj0l"]
+[gd_scene load_steps=22 format=3 uid="uid://bc5351fqfgj0l"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_vkbwb"]
 [ext_resource type="Texture2D" uid="uid://488mmp6xw4sj" path="res://assets/art/mcsprite350px.png" id="2_alvif"]
@@ -113,6 +113,10 @@ animations = [{
 radius = 16.0
 height = 58.0
 
+[sub_resource type="Gradient" id="Gradient_sh4jh"]
+offsets = PackedFloat32Array(0.527869, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 17
 collision_mask = 40
@@ -158,20 +162,22 @@ bus = &"SFX"
 current = true
 
 [node name="HealParticles" type="CPUParticles2D" parent="."]
+z_index = 1
 emitting = false
 amount = 5
 one_shot = true
 preprocess = 0.1
-explosiveness = 0.25
+explosiveness = 0.26
 texture = ExtResource("7_grbeg")
 emission_shape = 2
 emission_sphere_radius = 25.0
 direction = Vector2(0, -1)
 spread = 0.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 100.0
-initial_velocity_max = 100.0
-color = Color(0.215686, 0.72549, 0.235294, 1)
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
+color = Color(0.270588, 1, 0.305882, 1)
+color_ramp = SubResource("Gradient_sh4jh")
 
 [connection signal="timeout" from="DodgeDurationTimer" to="." method="_on_dodge_duration_timer_timeout"]
 [connection signal="timeout" from="DodgeInvulDurationTimer" to="." method="_on_dodge_invul_duration_timer_timeout"]
