@@ -3,7 +3,7 @@ extends Control
 
 signal back_pressed
 
-@onready var _back_button := %BackButton
+@onready var _back_button := $MarginContainer/VBoxContainer/MarginContainer2/BackButton
 
 
 func _ready() -> void:
