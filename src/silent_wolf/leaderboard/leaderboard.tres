@@ -1,4 +1,7 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://3aoqd16s7q7"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://3aoqd16s7q7"]
+
+[ext_resource type="FontFile" uid="uid://dnwi3ekojvg0b" path="res://addons/silent_wolf/assets/fonts/Dosis v1.7/Dosis-SemiBold.ttf" id="1_7j84i"]
+[ext_resource type="FontFile" uid="uid://bqe3qi4f6r1yh" path="res://addons/silent_wolf/assets/fonts/Dosis v1.7/Dosis-Bold.ttf" id="2_08vj8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pi27x"]
 
@@ -10,11 +13,14 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fffa"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glw4o"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2miql"]
+bg_color = Color(0.258824, 0.278431, 0.435294, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8fbqr"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8re2e"]
+bg_color = Color(0.258824, 0.278431, 0.435294, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5l7rr"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4d13"]
+bg_color = Color(0.258824, 0.278431, 0.435294, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oar2m"]
 
@@ -23,14 +29,25 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t18nt"]
 
 [resource]
+default_font = ExtResource("2_08vj8")
+Button/colors/font_color = Color(0.85098, 0.32549, 0.737255, 1)
 Button/styles/disabled = SubResource("StyleBoxEmpty_pi27x")
 Button/styles/focus = SubResource("StyleBoxEmpty_4lcku")
 Button/styles/hover = SubResource("StyleBoxEmpty_m7ewq")
 Button/styles/normal = SubResource("StyleBoxEmpty_0xrcq")
 Button/styles/pressed = SubResource("StyleBoxEmpty_0fffa")
-LineEdit/styles/focus = SubResource("StyleBoxEmpty_glw4o")
-LineEdit/styles/normal = SubResource("StyleBoxEmpty_8fbqr")
-LineEdit/styles/read_only = SubResource("StyleBoxEmpty_5l7rr")
+Label/colors/font_color = Color(0.85098, 0.32549, 0.737255, 1)
+Label/fonts/font = ExtResource("1_7j84i")
+Label2/colors/Color = Color(0.32549, 0.768627, 0.85098, 1)
+LineEdit/colors/caret_color = Color(0.85098, 0.32549, 0.737255, 1)
+LineEdit/colors/font_color = Color(0.32549, 0.768627, 0.85098, 1)
+LineEdit/colors/font_placeholder_color = Color(0.32549, 0.768627, 0.85098, 1)
+LineEdit/colors/font_selected_color = Color(0.32549, 0.768627, 0.85098, 1)
+LineEdit/colors/selection_color = Color(0.32549, 0.768627, 0.85098, 1)
+LineEdit/constants/caret_width = 5
+LineEdit/styles/focus = SubResource("StyleBoxFlat_2miql")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_8re2e")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_s4d13")
 TextEdit/styles/focus = SubResource("StyleBoxEmpty_oar2m")
 TextEdit/styles/normal = SubResource("StyleBoxEmpty_q1mrn")
 TextEdit/styles/read_only = SubResource("StyleBoxEmpty_t18nt")
