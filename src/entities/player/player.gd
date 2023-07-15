@@ -19,6 +19,7 @@ signal damaged
 @onready var invulnerability_duration_timer := $InvulnerabilityCooldownTimer
 @onready var _dodge_invul_duration_timer := $DodgeInvulDurationTimer
 @onready var _animated_sprite := $AnimatedSprite2D
+@onready var _dodge_particles := $DodgeParticles
 
 @onready var _original_health := health
 @onready var _dash_audio := $DashAudio
@@ -66,6 +67,7 @@ func _dodge() -> void:
 	if _dodge_direction == Vector2.ZERO: return
 	
 	_is_dodging = true
+	_dodge_particles.emitting = true
 	_can_dodge = false
 	_disable_collisions()
 	_dodge_duration_timer.start()
@@ -138,4 +140,5 @@ func _on_invulnerability_cooldown_timer_timeout():
 
 
 func _on_dodge_invul_duration_timer_timeout():
+	_dodge_particles.emitting = false
 	_enable_collision()

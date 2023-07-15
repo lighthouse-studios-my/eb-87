@@ -1,10 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://bc5351fqfgj0l"]
+[gd_scene load_steps=22 format=3 uid="uid://bc5351fqfgj0l"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_vkbwb"]
 [ext_resource type="Texture2D" uid="uid://488mmp6xw4sj" path="res://assets/art/mcsprite350px.png" id="2_alvif"]
 [ext_resource type="AudioStream" uid="uid://cydwqwf2mp7tu" path="res://assets/sfx/dash.wav" id="3_2yyid"]
 [ext_resource type="AudioStream" uid="uid://dssm2lhs5x7rq" path="res://assets/sfx/damage_sounds_-_Part_1.wav" id="4_1vwgn"]
 [ext_resource type="AudioStream" uid="uid://cs0gxicnnqt6f" path="res://assets/sfx/damage_sounds_-_Part_4.wav" id="5_ke3um"]
+[ext_resource type="Texture2D" uid="uid://luabt4ggro0w" path="res://assets/art/mcidle.png" id="6_mi133"]
+
+[sub_resource type="Gradient" id="Gradient_hypwk"]
+colors = PackedColorArray(0.341176, 0.913725, 0.556863, 0.533333, 0, 1, 1, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kn2tt"]
 atlas = ExtResource("2_alvif")
@@ -117,6 +121,17 @@ collision_layer = 17
 collision_mask = 40
 script = ExtResource("1_vkbwb")
 death_audio = ExtResource("5_ke3um")
+
+[node name="DodgeParticles" type="CPUParticles2D" parent="."]
+position = Vector2(1, -10)
+emitting = false
+amount = 7
+lifetime = 0.5
+texture = ExtResource("6_mi133")
+gravity = Vector2(0, 0)
+scale_amount_min = 0.39
+scale_amount_max = 0.39
+color_ramp = SubResource("Gradient_hypwk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(6, -28)
