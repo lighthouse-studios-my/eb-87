@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl46nbtecm46"]
+
+[ext_resource type="Texture2D" uid="uid://luabt4ggro0w" path="res://assets/art/mcidle.png" id="1_oyrda"]
+[ext_resource type="Script" path="res://misc/dodge_particles/dodge_particles.gd" id="2_rdp1r"]
+
+[sub_resource type="Gradient" id="Gradient_hypwk"]
+colors = PackedColorArray(0.341176, 0.913725, 0.556863, 0.533333, 0, 1, 1, 0)
+
+[node name="DodgeParticles" type="CPUParticles2D"]
+position = Vector2(1, -10)
+emitting = false
+amount = 7
+lifetime = 0.5
+texture = ExtResource("1_oyrda")
+gravity = Vector2(0, 0)
+scale_amount_min = 0.39
+scale_amount_max = 0.39
+color_ramp = SubResource("Gradient_hypwk")
+script = ExtResource("2_rdp1r")

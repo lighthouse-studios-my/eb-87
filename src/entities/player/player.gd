@@ -4,6 +4,10 @@ extends CharacterBody2D
 signal dead
 signal damaged
 
+const CharacterTexture := preload("res://assets/art/mcidle.png")
+const CharacterFlippedTexture := preload("res://assets/art/mcidle_flip.png")
+const DodgeParticlesScene := preload("res://misc/dodge_particles/dodge_particles.tscn")
+
 @export var speed = 400
 @export var dodge_speed = 1000
 @export var health := 3
@@ -19,7 +23,6 @@ signal damaged
 @onready var invulnerability_duration_timer := $InvulnerabilityCooldownTimer
 @onready var _dodge_invul_duration_timer := $DodgeInvulDurationTimer
 @onready var _animated_sprite := $AnimatedSprite2D
-@onready var _dodge_particles := $DodgeParticles
 @onready var _heal_particles := $HealParticles
 
 @onready var _original_health := health
@@ -72,8 +75,13 @@ func _dodge() -> void:
 	if _dodge_direction == Vector2.ZERO:
 		_dodge_direction = _last_direction
 	
+	var texture := CharacterFlippedTexture if _dodge_direction.x < 0 else CharacterTexture
+	var dodge_particles := DodgeParticlesScene.instantiate()
+	dodge_particles.texture = texture
+	dodge_particles.duration = dodge_duration + dodge_invul_duration
+	add_child(dodge_particles)
+	
 	_is_dodging = true
-	_dodge_particles.emitting = true
 	_can_dodge = false
 	_disable_collisions()
 	_dodge_duration_timer.start()
@@ -147,5 +155,4 @@ func _on_invulnerability_cooldown_timer_timeout():
 
 
 func _on_dodge_invul_duration_timer_timeout():
-	_dodge_particles.emitting = false
 	_enable_collision()
