@@ -18,6 +18,7 @@ const ProjectileParticleScene := preload("res://misc/projectile_particle/project
 @onready var camera := $Camera2D
 @onready var health_bar := %HealthBar
 @onready var game_timer = %Timer
+@onready var bg := $BG
 
 var level := 1
 var exp_points := 0
@@ -184,6 +185,7 @@ func _on_player_damaged():
 	camera.shake(20.0)
 	health_bar.health = player.health
 	stats["damage"] += 1
+	bg.flash()
 
 
 func _on_enemy_dead(enemy: Node2D):
