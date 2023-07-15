@@ -129,6 +129,11 @@ func _on_upgrade_menu_upgrade_selected(upgrade):
 	player.heal()
 	health_bar.health = player.health
 	
+	# Debounce player input so they don't dodge after selecting an upgrade
+	player.set_process_unhandled_input(false)
+	get_tree().create_timer(0.1).timeout.connect(func ():
+		player.set_process_unhandled_input(true))
+	
 	_unpause()
 
 
