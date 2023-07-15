@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxwb8qt466bui"]
+[gd_scene load_steps=6 format=3 uid="uid://bxwb8qt466bui"]
 
 [ext_resource type="Script" path="res://entities/turret/turret.gd" id="1_78ulu"]
-[ext_resource type="Texture2D" uid="uid://dp2rf1qv6188o" path="res://assets/art/Turret draft_350px.png" id="2_vva2n"]
+[ext_resource type="Texture2D" uid="uid://bnl37mw735ars" path="res://assets/art/Turret draft_350px_v2.png" id="3_ukhur"]
 [ext_resource type="AudioStream" uid="uid://mdv4jg7frwmy" path="res://assets/sfx/gun_sounds.mp3" id="3_v2pmh"]
+[ext_resource type="Texture2D" uid="uid://tcncm530otv1" path="res://assets/art/turret_barrel.png" id="4_f8w58"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jubhv"]
 radius = 66.0681
@@ -16,17 +17,22 @@ autostart = true
 [node name="Base" type="Sprite2D" parent="."]
 position = Vector2(0, 4.76837e-07)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_vva2n")
+texture = ExtResource("3_ukhur")
 region_enabled = true
 region_rect = Rect2(157, 559, 1478, 841)
 
 [node name="Pivot" type="Marker2D" parent="."]
 
 [node name="Barrel" type="Sprite2D" parent="Pivot"]
-position = Vector2(0.237925, 0.948726)
+position = Vector2(63, -0.5)
+rotation = 1.57079
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_f8w58")
+
+[node name="Drum" type="Sprite2D" parent="Pivot"]
 rotation = 1.5708
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_vva2n")
+texture = ExtResource("3_ukhur")
 offset = Vector2(-7.62939e-06, -247.769)
 region_enabled = true
 region_rect = Rect2(1925, 188, 715, 1211)
@@ -35,6 +41,7 @@ region_rect = Rect2(1925, 188, 715, 1211)
 position = Vector2(88, 0)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 collision_layer = 32
 collision_mask = 0
 

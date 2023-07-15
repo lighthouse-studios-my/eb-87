@@ -22,6 +22,7 @@ var _enabled := true
 @onready var _pivot := $Pivot
 @onready var _tip := $Pivot/Tip
 @onready var _cooldown := $CooldownTimer
+@onready var _barrel := $Pivot/Barrel
 @onready var _max_spread_angle := deg_to_rad(max_spread_angle_degrees)
 @onready var _rotate_speed := deg_to_rad(rotate_speed_degrees)
 @onready var _shoot_audio := $ShootAudio
@@ -48,6 +49,10 @@ func shoot() -> void:
 		emit_signal("shot", projectile)
 	_cooldown.start()
 	_shoot_audio.play()
+	
+	_barrel.position.x = 34.0
+	var tween := create_tween()
+	tween.tween_property(_barrel, "position", Vector2(63.0, _barrel.position.y), _cooldown.wait_time)
 
 
 func aim_at(pos: Vector2, delta: float) -> void:

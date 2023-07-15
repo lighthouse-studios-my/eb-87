@@ -71,8 +71,6 @@ func level_up() -> void:
 	level += 1
 	_scale_difficulty()
 	_scale_music()
-	player.heal()
-	health_bar.health = player.health
 	
 	var tween := create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
@@ -127,6 +125,9 @@ func _on_upgrade_menu_upgrade_selected(upgrade):
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(MusicPlayer, "volume_db", -24, 1.0)
+	
+	player.heal()
+	health_bar.health = player.health
 	
 	_unpause()
 
