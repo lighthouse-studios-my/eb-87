@@ -151,7 +151,7 @@ theme_override_colors/font_color = Color(0.824219, 0.273438, 0.828125, 1)
 text = "SPACEBAR"
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 0.1
 autostart = true
 
 [node name="DifficultyTimer" type="Timer" parent="."]

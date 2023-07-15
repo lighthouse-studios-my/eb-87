@@ -211,5 +211,6 @@ func _on_started() -> void:
 	turret.enable()
 	enemy_spawn_timer.start()
 	game_timer.start()
+	spawner.spawn_pack()
 	disconnect("started", _on_started)
 	$Tutorial.erase()
