@@ -26,6 +26,7 @@ signal damaged
 
 var _is_dodging := false
 var _dodge_direction := Vector2.ZERO
+var _last_direction := Vector2.RIGHT
 var _can_dodge := true
 
 var is_dead = false
@@ -41,6 +42,9 @@ func _ready() -> void:
 func _physics_process(delta):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = direction * speed
+	
+	if direction != Vector2.ZERO:
+		_last_direction = direction
 	
 	if _is_dodging:
 		velocity = _dodge_direction * dodge_speed
@@ -63,7 +67,8 @@ func _dodge() -> void:
 	
 	_dodge_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
-	if _dodge_direction == Vector2.ZERO: return
+	if _dodge_direction == Vector2.ZERO:
+		_dodge_direction = _last_direction
 	
 	_is_dodging = true
 	_can_dodge = false
