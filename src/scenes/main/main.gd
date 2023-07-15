@@ -1,6 +1,8 @@
 extends Node2D
 
 
+signal started
+
 const OrbScene = preload("res://entities/orb/orb.tscn")
 const TrailScene := preload("res://misc/trail/trail.tscn")
 const ProjectileParticleScene := preload("res://misc/projectile_particle/projectile_particle.tscn")
@@ -36,7 +38,16 @@ var stats = {
 func _ready():
 	enemy_spawn_timer.wait_time = enemy_spawn_cooldown
 	MusicPlayer.loop = "game_1"
+	
 	turret.disable()
+	enemy_spawn_timer.stop()
+	game_timer.stop()
+
+
+func _unhandled_input(event):
+	# Input to start game, should only run once
+	if event.is_action_pressed("dodge"):
+		emit_signal("started")
 
 
 func _on_orb_absorbed(exp) -> void:
@@ -194,5 +205,9 @@ func _on_spawner_spawned(entity):
 	entity.dead.connect(_on_enemy_dead.bind(entity))
 
 
-func _on_start_timer_timeout():
+func _on_started() -> void:
 	turret.enable()
+	enemy_spawn_timer.start()
+	game_timer.start()
+	disconnect("started", _on_started)
+	$Tutorial.erase()
