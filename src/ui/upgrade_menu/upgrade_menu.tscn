@@ -37,3 +37,9 @@ layout_mode = 2
 stream = ExtResource("2_se2fp")
 volume_db = -5.0
 bus = &"SFX"
+
+[node name="DebounceTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="DebounceTimer" to="." method="_on_debounce_timer_timeout"]

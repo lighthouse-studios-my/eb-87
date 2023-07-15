@@ -10,7 +10,14 @@ var upgrade : set = _set_upgrade
 @onready var _description := $Description
 @onready var _animation := $AnimationPlayer
 
+var can_select := true
+
 var is_selected := false
+
+
+func _gui_input(event):
+	if can_select and event.is_action_pressed("ui_accept") and has_focus():
+		select_upgrade()
 
 
 func _set_upgrade(upg) -> void:
@@ -38,12 +45,16 @@ func select_upgrade():
 
 
 func _on_texture_button_mouse_entered():
-	select()
-
-
-func _on_texture_button_mouse_exited():
-	deselect()
+	grab_focus()
 
 
 func _on_texture_button_pressed():
 	select_upgrade()
+
+
+func _on_focus_entered():
+	select()
+
+
+func _on_focus_exited():
+	deselect()

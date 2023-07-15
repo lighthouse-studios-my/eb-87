@@ -16,6 +16,16 @@ func update_time(time: int):
 	time_label.text = "%0*d:%0*d" % [2, min, 2, sec]
 
 
+func stop() -> void:
+	set_process(false)
+	_time_elapsed = 0.0
+	update_time(0)
+
+
+func start() -> void:
+	set_process(true)
+
+
 func _process(delta):
 	_time_elapsed += delta
 	update_time(floor(_time_elapsed))
