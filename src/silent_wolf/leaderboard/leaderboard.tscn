@@ -148,5 +148,6 @@ name_text_edit_path = NodePath("../CenterContainer/NameTextEdit")
 leaderboard_manager_path = NodePath("../../../LeaderboardManager")
 
 [connection signal="text_submitted" from="CenterContainer2/SubmitBox/CenterContainer/NameTextEdit" to="CenterContainer2/SubmitBox/SubmitButton" method="_on_name_text_edit_text_submitted"]
+[connection signal="visibility_changed" from="CenterContainer2/SubmitBox/CenterContainer/NameTextEdit" to="CenterContainer2/SubmitBox/CenterContainer/NameTextEdit" method="_on_visibility_changed"]
 [connection signal="pressed" from="CenterContainer2/SubmitBox/SubmitButton" to="CenterContainer2/SubmitBox/SubmitButton" method="_on_pressed"]
 [connection signal="score_submitting" from="CenterContainer2/SubmitBox/SubmitButton" to="CenterContainer2/SubmitBox/CenterContainer/NameTextEdit" method="_on_submit_button_score_submitting"]

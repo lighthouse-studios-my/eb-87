@@ -11,3 +11,8 @@ func _input(event):
 			if event.pressed:
 				if not Rect2(Vector2.ZERO, size).has_point(get_local_mouse_position()):
 					release_focus()
+
+
+func _on_visibility_changed():
+	if visible:
+		grab_focus()

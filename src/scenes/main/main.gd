@@ -134,6 +134,10 @@ func _on_upgrade_menu_upgrade_selected(upgrade):
 	get_tree().create_timer(0.1).timeout.connect(func ():
 		player.set_process_unhandled_input(true))
 	
+	Engine.time_scale = 0.05
+	var time_tween = get_tree().create_tween()
+	time_tween.tween_property(Engine, "time_scale", 1, 0.15)
+	
 	_unpause()
 
 
