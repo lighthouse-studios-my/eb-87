@@ -20,6 +20,7 @@ signal damaged
 @onready var _dodge_invul_duration_timer := $DodgeInvulDurationTimer
 @onready var _animated_sprite := $AnimatedSprite2D
 @onready var _dodge_particles := $DodgeParticles
+@onready var _heal_particles := $HealParticles
 
 @onready var _original_health := health
 @onready var _dash_audio := $DashAudio
@@ -119,6 +120,7 @@ func play_death_sound() -> void:
 
 func heal() -> void:
 	health = _original_health
+	_heal_particles.emitting = true
 
 
 func _on_dodge_duration_timer_timeout():
