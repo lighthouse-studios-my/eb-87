@@ -113,8 +113,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_258kq"]
-radius = 24.0
-height = 76.0
+radius = 16.0
+height = 58.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 17
@@ -142,6 +142,7 @@ autoplay = "idle"
 frame_progress = 0.673281
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
 shape = SubResource("CapsuleShape2D_258kq")
 
 [node name="DodgeDurationTimer" type="Timer" parent="."]
