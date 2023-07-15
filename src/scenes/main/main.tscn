@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://447ajmt7qbhi"]
+[gd_scene load_steps=23 format=3 uid="uid://447ajmt7qbhi"]
 
 [ext_resource type="PackedScene" uid="uid://bc5351fqfgj0l" path="res://entities/player/player.tscn" id="1_an0ov"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_mgw4m"]
 [ext_resource type="Texture2D" uid="uid://cwdy2a6ptudmq" path="res://assets/art/bg_tile.png" id="2_0eov5"]
 [ext_resource type="PackedScene" uid="uid://dj8uf3b6gj6tb" path="res://misc/spawner/spawner.tscn" id="2_jthal"]
 [ext_resource type="Texture2D" uid="uid://doaw7egkswn1g" path="res://assets/ui/Tutorial.png" id="3_0e8h0"]
+[ext_resource type="Script" path="res://misc/bg/bg.gd" id="3_8ulnn"]
 [ext_resource type="Script" path="res://scenes/main/tutorial.gd" id="3_jswhy"]
 [ext_resource type="PackedScene" uid="uid://bxwb8qt466bui" path="res://entities/turret/turret.tscn" id="4_vglex"]
 [ext_resource type="PackedScene" uid="uid://dtnh3g1dag1pb" path="res://ui/upgrade_menu/upgrade_menu.tscn" id="5_0hhqo"]
@@ -66,6 +67,8 @@ position = Vector2(960, 540)
 texture = ExtResource("2_0eov5")
 region_enabled = true
 region_rect = Rect2(0, 0, 2176, 2176)
+script = ExtResource("3_8ulnn")
+flash_color = Color(0.741176, 0, 0, 1)
 
 [node name="Tutorial" type="Node2D" parent="."]
 script = ExtResource("3_jswhy")
