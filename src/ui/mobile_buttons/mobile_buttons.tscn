@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjglqvbd72ywf"]
+[gd_scene load_steps=10 format=3 uid="uid://bjglqvbd72ywf"]
 
 [ext_resource type="Script" path="res://ui/mobile_buttons/mobile_buttons.gd" id="1_hikjt"]
 [ext_resource type="Script" path="res://ui/mobile_buttons/joystick/virtual_joystick.gd" id="2_1y425"]
 [ext_resource type="Texture2D" uid="uid://leawgsyt5882" path="res://assets/ui/hud.png" id="2_dlrds"]
 [ext_resource type="Texture2D" uid="uid://bm30au8mjfc2f" path="res://ui/mobile_buttons/joystick/textures/joystick_base_outline.png" id="3_wrrr6"]
 [ext_resource type="Texture2D" uid="uid://dt13r06u87fib" path="res://ui/mobile_buttons/joystick/textures/joystick_tip_arrows.png" id="4_wv0r0"]
+[ext_resource type="Texture2D" uid="uid://dkoc6bxkvf83" path="res://assets/ui/Pause Square Button.png" id="6_bnndm"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iylnu"]
 load_path = "res://.godot/imported/hud.png-56b6538d8e5b09f08c5b58f51a57347b.ctex"
@@ -18,6 +19,7 @@ atlas = ExtResource("2_dlrds")
 region = Rect2(234, 220, 181, 181)
 
 [node name="MobileButtons" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_hikjt")
 
 [node name="Virtual Joystick" type="Control" parent="."]
@@ -25,8 +27,8 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -308.0
-offset_right = 300.0
+offset_top = -348.0
+offset_right = 356.0
 offset_bottom = -8.0
 grow_vertical = 0
 script = ExtResource("2_1y425")
@@ -43,16 +45,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 100.0
-offset_bottom = 100.0
+offset_left = -93.75
+offset_top = -93.75
+offset_right = 93.75
+offset_bottom = 93.75
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(100, 100)
 mouse_force_pass_scroll_events = false
 texture = ExtResource("3_wrrr6")
-stretch_mode = 5
+expand_mode = 5
 
 [node name="Tip" type="TextureRect" parent="Virtual Joystick/Base"]
 layout_mode = 1
@@ -69,6 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(50, 50)
 texture = ExtResource("4_wv0r0")
+expand_mode = 2
 stretch_mode = 5
 
 [node name="Control2" type="Control" parent="."]
@@ -84,8 +88,25 @@ size_flags_horizontal = 2
 size_flags_vertical = 10
 
 [node name="DodgeButton" type="TouchScreenButton" parent="Control2"]
-position = Vector2(-210, -220)
+position = Vector2(-286, -292)
+scale = Vector2(1.5, 1.5)
 texture_normal = SubResource("AtlasTexture_7p7vu")
 texture_pressed = SubResource("AtlasTexture_uxe2h")
 action = "dodge"
+visibility_mode = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -127.0
+offset_bottom = 123.0
+grow_horizontal = 0
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Control"]
+position = Vector2(-11, 164)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("6_bnndm")
+action = "pause"
 visibility_mode = 1
