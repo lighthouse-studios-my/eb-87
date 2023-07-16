@@ -52,7 +52,7 @@ func _physics_process(delta):
 		_last_direction = direction
 	
 	if _is_dodging:
-		velocity = _dodge_direction * dodge_speed
+		velocity = _dodge_direction.normalized() * dodge_speed
 	
 	var input_axis = Input.get_axis("move_left", "move_right")
 	if input_axis != 0:
