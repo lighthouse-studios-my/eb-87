@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://rv25bmxi8hqe"]
+[gd_scene load_steps=18 format=3 uid="uid://rv25bmxi8hqe"]
 
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_wbjc5"]
 [ext_resource type="Texture2D" uid="uid://7gpau7mh12vb" path="res://assets/ui/vlcsnap-2023-07-09-19h30m34s240.png" id="2_qa7kv"]
@@ -11,12 +11,49 @@
 [ext_resource type="Script" path="res://ui/common/hover_button.gd" id="8_46osx"]
 [ext_resource type="Script" path="res://ui/main_menu/screens/credits/credits.gd" id="9_xqk48"]
 [ext_resource type="PackedScene" uid="uid://g26blcd73i4d" path="res://ui/main_menu/components/credit_group/credit_group.tscn" id="10_e03di"]
+[ext_resource type="FontFile" uid="uid://d3qej16xbdtq2" path="res://assets/fonts/Louis George Cafe Bold.ttf" id="12_8isfd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6epar"]
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygm3p"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_l48jt"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h6pkr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1dirv"]
+_data = {
+"RESET": SubResource("Animation_h6pkr"),
+"start": SubResource("Animation_l48jt")
+}
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -258,6 +295,26 @@ stream = ExtResource("4_frcrf")
 volume_db = -30.0
 autoplay = true
 bus = &"Music"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1781.0
+offset_top = 1023.0
+offset_right = 1899.0
+offset_bottom = 1062.0
+theme_override_fonts/font = ExtResource("12_8isfd")
+text = "v1.1.0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "start"
+libraries = {
+"": SubResource("AnimationLibrary_1dirv")
+}
 
 [connection signal="credits_pressed" from="TitleScreen" to="." method="_on_title_screen_credits_pressed"]
 [connection signal="quit_pressed" from="TitleScreen" to="." method="_on_title_screen_quit_pressed"]

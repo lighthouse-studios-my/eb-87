@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://dxuqlkww3rxwv"]
 
 [ext_resource type="Script" path="res://entities/enemies/enemy.gd" id="1_it6d5"]
-[ext_resource type="Texture2D" uid="uid://bwu738w1tdml2" path="res://assets/art/enemy.png" id="2_bxp8p"]
+[ext_resource type="Texture2D" path="res://assets/art/enemy.png" id="2_bxp8p"]
 [ext_resource type="Texture2D" uid="uid://dsvniv5iirn3i" path="res://assets/art/Speedboi.png" id="3_46qhi"]
 [ext_resource type="Texture2D" uid="uid://ciicgsinkv88l" path="res://assets/art/Tankyboi.png" id="4_g22ff"]
 [ext_resource type="AudioStream" uid="uid://b2i1ajnt4kskp" path="res://assets/sfx/Death_sounds_-_Part_2.wav" id="5_seutf"]
@@ -10,10 +10,6 @@
 atlas = ExtResource("2_bxp8p")
 region = Rect2(0, 0, 1050, 700)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bxujv"]
-atlas = ExtResource("2_bxp8p")
-region = Rect2(1050, 0, 1050, 700)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_1vfme"]
 atlas = ExtResource("2_bxp8p")
 region = Rect2(0, 700, 1050, 700)
@@ -21,6 +17,10 @@ region = Rect2(0, 700, 1050, 700)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ll7xn"]
 atlas = ExtResource("2_bxp8p")
 region = Rect2(1050, 700, 1050, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxujv"]
+atlas = ExtResource("2_bxp8p")
+region = Rect2(1050, 0, 1050, 700)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iyads"]
 atlas = ExtResource("3_46qhi")
@@ -61,15 +61,27 @@ animations = [{
 "texture": SubResource("AtlasTexture_p8qk6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bxujv")
+"texture": SubResource("AtlasTexture_1vfme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8qk6")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1vfme")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ll7xn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxujv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll7xn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxujv")
 }],
-"loop": false,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }, {
@@ -124,7 +136,6 @@ death_audio = ExtResource("5_seutf")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.151429, 0.151429)
 sprite_frames = SubResource("SpriteFrames_kx1rq")
-animation = &"speedy"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

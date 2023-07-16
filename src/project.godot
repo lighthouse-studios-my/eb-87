@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="eb-87"
-run/main_scene="res://ui/splash_screen/splash_screen.tscn"
+run/main_scene="res://ui/epilepsy/epilepsy.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 

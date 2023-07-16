@@ -1,12 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvjhx20877da2"]
+[gd_scene load_steps=10 format=3 uid="uid://del0t00uvhnhv"]
 
-[ext_resource type="Script" path="res://ui/splash_screen/splash_screen.gd" id="1_iwv3s"]
-[ext_resource type="PackedScene" uid="uid://rv25bmxi8hqe" path="res://ui/main_menu/main_menu.tscn" id="2_4l7b6"]
-[ext_resource type="Texture2D" uid="uid://mjyfic7v4evg" path="res://ui/splash_screen/assets/lighthouse.png" id="2_frotg"]
-[ext_resource type="FontFile" uid="uid://cyw40mhyh7oan" path="res://ui/splash_screen/assets/yoster.ttf" id="3_b0plh"]
-[ext_resource type="AudioStream" uid="uid://bu8bl5vmy3wkj" path="res://ui/splash_screen/assets/foghorn.wav" id="4_pryem"]
-[ext_resource type="Shader" path="res://ui/splash_screen/splash_screen.gdshader" id="6_8vm12"]
-[ext_resource type="Texture2D" uid="uid://sh5gtj8x8civ" path="res://assets/transparent.png" id="7_wv5gn"]
+[ext_resource type="Script" path="res://ui/splash_screen/splash_screen.gd" id="1_nn3um"]
+[ext_resource type="PackedScene" uid="uid://dvjhx20877da2" path="res://ui/splash_screen/splash_screen.tscn" id="2_80gkd"]
+[ext_resource type="Texture2D" uid="uid://cpbqlluphk635" path="res://assets/ui/EPILEPSY DAVID.png" id="3_ps8kt"]
+[ext_resource type="Shader" path="res://ui/splash_screen/splash_screen.gdshader" id="6_sfvhk"]
+[ext_resource type="Texture2D" uid="uid://sh5gtj8x8civ" path="res://assets/transparent.png" id="7_yaftp"]
 
 [sub_resource type="Animation" id="Animation_xewlr"]
 length = 0.001
@@ -34,10 +32,22 @@ tracks/1/keys = {
 "update": 0,
 "values": [-80.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ppm2j"]
 resource_name = "SplashScreen"
-length = 6.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -62,6 +72,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [-80.0, -30.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ws3g8"]
 _data = {
@@ -70,22 +92,22 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oibhj"]
-shader = ExtResource("6_8vm12")
+shader = ExtResource("6_sfvhk")
 shader_parameter/shake_power = 0.03
 shader_parameter/shake_rate = 0.2
 shader_parameter/shake_speed = 5.0
 shader_parameter/shake_block_size = 30.5
 shader_parameter/shake_color_rate = 0.01
 
-[node name="SplashScreen" type="Control"]
+[node name="Epilepsy" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_iwv3s")
-next_scene = ExtResource("2_4l7b6")
+script = ExtResource("1_nn3um")
+next_scene = ExtResource("2_80gkd")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -96,29 +118,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-color = Color(0.443137, 0.658824, 0.607843, 1)
-
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_frotg")
+texture = ExtResource("3_ps8kt")
 expand_mode = 4
 stretch_mode = 5
-
-[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.152941, 0.152941, 0.152941, 1)
-theme_override_fonts/font = ExtResource("3_b0plh")
-text = "Lighthouse
-Studios"
-horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "SplashScreen"
@@ -127,14 +131,14 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_pryem")
 volume_db = -80.0
 autoplay = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_oibhj")
 position = Vector2(947, 549)
 scale = Vector2(399.6, 232.4)
-texture = ExtResource("7_wv5gn")
+texture = ExtResource("7_yaftp")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

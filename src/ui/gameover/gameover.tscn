@@ -120,6 +120,13 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
+[node name="NameTextEdit" parent="Leaderboard/CenterContainer2/SubmitBox/CenterContainer" index="0"]
+focus_neighbor_bottom = NodePath("../../SubmitButton")
+
+[node name="SubmitButton" parent="Leaderboard/CenterContainer2/SubmitBox" index="3"]
+focus_neighbor_top = NodePath("../CenterContainer/NameTextEdit")
+focus_neighbor_bottom = NodePath("../../../../CenterContainer2/PromptLabels/RestartButton")
+
 [node name="Stats" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 9
@@ -167,3 +174,5 @@ text = "press backspace to exit"
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="CenterContainer2/PromptLabels/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CenterContainer2/PromptLabels/ExitButton" to="." method="_on_exit_button_pressed"]
+
+[editable path="Leaderboard"]

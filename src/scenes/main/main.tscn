@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://447ajmt7qbhi"]
+[gd_scene load_steps=25 format=3 uid="uid://447ajmt7qbhi"]
 
 [ext_resource type="PackedScene" uid="uid://bc5351fqfgj0l" path="res://entities/player/player.tscn" id="1_an0ov"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_mgw4m"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/main/tutorial.gd" id="3_jswhy"]
 [ext_resource type="PackedScene" uid="uid://bxwb8qt466bui" path="res://entities/turret/turret.tscn" id="4_vglex"]
 [ext_resource type="PackedScene" uid="uid://dtnh3g1dag1pb" path="res://ui/upgrade_menu/upgrade_menu.tscn" id="5_0hhqo"]
+[ext_resource type="Texture2D" uid="uid://cnw5lutalho63" path="res://assets/ui/Console tutorial.png" id="6_cqrg4"]
 [ext_resource type="PackedScene" uid="uid://dc0siwbmb2hux" path="res://ui/pause/pause.tscn" id="6_fn6hx"]
 [ext_resource type="PackedScene" uid="uid://b36i8krjdqqnb" path="res://ui/health_bar/health_bar.tscn" id="6_oh4in"]
 [ext_resource type="PackedScene" uid="uid://cqalm5s346ssj" path="res://ui/timer/timer.tscn" id="7_0pd65"]
@@ -74,63 +75,6 @@ flash_color = Color(0.741176, 0, 0, 1)
 [node name="Tutorial" type="Node2D" parent="."]
 script = ExtResource("3_jswhy")
 
-[node name="Move" type="Node2D" parent="Tutorial"]
-position = Vector2(104, 16)
-
-[node name="Sprite2D" type="Sprite2D" parent="Tutorial/Move"]
-position = Vector2(512, 696)
-scale = Vector2(0.25, 0.25)
-texture = SubResource("AtlasTexture_ar6d0")
-
-[node name="Label" type="Label" parent="Tutorial/Move"]
-offset_left = 640.0
-offset_top = 688.0
-offset_right = 682.0
-offset_bottom = 727.0
-text = "OR"
-
-[node name="Sprite2D2" type="Sprite2D" parent="Tutorial/Move"]
-position = Vector2(816, 696)
-scale = Vector2(0.25, 0.25)
-texture = SubResource("AtlasTexture_eqp85")
-
-[node name="Label2" type="Label" parent="Tutorial/Move"]
-offset_left = 592.0
-offset_top = 760.0
-offset_right = 727.0
-offset_bottom = 799.0
-text = "TO MOVE"
-
-[node name="Dodge" type="Node2D" parent="Tutorial"]
-position = Vector2(296, -24)
-
-[node name="Dodge" type="Sprite2D" parent="Tutorial/Dodge"]
-position = Vector2(664, 928)
-scale = Vector2(0.25, 0.25)
-texture = SubResource("AtlasTexture_6x4nm")
-
-[node name="Label3" type="Label" parent="Tutorial/Dodge"]
-offset_left = 584.0
-offset_top = 968.0
-offset_right = 737.0
-offset_bottom = 1007.0
-text = "TO DODGE"
-
-[node name="Pause" type="Node2D" parent="Tutorial"]
-position = Vector2(104, -72)
-
-[node name="Sprite2D4" type="Sprite2D" parent="Tutorial/Pause"]
-position = Vector2(1056, 806.5)
-scale = Vector2(0.25, 0.25)
-texture = SubResource("AtlasTexture_vxlkj")
-
-[node name="Label3" type="Label" parent="Tutorial/Pause"]
-offset_left = 984.0
-offset_top = 846.5
-offset_right = 1148.0
-offset_bottom = 885.5
-text = "TO PAUSE"
-
 [node name="Info" type="Node2D" parent="Tutorial"]
 position = Vector2(0, -32)
 
@@ -140,16 +84,85 @@ offset_top = 1048.0
 offset_right = 1195.0
 offset_bottom = 1165.0
 text = "AVOID THE TURRET AND ENEMIES
-PRESS                       TO START"
+             TO START"
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="Tutorial/Info"]
-offset_left = 862.0
+offset_left = 859.0
 offset_top = 1087.0
-offset_right = 1012.0
+offset_right = 1009.0
 offset_bottom = 1126.0
 theme_override_colors/font_color = Color(0.824219, 0.273438, 0.828125, 1)
-text = "SPACEBAR"
+text = "DASH"
+
+[node name="KeyboardTutorial" type="Node2D" parent="Tutorial"]
+position = Vector2(30, -6)
+
+[node name="Move" type="Node2D" parent="Tutorial/KeyboardTutorial"]
+position = Vector2(104, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial/KeyboardTutorial/Move"]
+position = Vector2(512, 696)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_ar6d0")
+
+[node name="Label" type="Label" parent="Tutorial/KeyboardTutorial/Move"]
+offset_left = 640.0
+offset_top = 688.0
+offset_right = 682.0
+offset_bottom = 727.0
+text = "OR"
+
+[node name="Sprite2D2" type="Sprite2D" parent="Tutorial/KeyboardTutorial/Move"]
+position = Vector2(816, 696)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_eqp85")
+
+[node name="Label2" type="Label" parent="Tutorial/KeyboardTutorial/Move"]
+offset_left = 592.0
+offset_top = 760.0
+offset_right = 727.0
+offset_bottom = 799.0
+text = "TO MOVE"
+
+[node name="Dodge" type="Node2D" parent="Tutorial/KeyboardTutorial"]
+position = Vector2(296, -24)
+
+[node name="Dodge" type="Sprite2D" parent="Tutorial/KeyboardTutorial/Dodge"]
+position = Vector2(664, 928)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_6x4nm")
+
+[node name="Label3" type="Label" parent="Tutorial/KeyboardTutorial/Dodge"]
+offset_left = 584.0
+offset_top = 968.0
+offset_right = 737.0
+offset_bottom = 1007.0
+text = "TO DASH"
+
+[node name="Pause" type="Node2D" parent="Tutorial/KeyboardTutorial"]
+position = Vector2(104, -72)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Tutorial/KeyboardTutorial/Pause"]
+position = Vector2(1056, 806.5)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_vxlkj")
+
+[node name="Label3" type="Label" parent="Tutorial/KeyboardTutorial/Pause"]
+offset_left = 984.0
+offset_top = 846.5
+offset_right = 1148.0
+offset_bottom = 885.5
+text = "TO PAUSE"
+
+[node name="ControllerTutorial" type="Node2D" parent="Tutorial"]
+visible = false
+position = Vector2(16, 14)
+
+[node name="ConsoleTutorial" type="Sprite2D" parent="Tutorial/ControllerTutorial"]
+position = Vector2(933, 787)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_cqrg4")
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 0.1

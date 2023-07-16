@@ -17,6 +17,7 @@ speed = 300.0
 death_audio = ExtResource("2_ycum1")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
+animation = &"speedy"
 autoplay = "speedy"
 
 [node name="CollisionShape2D" parent="." index="1"]
