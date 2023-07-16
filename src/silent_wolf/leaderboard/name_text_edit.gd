@@ -1,6 +1,10 @@
 extends LineEdit
 
 
+func _ready():
+	DisplayServer.virtual_keyboard_show('')
+
+
 func _on_submit_button_score_submitting():
 	editable = false
 
