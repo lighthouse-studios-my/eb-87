@@ -5,6 +5,11 @@ var trail_length := 20
 var source: Node2D
 
 
+func _ready() -> void:
+	# Duplicate curve instance, otherwise very trail shares the same curve
+	width_curve = width_curve.duplicate()
+
+
 func setup(src: Node2D, length: int, max_size: float, color: Color) -> void:
 	source = src
 	trail_length = length
