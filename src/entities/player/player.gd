@@ -86,7 +86,6 @@ func _dodge() -> void:
 	_disable_collisions()
 	_dodge_duration_timer.start()
 	_dash_audio.play()
-	_animated_sprite.play("glitch")
 
 
 func hurt(damage) -> void:
@@ -155,4 +154,5 @@ func _on_invulnerability_cooldown_timer_timeout():
 
 
 func _on_dodge_invul_duration_timer_timeout():
-	_enable_collision()
+	if invulnerability_duration_timer.is_stopped():
+		_enable_collision()
