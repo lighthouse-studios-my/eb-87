@@ -26,3 +26,10 @@ func _process(delta):
 	
 	if position > loop_sections[loop][1]:
 		play(loop_sections[loop][0])
+
+
+func set_playback_speed(speed: float, duration: float) -> void:
+	var tween = get_tree().create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+#	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(self, "pitch_scale", speed, duration)

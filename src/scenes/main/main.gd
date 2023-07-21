@@ -76,6 +76,7 @@ func level_up() -> void:
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(MusicPlayer, "volume_db", -32, 1.0)
+	MusicPlayer.set_playback_speed(0.5, 1)
 	
 	_pause()
 
@@ -137,6 +138,8 @@ func _on_upgrade_menu_upgrade_selected(upgrade):
 	Engine.time_scale = 0.05
 	var time_tween = get_tree().create_tween()
 	time_tween.tween_property(Engine, "time_scale", 1, 0.15)
+	
+	MusicPlayer.set_playback_speed(1, 1)
 	
 	_unpause()
 
