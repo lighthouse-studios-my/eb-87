@@ -6,16 +6,19 @@ extends VBoxContainer
 @onready var leaderboard_manager = get_node(leaderboard_manager_path)
 @onready var scores_vbox: VBoxContainer = $Scores
 @onready var score_row_scene := preload("res://silent_wolf/leaderboard/score_row/score_row.tscn")
+@onready var top_label = %TopLabel
+@onready var out_of_label = %OutOfLabel
 
 
 func _ready():
 	custom_minimum_size = size
 	leaderboard_manager.score_submitted.connect(render)
-	render()
-
+	leaderboard_manager.top_percent_retrieved.connect(set_top_text)
 
 func render(player_rank = 0, player_name = "", player_score = 0) -> void:
 	show_scores_loading()
+	
+	leaderboard_manager.get_top_percent(player_score)
 	
 	var scores = await leaderboard_manager.retrive_top_scores()
 	
@@ -50,3 +53,9 @@ func show_scores_loading() -> void:
 func clear_scores_list() -> void:
 	for child in scores_vbox.get_children():
 		child.queue_free()
+
+
+func set_top_text(position: int, total: int, percent: int) -> int:
+	top_label.text = "TOP %s%%" % percent
+	out_of_label.text = "Out Of %s" % total
+	return 1

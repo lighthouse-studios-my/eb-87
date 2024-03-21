@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://settings/elements/setting/setting.gd" id="1_kogob"]
+
+[node name="Setting" type="HBoxContainer"]
+focus_mode = 2
+script = ExtResource("1_kogob")
+name_ = "Setting Name"
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Setting Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PrevButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 1
+text = "<"
+flat = true
+
+[node name="Value" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "off"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="NextButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 1
+text = ">"
+flat = true
+
+[connection signal="pressed" from="HBoxContainer/PrevButton" to="." method="_on_prev_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]

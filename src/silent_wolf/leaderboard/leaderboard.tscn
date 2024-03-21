@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0y8auhbdkbi2"]
+[gd_scene load_steps=15 format=3 uid="uid://c0y8auhbdkbi2"]
 
 [ext_resource type="Script" path="res://silent_wolf/leaderboard/leaderboard.gd" id="1_3p0sl"]
 [ext_resource type="Script" path="res://silent_wolf/leaderboard/score_list.gd" id="1_364uh"]
@@ -6,9 +6,20 @@
 [ext_resource type="Script" path="res://silent_wolf/leaderboard/leaderboard_manager.gd" id="2_dkh76"]
 [ext_resource type="PackedScene" uid="uid://xc0kxvlh4c7s" path="res://silent_wolf/leaderboard/score_row/score_row.tscn" id="3_6h41o"]
 [ext_resource type="Script" path="res://silent_wolf/leaderboard/submit_score_button.gd" id="3_ov2i4"]
+[ext_resource type="FontFile" uid="uid://leg2yo6gq5k1" path="res://assets/fonts/Louis George Cafe.ttf" id="4_m6gue"]
 [ext_resource type="Script" path="res://silent_wolf/leaderboard/submit_box.gd" id="5_c328f"]
 [ext_resource type="Script" path="res://silent_wolf/leaderboard/name_text_edit.gd" id="6_m5niv"]
 [ext_resource type="FontFile" uid="uid://dnwi3ekojvg0b" path="res://addons/silent_wolf/assets/fonts/Dosis v1.7/Dosis-SemiBold.ttf" id="7_2cmal"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_drxdy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s0h5y"]
+
+[sub_resource type="Theme" id="Theme_ur4rw"]
+default_font = ExtResource("4_m6gue")
+default_font_size = 36
+Button/styles/focus = SubResource("StyleBoxEmpty_drxdy")
+Button/styles/pressed = SubResource("StyleBoxEmpty_s0h5y")
 
 [sub_resource type="Theme" id="Theme_iclgb"]
 
@@ -38,16 +49,36 @@ grow_vertical = 2
 [node name="ScoreList" type="VBoxContainer" parent="CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = SubResource("Theme_ur4rw")
 script = ExtResource("1_364uh")
 leaderboard_manager_path = NodePath("../../LeaderboardManager")
 
-[node name="Label" type="Label" parent="CenterContainer/ScoreList"]
+[node name="Title" type="Label" parent="CenterContainer/ScoreList"]
 layout_mode = 2
 theme = ExtResource("1_iugsc")
 theme_type_variation = &"HeaderLarge"
 theme_override_fonts/font = ExtResource("7_2cmal")
 theme_override_font_sizes/font_size = 64
 text = "LEADERBOARD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopLabel" type="Label" parent="CenterContainer/ScoreList"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_iugsc")
+theme_override_fonts/font = ExtResource("7_2cmal")
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OutOfLabel" type="Label" parent="CenterContainer/ScoreList"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_iugsc")
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("7_2cmal")
+theme_override_font_sizes/font_size = 36
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -142,7 +173,7 @@ script = ExtResource("6_m5niv")
 [node name="SubmitButton" type="Button" parent="CenterContainer2/SubmitBox"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "PRESS ENTER TO SUBMIT.."
+text = "SUBMIT"
 script = ExtResource("3_ov2i4")
 name_text_edit_path = NodePath("../CenterContainer/NameTextEdit")
 leaderboard_manager_path = NodePath("../../../LeaderboardManager")

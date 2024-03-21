@@ -163,6 +163,7 @@ func _on_player_dead():
 	camera.shake(50.0)
 	health_bar.health = player.health
 	gameover.leaderboard.player_score = game_timer._time_elapsed
+	gameover.leaderboard.render()
 	stats["time"] = game_timer._time_elapsed
 	gameover.show_stats(stats)
 	mobile_buttons.visible = false

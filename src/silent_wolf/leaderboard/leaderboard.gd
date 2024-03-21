@@ -10,7 +10,13 @@ extends Control
 
 
 func _ready() -> void:
+	return
+	#render()
+
+
+func render() -> void:
 	_set_player_score(player_score)
+	score_list.render(0, "", player_score)
 
 
 func _set_player_score(score) -> void:

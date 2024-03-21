@@ -127,7 +127,6 @@ placeholder_text = "enter name"
 [node name="SubmitButton" parent="Leaderboard/CenterContainer2/SubmitBox" index="3"]
 focus_neighbor_top = NodePath("../CenterContainer/NameTextEdit")
 focus_neighbor_bottom = NodePath("../../../../CenterContainer2/PromptLabels/RestartButton")
-text = "SUBMIT"
 
 [node name="Stats" type="CenterContainer" parent="."]
 layout_mode = 1
