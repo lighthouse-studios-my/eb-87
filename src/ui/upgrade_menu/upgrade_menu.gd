@@ -34,6 +34,7 @@ func show_upgrades() -> void:
 		_buttons.add_child(button)
 		if not first:
 			first = button
+		
 	first.grab_focus()
 		
 	visible = true

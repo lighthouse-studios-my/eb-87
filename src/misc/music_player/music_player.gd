@@ -15,7 +15,7 @@ var loop_sections = {
 
 func _ready():
 	stream = music
-	volume_db = -24
+	volume_db = 0
 	play()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	bus = "Music"

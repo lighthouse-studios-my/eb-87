@@ -110,10 +110,10 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.729412)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "end_screen"
 libraries = {
 "": SubResource("AnimationLibrary_gs8ki")
 }
+autoplay = "end_screen"
 
 [node name="Leaderboard" parent="." instance=ExtResource("4_b545m")]
 unique_name_in_owner = true
@@ -122,10 +122,12 @@ layout_mode = 1
 
 [node name="NameTextEdit" parent="Leaderboard/CenterContainer2/SubmitBox/CenterContainer" index="0"]
 focus_neighbor_bottom = NodePath("../../SubmitButton")
+placeholder_text = "enter name"
 
 [node name="SubmitButton" parent="Leaderboard/CenterContainer2/SubmitBox" index="3"]
 focus_neighbor_top = NodePath("../CenterContainer/NameTextEdit")
 focus_neighbor_bottom = NodePath("../../../../CenterContainer2/PromptLabels/RestartButton")
+text = "SUBMIT"
 
 [node name="Stats" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -154,22 +156,24 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -250.0
+offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="PromptLabels" type="VBoxContainer" parent="CenterContainer2"]
 visible = false
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="RestartButton" type="Button" parent="CenterContainer2/PromptLabels"]
 layout_mode = 2
 theme = ExtResource("1_1a33m")
 theme_type_variation = &"HeaderLarge"
-text = "press 'R' to restart"
+text = "RESTART"
 
 [node name="ExitButton" type="Button" parent="CenterContainer2/PromptLabels"]
 layout_mode = 2
-text = "press backspace to exit"
+text = "EXIT"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="CenterContainer2/PromptLabels/RestartButton" to="." method="_on_restart_button_pressed"]

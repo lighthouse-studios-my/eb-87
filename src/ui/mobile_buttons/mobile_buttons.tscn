@@ -27,16 +27,21 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -348.0
-offset_right = 356.0
-offset_bottom = -8.0
+offset_left = 63.0
+offset_top = -388.0
+offset_right = 419.0
+offset_bottom = -48.0
 grow_vertical = 0
 script = ExtResource("2_1y425")
-visibility_mode = 1
 action_left = "move_left"
 action_right = "move_right"
 action_up = "move_up"
 action_down = "move_down"
+
+[node name="Timer" type="Timer" parent="Virtual Joystick"]
+wait_time = 0.5
+one_shot = true
+autostart = true
 
 [node name="Base" type="TextureRect" parent="Virtual Joystick"]
 layout_mode = 1
@@ -88,12 +93,11 @@ size_flags_horizontal = 2
 size_flags_vertical = 10
 
 [node name="DodgeButton" type="TouchScreenButton" parent="Control2"]
-position = Vector2(-286, -292)
+position = Vector2(-331, -328)
 scale = Vector2(1.5, 1.5)
 texture_normal = SubResource("AtlasTexture_7p7vu")
 texture_pressed = SubResource("AtlasTexture_uxe2h")
 action = "dodge"
-visibility_mode = 1
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -110,3 +114,7 @@ scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("6_bnndm")
 action = "pause"
 visibility_mode = 1
+
+[connection signal="gui_input" from="Virtual Joystick" to="." method="_on_virtual_joystick_gui_input"]
+[connection signal="pressed" from="Control2/DodgeButton" to="." method="_on_dodge_button_pressed"]
+[connection signal="released" from="Control2/DodgeButton" to="." method="_on_dodge_button_released"]

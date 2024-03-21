@@ -19,6 +19,7 @@ const ProjectileParticleScene := preload("res://misc/projectile_particle/project
 @onready var health_bar := %HealthBar
 @onready var game_timer = %Timer
 @onready var bg := $BG
+@onready var mobile_buttons = $MobileButtons
 
 var level := 1
 var exp_points := 0
@@ -145,18 +146,18 @@ func _on_upgrade_menu_upgrade_selected(upgrade):
 
 
 func _on_pause_screen_quit_pressed():
-	get_tree().change_scene_to_file("res://ui/main_menu/main_menu.tscn")
 	get_tree().paused = false
+	get_tree().change_scene_to_file("res://ui/main_menu/main_menu.tscn")
 
 
 func _on_player_dead():
 	var gameover: Control = load("res://ui/gameover/gameover.tscn").instantiate()
 	gameover.restart_pressed.connect(func ():
-		get_tree().change_scene_to_file("res://scenes/main/main.tscn")
-		get_tree().paused = false)
+		get_tree().paused = false
+		get_tree().change_scene_to_file("res://scenes/main/main.tscn"))
 	gameover.back_pressed.connect(func ():
-		get_tree().change_scene_to_file("res://ui/main_menu/main_menu.tscn")
-		get_tree().paused = false)
+		get_tree().paused = false
+		get_tree().change_scene_to_file("res://ui/main_menu/main_menu.tscn"))
 	$CanvasLayer.add_child(gameover)
 	$CanvasLayer/PauseScreen.queue_free()
 	camera.shake(50.0)
@@ -164,6 +165,7 @@ func _on_player_dead():
 	gameover.leaderboard.player_score = game_timer._time_elapsed
 	stats["time"] = game_timer._time_elapsed
 	gameover.show_stats(stats)
+	mobile_buttons.visible = false
 	get_tree().paused = true
 
 

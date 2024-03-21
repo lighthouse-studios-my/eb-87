@@ -62,6 +62,8 @@ var _touch_index : int = -1
 
 @onready var _default_color : Color = _tip.modulate
 
+@onready var timer = $Timer
+
 # FUNCTIONS
 
 func _ready() -> void:
@@ -125,21 +127,33 @@ func _update_joystick(touch_position: Vector2) -> void:
 
 func _update_input_actions():
 	if output.x < 0:
-		Input.action_press(action_left, -output.x)
+		Input.action_press(action_left)
 	elif Input.is_action_pressed(action_left):
 		Input.action_release(action_left)
 	if output.x > 0:
-		Input.action_press(action_right, output.x)
+		Input.action_press(action_right)
 	elif Input.is_action_pressed(action_right):
 		Input.action_release(action_right)
 	if output.y < 0:
-		Input.action_press(action_up, -output.y)
+		Input.action_press(action_up)
 	elif Input.is_action_pressed(action_up):
 		Input.action_release(action_up)
 	if output.y > 0:
-		Input.action_press(action_down, output.y)
+		Input.action_press(action_down)
 	elif Input.is_action_pressed(action_down):
 		Input.action_release(action_down)
+	
+	var offset = 0.95
+	
+	if output.x < -offset:
+		input_press('ui_left', true)
+	if output.x > offset:
+		input_press('ui_right', true)
+	if output.y < -offset:
+		input_press('ui_up', true)
+	if output.y > offset:
+		input_press('ui_down', true)
+
 
 func _reset():
 	is_pressed = false
@@ -157,3 +171,15 @@ func _reset():
 			Input.action_release(action_down)
 		if Input.is_action_pressed(action_up) or Input.is_action_just_pressed(action_up):
 			Input.action_release(action_up)
+
+
+func input_press(action: String, pressed: bool) -> void:
+	if timer.time_left != 0:
+		return
+	
+	timer.start()
+	
+	var input = InputEventAction.new()
+	input.action = action
+	input.pressed = pressed
+	Input.parse_input_event(input)

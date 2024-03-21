@@ -61,13 +61,11 @@ offset_left = 808.0
 offset_top = 448.0
 offset_right = 1208.0
 offset_bottom = 892.0
-grow_horizontal = 2
-grow_vertical = 0
 focus_mode = 2
 script = ExtResource("1_u5uk6")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(400, 400)
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer"]
@@ -77,6 +75,7 @@ stretch_mode = 5
 
 [node name="Description" type="Label" parent="."]
 layout_mode = 2
+theme_override_font_sizes/font_size = 48
 horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

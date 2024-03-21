@@ -19,21 +19,6 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygm3p"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="Animation" id="Animation_l48jt"]
-resource_name = "start"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasModulate:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_h6pkr"]
 length = 0.001
 tracks/0/type = "value"
@@ -47,6 +32,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l48jt"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1dirv"]
@@ -311,18 +311,18 @@ vertical_alignment = 1
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "start"
 libraries = {
 "": SubResource("AnimationLibrary_1dirv")
 }
+autoplay = "start"
 
 [connection signal="credits_pressed" from="TitleScreen" to="." method="_on_title_screen_credits_pressed"]
 [connection signal="quit_pressed" from="TitleScreen" to="." method="_on_title_screen_quit_pressed"]
 [connection signal="settings_pressed" from="TitleScreen" to="." method="_on_title_screen_settings_pressed"]
 [connection signal="start_pressed" from="TitleScreen" to="." method="_on_title_screen_start_pressed"]
 [connection signal="back_pressed" from="Settings" to="." method="_on_settings_back_pressed"]
-[connection signal="focus_entered" from="Settings/MarginContainer/VBoxContainer/MarginContainer2/BackButton" to="Settings" method="_on_back_button_focus_entered" flags=18]
-[connection signal="pressed" from="Settings/MarginContainer/VBoxContainer/MarginContainer2/BackButton" to="Settings" method="_on_back_button_pressed" flags=18]
+[connection signal="focus_entered" from="Settings/MarginContainer/VBoxContainer/MarginContainer2/BackButton" to="Settings" method="_on_back_button_focus_entered"]
+[connection signal="pressed" from="Settings/MarginContainer/VBoxContainer/MarginContainer2/BackButton" to="Settings" method="_on_back_button_pressed"]
 [connection signal="back_pressed" from="Credits" to="." method="_on_credits_back_pressed"]
-[connection signal="focus_entered" from="Credits/MarginContainer/VBoxContainer/MarginContainer2/BackButton" to="Credits" method="_on_back_button_focus_entered" flags=18]
-[connection signal="pressed" from="Credits/MarginContainer/VBoxContainer/MarginContainer2/BackButton" to="Credits" method="_on_back_button_pressed" flags=18]
+[connection signal="focus_entered" from="Credits/MarginContainer/VBoxContainer/MarginContainer2/BackButton" to="Credits" method="_on_back_button_focus_entered"]
+[connection signal="pressed" from="Credits/MarginContainer/VBoxContainer/MarginContainer2/BackButton" to="Credits" method="_on_back_button_pressed"]

@@ -25,19 +25,7 @@ func _set_upgrade(upg) -> void:
 	if not _button:
 		await ready
 	_button.texture_normal = upg.icon
-
-
-func select() -> void:
-	if upgrade:
-		_description.text = upgrade.description
-	_animation.play("enlarge")
-	is_selected = true
-
-
-func deselect() -> void:
-	_description.text = ""
-	_animation.play("shrink")
-	is_selected = false
+	_description.text = upgrade.description
 
 
 func select_upgrade():
@@ -51,10 +39,3 @@ func _on_texture_button_mouse_entered():
 func _on_texture_button_pressed():
 	select_upgrade()
 
-
-func _on_focus_entered():
-	select()
-
-
-func _on_focus_exited():
-	deselect()

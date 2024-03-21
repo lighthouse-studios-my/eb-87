@@ -2,7 +2,8 @@ extends LineEdit
 
 
 func _ready():
-	DisplayServer.virtual_keyboard_show('')
+	return
+	#DisplayServer.virtual_keyboard_show('')
 
 
 func _on_submit_button_score_submitting():
@@ -18,5 +19,6 @@ func _input(event):
 
 
 func _on_visibility_changed():
+	return
 	if visible:
 		grab_focus()

@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc0siwbmb2hux"]
+[gd_scene load_steps=7 format=3 uid="uid://dc0siwbmb2hux"]
 
 [ext_resource type="Script" path="res://ui/pause/pause.gd" id="1_aw4gv"]
 [ext_resource type="Script" path="res://ui/common/volume_slider/volume_slider.gd" id="2_4cwfn"]
 [ext_resource type="Script" path="res://ui/common/hover_button.gd" id="2_4vkrr"]
 [ext_resource type="PackedScene" uid="uid://bosl3sol5un47" path="res://ui/main_menu/components/cursor/cursor.tscn" id="3_fgwgr"]
+
+[sub_resource type="Theme" id="Theme_5ixgj"]
+default_font_size = 50
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n1cpq"]
 
@@ -15,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_5ixgj")
 script = ExtResource("1_aw4gv")
 
 [node name="Background" type="ColorRect" parent="."]
