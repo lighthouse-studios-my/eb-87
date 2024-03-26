@@ -76,8 +76,7 @@ func level_up() -> void:
 	var tween := create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(MusicPlayer, "volume_db", -32, 1.0)
-	MusicPlayer.set_playback_speed(0.5, 1)
+	#MusicPlayer.set_playback_speed(0.5, 1)
 	
 	_pause()
 
@@ -126,7 +125,6 @@ func _on_upgrade_menu_upgrade_selected(upgrade):
 	var tween := create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(MusicPlayer, "volume_db", -24, 1.0)
 	
 	player.heal()
 	health_bar.health = player.health
@@ -140,7 +138,7 @@ func _on_upgrade_menu_upgrade_selected(upgrade):
 	var time_tween = get_tree().create_tween()
 	time_tween.tween_property(Engine, "time_scale", 1, 0.15)
 	
-	MusicPlayer.set_playback_speed(1, 1)
+	#MusicPlayer.set_playback_speed(1, 1)
 	
 	_unpause()
 
