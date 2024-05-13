@@ -1,2 +1,2 @@
-# eb-87
-GMTK 2023
+# EB-87
+Android Version
